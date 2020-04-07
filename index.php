@@ -58,7 +58,7 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#signup">Subscribirse</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="https://tuplanbaq.sisedigital.com/PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
                 <?php  echo $usuario;?>
             </a>
           </li>
@@ -66,7 +66,7 @@ include('conexiongen.php');
              <?php 
           if($usuario == "admin"){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="https://tuplanbaq.sisedigital.com/admin.php?usuario=admin">Administrar lugares</a>
+            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
           </li>
             <?php
             }
@@ -74,7 +74,7 @@ include('conexiongen.php');
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="https://tuplanbaq.sisedigital.com/index.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
           </li>
             <?php
             }
@@ -94,8 +94,8 @@ include('conexiongen.php');
         <h2 class="text-white-50 mx-auto mt-2 mb-5">Descubre qué hacer cuando no tienes idea</h2>   
            <table align='center' cellspacing=10px cellpadding=0 id="data_table" border=0>  
             <tr>
-                <td> <a  href="https://tuplanbaq.sisedigital.com/login.php" class="btn btn-primary js-scroll-trigger">Ingresar</a></td>
-                <td> <a  href="https://tuplanbaq.sisedigital.com/signup.php" class="btn btn-primary js-scroll-trigger">Crea una cuenta</a></td>
+                <td> <a  href="login.php" class="btn btn-primary js-scroll-trigger">Ingresar</a></td>
+                <td> <a  href="signup.php" class="btn btn-primary js-scroll-trigger">Crea una cuenta</a></td>
             </tr>
          </table>
         <?php
@@ -121,7 +121,7 @@ include('conexiongen.php');
               <div class="project-text w-100 my-auto text-center text-lg-left">
                 <h4 class="text-white">Planes sin dinero</h4>
                 <p class="mb-0 text-white-50"><?php echo $usuario;?>, encuentra cosas que puedes hacer en Barranquilla sin tener un peso, de cosa para los pasajes</p>
-                  <a href="https://tuplanbaq.sisedigital.com/SinDinero.php?usuario=<?php echo $usuario;?>" class="btn btn-primary js-scroll-trigger">AQUI</a>
+                  <a href="SinDinero.php?usuario=<?php echo $usuario;?>" class="btn btn-primary js-scroll-trigger">AQUI</a>
                 <hr class="d-none d-lg-block mb-0 ml-0">
               </div>
             </div>
@@ -140,7 +140,7 @@ include('conexiongen.php');
               <div class="project-text w-100 my-auto text-center text-lg-right">
                 <h4 class="text-white">¡Tengo plata!</h4>
                 <p class="mb-0 text-white-50">Encuentra posibilidades para descubir Barranquilla, con algo de dinero</p>
-                  <a href="https://tuplanbaq.sisedigital.com/ConDinero.php?usuario=<?php echo $usuario;?>"class="btn btn-primary js-scroll-trigger">AQUI</a>
+                  <a href="ConDinero.php?usuario=<?php echo $usuario;?>"class="btn btn-primary js-scroll-trigger">AQUI</a>
                 <hr class="d-none d-lg-block mb-0 mr-0">
               </div>
             </div>

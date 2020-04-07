@@ -28,16 +28,16 @@
         
         
 		//Sentencia sql
-		$sqli="INSERT INTO `colegioe_tuplanbaq`.`lugaresbaq`
-        (`ID_lugar`,
-        `nombre`,
-        `empresa`,
-        `descripcion`,
-        `direccion`,
-        `tel`,
-        `puntaje`,
-        `foto`,
-        `maps`)
+		$sqli="INSERT INTO lugaresbaq
+        (ID_lugar,
+        nombre,
+        empresa,
+        descripcion,
+        direccion,
+        tel,
+        puntaje,
+        foto,
+        maps)
         VALUES ('$name.$direccion', '$name', '$empresa' , '$desc', '$direccion' , '$tel' , 0,  '$nombre', '$maps')";
 		//ejecutar sentencia
 		$ejecutar=mysqli_query($conn, $sqli);
@@ -66,23 +66,23 @@
         $cdinero=$_POST['cdinero'];
         $sdinero=$_POST['sdinero'];
         
-        $sqli="INSERT INTO `colegioe_tuplanbaq`.`categorias`
-        (`ID_lugar`,
-        `nombre`,
-        `amigos`,
-        `familia`,
-        `pareja`,
-        `noche`,
-        `deporte`,
-        `ejercicio`,
-        `cultura`,
-        `aprende`,
-        `hijos`,
-        `solo`,
-        `espiritual`,
-        `relajarse`,
-        `conDinero`,
-        `sinDinero`)
+        $sqli="INSERT INTO categorias
+        (ID_lugar,
+        nombre,
+        amigos,
+        familia,
+        pareja,
+        noche,
+        deporte,
+        ejercicio,
+        cultura,
+        aprende,
+        hijos,
+        solo,
+        espiritual,
+        relajarse,
+        conDinero,
+        sinDinero)
         VALUES('$name.$direccion', '$name', '$amigos', '$familia', '$pareja' , '$noche' , '$deporte', '$ejercicio', '$cultura', '$aprende', '$hijos', '$solo', '$espiritual', '$relajarse', '$cdinero', '$sdinero')";
 		//ejecutar sentencia
 		$ejecutar=mysqli_query($conn, $sqli);
@@ -90,7 +90,7 @@
 		if(!$ejecutar){
 			echo "hubo un error insertando en categorias";
 		} else {
-			echo "<br><a href='https://tuplanbaq.sisedigital.com/admin.php?usuario=admin'>Volver a página de administrador</a>";
+			echo "<br><a href='admin.php?usuario=admin'>Volver a página de administrador</a>";
 		}
         }
         

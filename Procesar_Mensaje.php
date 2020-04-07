@@ -29,11 +29,11 @@ if(isset($_GET['lugar'])){
   	}
 	$usuario = $stringTest2;
 	 
-    $insertar="INSERT INTO `colegioe_tuplanbaq`.`comentarios`
-        (`idUsuario`,
-        `ID_lugar`,
-        `comentario`,
-        `fecha`)VALUES ('$usuario', '$id','".$_POST["comentario"]."', '11')";
+    $insertar="INSERT INTO comentarios
+        (idUsuario,
+        ID_lugar,
+        comentario,
+        fecha)VALUES ('$usuario', '$id','".$_POST["comentario"]."', '11')";
     
 	if ($conn -> query($insertar) == true) {
         ?>

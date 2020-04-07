@@ -46,12 +46,12 @@ include('conexiongen.php');
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" style="background-color: black; color: white;font-weight: bold;" href="https://tuplanbaq.sisedigital.com/index.php?usuario=<?php echo $usuario;?>">Inicio</a>
+            <a class="nav-link js-scroll-trigger" style="background-color: black; color: white;font-weight: bold;" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
             </li>                     
              <?php 
           if($usuario == "admin"){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="https://tuplanbaq.sisedigital.com/admin.php?usuario=admin" style="background-color: blue;color: white;font-weight: bold;" >Administrar lugares</a>
+            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin" style="background-color: blue;color: white;font-weight: bold;" >Administrar lugares</a>
           </li>
             <?php
             }
@@ -59,7 +59,7 @@ include('conexiongen.php');
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a style="background-color: red; color: white;font-weight: bold;" class="nav-link js-scroll-trigger" href="https://tuplanbaq.sisedigital.com/index.php">Log Out</a>
+            <a style="background-color: red; color: white;font-weight: bold;" class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
           </li>
             <?php
             }

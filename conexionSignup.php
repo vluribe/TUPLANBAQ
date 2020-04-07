@@ -30,12 +30,12 @@
                 echo "<br><a href='Signup.php'>Volver a página de registro</a>";
             } else {
             //Sentencia sql
-            $sqli="INSERT INTO `colegioe_tuplanbaq`.`usuarios`
-            (`id_usuario`,
-            `user`,
-            `password`,
-            `age`,
-            `foto`)
+            $sqli="INSERT INTO usuarios
+            (id_usuario,
+            user,
+            password,
+            age,
+            foto)
             VALUES('$id', '$user', '$password' , '$age', '$nombre')";
             //ejecutar sentencia
             $ejecutar=mysqli_query($conn, $sqli);
@@ -59,7 +59,22 @@
             $espiritual=$_POST['espiritual'];
             $relajarse=$_POST['relajarse'];
 
-            $sqli="INSERT INTO preferencias VALUES('$id', '$user', '$amigos' , '$familia', '$pareja' , '$noche' , '$deporte', '$ejercicio', '$cultura', '$aprende', '$hijos', '$solo', '$espiritual', '$relajarse')";
+            $sqli="INSERT INTO preferencias 
+            (id_usuario,
+            user,
+            amigos,
+            familia,
+            pareja,
+            noche,
+            deporte,
+            ejercicio,
+            cultura,
+            aprende,
+            hijos,
+            solo,
+            espiritual,
+            relajarse)
+            VALUES('$id', '$user', '$amigos' , '$familia', '$pareja' , '$noche' , '$deporte', '$ejercicio', '$cultura', '$aprende', '$hijos', '$solo', '$espiritual', '$relajarse')";
             //ejecutar sentencia
             $ejecutar=mysqli_query($conn, $sqli);
 

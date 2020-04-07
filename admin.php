@@ -59,7 +59,7 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#listaE">lista eventos</a>
           </li>
          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href=<?php  echo 'https://tuplanbaq.sisedigital.com/index.php?usuario='.$usuario;?>>Inicio</a>
+            <a class="nav-link js-scroll-trigger" href=<?php  echo 'index.php?usuario='.$usuario;?>>Inicio</a>
           </li>
         </ul>
       </div>
@@ -213,7 +213,7 @@ include('conexiongen.php');
 
  <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Copyright &copy; Your Website 2019
+      Copyright &copy; SISEdigital 2019
     </div>
   </footer>
 

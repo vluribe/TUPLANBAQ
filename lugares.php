@@ -15,9 +15,9 @@ include('conexiongen.php');
             $resultado->close();
         }else{
                 //Sentencia sql
-                $sqli="INSERT INTO `colegioe_tuplanbaq`.`favoritos`
-                (`id_usuario`,
-                `id_lugar`)
+                $sqli="INSERT INTO favoritos
+                (id_usuario,
+                id_lugar)
                 VALUES ('$usuario', '$lugar')";
                 //ejecutar sentencia
                 $ejecutar=mysqli_query($conn, $sqli);
