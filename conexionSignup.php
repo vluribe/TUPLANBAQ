@@ -10,9 +10,11 @@
         echo $user;
         $password=$_POST['password'];
         $age=$_POST['age'];
-        copy($_FILES['foto']['tmp_name'], $_FILES['foto']['name']);
+        $nombre=$_FILES['foto']['name'];
+        $nombre=str_replace(' ', '', $nombre);
+        
+        copy($_FILES['foto']['tmp_name'], $nombre);
 		echo "El archivo se grabo correctamente. <br />";
-		$nombre=$_FILES['foto']['name'];
 		echo "Archivo guardado ".$nombre;
         
         $sql="SELECT id_usuario FROM usuarios WHERE id_usuario='$id'";

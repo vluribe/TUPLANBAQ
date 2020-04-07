@@ -11,9 +11,11 @@
         $direccion=$_POST['direccion'];
 		$tel=$_POST['tel'];
         $maps=$_POST['maps'];
-		copy($_FILES['foto']['tmp_name'], $_FILES['foto']['name']);
-		echo "El archivo se grabo correctamente. <br />";
 		$nombre=$_FILES['foto']['name'];
+        $nombre=str_replace(' ', '', $nombre);
+        
+        copy($_FILES['foto']['tmp_name'], $nombre);
+		echo "El archivo se grabo correctamente. <br />";
 		echo "Archivo guardado ".$nombre;
         
         $sql="SELECT nombre FROM lugaresbaq WHERE nombre='$name'";
