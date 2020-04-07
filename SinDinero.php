@@ -9,15 +9,14 @@ include('conexiongen.php');
    <?php
 
   function accion($usuario, $lugar){
-     	
-	// Check connection                                                                                                                                    
+        
 	
 	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 	} else {
-        $sqli="INSERT INTO `colegioe_tuplanbaq`.`favoritos`
-        (`id_usuario`,
-        `id_lugar`)
+        $sqli="INSERT INTO favoritos
+        (id_usuario,
+        id_lugar)
         VALUES('$usuario','$lugar')";
 		//ejecutar sentencia
 		$ejecutar=mysqli_query($conn, $sqli);
