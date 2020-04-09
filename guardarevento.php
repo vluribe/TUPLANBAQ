@@ -68,7 +68,7 @@
         cronograma,
         reglamento,
         otro_documento)
-        VALUES ('$nombre.$ubicacion', '$nombre', '$empresa' , '$descripcion', '$ubicacion , '$telefono' , 0,  '$nombrefoto', '$mapa','$inicia','$fin','$info_horarios','$tipo_evento','$costo','$cronograma','$reglamento','$otro_documento')";
+        VALUES ('$nombre.$ubicacion', '$nombre', '$empresa' , '$descripcion', '$ubicacion' , '$telefono' ,'0', '$nombrefoto', '$mapa','$inicia','$fin','$info_horarios','$tipo_evento','$costo','$cronograma','$reglamento','$otro_documento')";
 		//ejecutar sentencia
 		$ejecutar=mysqli_query($conn, $sqli);
 		//verificar ejecucion
@@ -96,7 +96,7 @@
         $cdinero=$_POST['cdinero'];
         $sdinero=$_POST['sdinero'];
         
-        $sqli="INSERT INTO categorias
+        $sqli="INSERT INTO categoriaseventos
         (ID_evento,
         nombre,
         amigos,
@@ -116,6 +116,7 @@
         VALUES('$nombre.$ubicacion', '$nombre', '$amigos', '$familia', '$pareja' , '$noche' , '$deporte', '$ejercicio', '$cultura', '$aprende', '$hijos', '$solo', '$espiritual', '$relajarse', '$cdinero', '$sdinero')";
 		//ejecutar sentencia
 		$ejecutar=mysqli_query($conn, $sqli);
+        echo "     ".$sqli;
 		//verificar ejecucion
 		if(!$ejecutar){
 			echo "hubo un error insertando en categorias";
