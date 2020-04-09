@@ -1,0 +1,22 @@
+#formeventos{
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: white;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-image: url(6.jpg);
+}
+
+#titulocat{
+    font-size: 15px;
+    
+}
+th{
+    text-align: left;
+    background-color: green;
+}
+#data_table{
+    margin-bottom: 5%;
+}
