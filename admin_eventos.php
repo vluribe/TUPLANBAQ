@@ -97,8 +97,9 @@ $("#otroprecio").prop("disabled", false);
     </div>
     <div class="form-group">
       <label for="exampleTextarea">Descripcion</label>
-      <textarea class="form-control" id="Textareaotros" rows="3" name="descripcion"></textarea>
       <small id="descripcionHelp" class="form-text text-muted">Descripcion del evento.</small>
+      <textarea class="form-control" id="Textareadescripcion"  maxlength="300" cols="40" rows="5" name="descripcion" oneKeyDown="valida_longitud()" oneKeyUp="valida_longitud()"></textarea>
+      <small id="numero_caracteresHelp">Numero de caracteres restantes: </small><small id="caracteresdescripcion">300</small>  
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Empresa u Organización</label>
@@ -112,7 +113,7 @@ $("#otroprecio").prop("disabled", false);
     </div>
     <div class="form-group">
     <label for="exampleInputEmail1">Mapa Google</label>
-      <input type="text" class="form-control" id="inputubicacion" placeholder="Ubicación del evento" name="mapa">
+      <input type="text" class="form-control" id="inputubicaciongoogle" placeholder="Ubicación del evento" name="mapa">
       <small id="ubicacionHelp" class="form-text text-muted">HTML de google maps donde se ubica el evento.</small>
     </div>
     <div class="form-group">
@@ -122,7 +123,7 @@ $("#otroprecio").prop("disabled", false);
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Telefono de contacto</label>
-      <input type="text" class="form-control" id="inputnombre" placeholder="Telefono del evento" name="telefono">
+      <input type="text" class="form-control" id="inputtelefono" placeholder="Telefono del evento" name="telefono">
       <small id="nombreHelp" class="form-text text-muted">Numero telefonico al que se pueden comunicar los interesados.</small>
     </div>
     <div class="form-group">
@@ -137,7 +138,8 @@ $("#otroprecio").prop("disabled", false);
     </div>  
     <div class="form-group">
       <label for="exampleTextarea">Informacion adicional de horarios</label>
-      <textarea class="form-control" id="exampleTextarea" rows="3" name="info_horarios"></textarea>
+      <textarea class="form-control" id="Textareahorarios" maxlength="300" rows="3" name="info_horarios"></textarea>
+      <small id="numero_caracteresHelp">Numero de caracteres restantes: </small><small id="caractereshorarios">300</small>
     </div>
     <fieldset class="form-group">
     <legend>Tipo de evento</legend>
@@ -170,7 +172,8 @@ $("#otroprecio").prop("disabled", false);
     </div>
     <div class="form-group">
       <label for="exampleTextarea">Informacion adicional de los precios</label>
-      <textarea class="form-control" id="otroprecio" rows="3"></textarea>
+      <textarea class="form-control" maxlength="500" id="otroprecio" rows="3"></textarea>
+      <small id="numero_caracteresHelp">Numero de caracteres restantes: </small><small id="caracterescosto">500</small>
     </div>
   </fieldset>
   <fieldset>
@@ -218,14 +221,47 @@ $("#otroprecio").prop("disabled", false);
             <input align="center" type="submit" value="Enviar"/>
   </form>
 </section>
-
+<!--Script numero de caracteres en text area-->
+<script type="text/javascript">
+$(document).ready(function(){
+    $("textarea[id=Textareadescripcion]").keyup(function() {
+      var limit   = $(this).attr("maxlength"); // Límite del textarea
+      var value   = $(this).val();             // Valor actual del textarea
+      var current = value.length;
+      $("#caracteresdescripcion").text(limit - current);              // Número de caracteres actual
+      if (limit < current) {                   // Más del límite de caracteres?
+        $(this).val(value.substring(0, limit));// Establece el valor del textarea al límite
+      }
+  });
+  $("textarea[id=Textareahorarios]").keyup(function() {
+      var limit   = $(this).attr("maxlength"); // Límite del textarea
+      var value   = $(this).val();             // Valor actual del textarea
+      var current = value.length;
+      $("#caractereshorarios").text(limit - current);              // Número de caracteres actual
+      if (limit < current) {                   // Más del límite de caracteres?
+        $(this).val(value.substring(0, limit));// Establece el valor del textarea al límite
+      }
+  });
+  $("textarea[id=otroprecio]").keyup(function() {
+      var limit   = $(this).attr("maxlength"); // Límite del textarea
+      var value   = $(this).val();             // Valor actual del textarea
+      var current = value.length;
+      $("#caracterescosto").text(limit - current);              // Número de caracteres actual
+      if (limit < current) {                   // Más del límite de caracteres?
+        $(this).val(value.substring(0, limit));// Establece el valor del textarea al límite
+      }
+  });
+ // Función a lanzar cada vez que se presiona una tecla en un textarea
+ // en el que se encuentra el atributo maxlength 
+});
+</script>
   <!-- codigo php -->
     
   <section class="page-section bg-primary" id="listaL">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">Eventos Existentes</h2>
+          <h2 class="text-white mt-0">Eventos existentes</h2>
           </div>
         </div>    
     
