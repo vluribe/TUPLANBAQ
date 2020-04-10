@@ -197,7 +197,7 @@ include('conexiongen.php');
                 echo '<td><input type="text" name="tel" value="'.$row["tel"].'" readonly /></td>';
                 echo '<td><input type="text" name="empresa" value="'.$row["empresa"].'" readonly /></td>';
 				echo '<td><input type="text" name="foto" value="'.$row["foto"].'" readonly /></td>';
-				echo '<td><a href="../tuplanbaq/'.$row["foto"].'">Descargar</a></td>';
+				echo '<td><a href="'.$row["foto"].'">Descargar</a></td>';
 			    echo '</tr>';
 			}
 	}
