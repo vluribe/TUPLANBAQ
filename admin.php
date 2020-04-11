@@ -53,10 +53,7 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#listaL">lista lugares</a>
           </li>
 		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#addE">+eventos</a>
-          </li>
-		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#listaE">lista eventos</a>
+            <a class="nav-link js-scroll-trigger" href=<?php  echo 'admin_eventos.php?usuario='.$usuario;?>>+eventos</a>
           </li>
          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href=<?php  echo 'index.php?usuario='.$usuario;?>>Inicio</a>

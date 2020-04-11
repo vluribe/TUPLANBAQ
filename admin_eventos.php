@@ -36,22 +36,25 @@ include('conexiongen.php');
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
+        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">Sobre nosotros</a>
+            <a class="nav-link js-scroll-trigger" href=<?php  echo 'admin.php?usuario='.$usuario;?>>+lugares</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#aleatorio">Aleatorio</a>
+            <a class="nav-link js-scroll-trigger" href="#listaE">lista de eventos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signup">Subscribe</a>
+		  <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#formeventos">+eventos</a>
+          </li>
+         <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href=<?php  echo 'index.php?usuario='.$usuario;?>>Inicio</a>
           </li>
         </ul>
       </div>
@@ -64,7 +67,7 @@ include('conexiongen.php');
       <div class="mx-auto text-center">
         <h1 class="mx-auto my-0 text-uppercase">TU PLAN BAQ</h1>
         <h2 class="text-white-50 mx-auto mt-2 mb-5">Descubre qué hacer cuando no tienes idea</h2>
-        <a href="#principal" class="btn btn-primary js-scroll-trigger" style="background-color:green; border-color:green;">¡Empecemos!</a>
+        <a href="#formeventos" class="btn btn-primary js-scroll-trigger" style="background-color:green; border-color:green;">¡Empecemos!</a>
       </div>
     </div>
   </header>
@@ -257,7 +260,7 @@ $(document).ready(function(){
 </script>
   <!-- codigo php -->
     
-  <section class="page-section bg-primary" id="listaL">
+  <section class="page-section bg-primary" id="listaE" style="background-color:green !important;">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
@@ -288,7 +291,7 @@ $(document).ready(function(){
                 echo '<td><input type="text" name="tel" value="'.$row["telefono"].'" readonly /></td>';
                 echo '<td><input type="text" name="empresa" value="'.$row["empresa"].'" readonly /></td>';
 				echo '<td><input type="text" name="foto" value="'.$row["foto"].'" readonly /></td>';
-				echo '<td><a href="../tuplanbaq/'.$row["foto"].'">Descargar</a></td>';
+				echo '<td><a href="../tuplanbaq/'.$row["foto"].'" style="color:white;">Descargar</a></td>';
 			    echo '</tr>';
 			}
 	}
@@ -323,8 +326,8 @@ $(document).ready(function(){
               <i class="fas fa-envelope text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Email</h4>
               <hr class="my-4">
-              <div class="small text-black-50">
-                <a href="#">hello@yourdomain.com</a>
+              <div class="small text-black-50" >
+                <a href="#" style="color:green !important;">hello@yourdomain.com</a>
               </div>
             </div>
           </div>

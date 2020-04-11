@@ -148,6 +148,24 @@ include('conexiongen.php');
         </div>
       </div>
 
+<!-- Project Two Row -->
+<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+        <div class="col-lg-6">
+          <img class="img-fluid" src="img/eventos.png" alt="">
+        </div>
+        <div class="col-lg-6">
+          <div class="bg-black text-center h-100 project">
+            <div class="d-flex h-100">
+              <div class="project-text w-100 my-auto text-center text-lg-left">
+                <h4 class="text-white">¡Hay evento cerca!</h4>
+                <p class="mb-0 text-white-50"><?php echo $usuario;?>Tenemos muchos eventos en nuestra ciudad</p>
+                  <a href="eventos_home.php?usuario=<?php echo $usuario;?>" class="btn btn-primary js-scroll-trigger">AQUI</a>
+                <hr class="d-none d-lg-block mb-0 ml-0">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
     
