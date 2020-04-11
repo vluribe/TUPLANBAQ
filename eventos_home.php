@@ -97,7 +97,7 @@ include('conexiongen.php');
     <p>Direccion: '.$row["direccion"].'</p>
     <p>Telefono: '.$row["telefono"].'</p>
     <p>Empresa : '.$row["empresa"].'</p>
-    <a class="btn btn-primary" href="#" style="background-color:green; border-color:green;">Ver mas</a>
+    <a class="btn btn-primary" href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'" style="background-color:green; border-color:green;">Ver mas</a>
   </div>
 </div>
 <hr>

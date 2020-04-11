@@ -20,3 +20,18 @@ th{
 #data_table{
     margin-bottom: 5%;
 }
+i{
+    color:green;
+}
+
+.text-primary{
+    color:green !important;
+}
+
+.contact-section .bg-black a{
+    color:green !important;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link.active {
+    color: green !important;
+}

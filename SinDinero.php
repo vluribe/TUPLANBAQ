@@ -253,7 +253,7 @@ include('conexiongen.php');
                                         
   </section>
     
-  <?php  
+<?php  
 //obtencion de datos de la tabla
 	// Check connection                                                                                                                                    
 	
@@ -285,6 +285,60 @@ include('conexiongen.php');
                           '.$row["descripcion"].'
                           <br/> <br/>
                           <a href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">Ver más</a>
+                          <br/>';
+                echo '<input type="hidden" id="selusuario" value="'.$usuario.'" /> ';
+                       echo '<input style="border-style: hidden;  border-radius: 5px;" type="button" class="lugar" value="'.$row["nombre"].'" selected="selected">';
+                       echo '<i class="far fa-heart"></i>
+                           </td>';
+                    
+                echo '<br><br>';
+                echo '</tr>';
+                echo '</table>';
+           
+              
+			}
+	}
+	$resultado->close();
+	echo '</tr></table>';
+	}
+    }
+    	mysqli_close($conn);
+
+
+?>
+
+ <?php  
+//obtencion de datos de la tabla
+	// Check connection                                                                                                                                    
+	
+	if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+	} else {
+        if(isset($_POST['tipo'])){
+            $tipo=$_POST['tipo'];
+            ?>
+    
+            <section id="categoria" class="title">
+            <h2><?php echo $tipo; ?></h2>
+            </section>
+            
+        <?php
+	$sql = "SELECT l.* FROM eventosbaq l join categorias c on l.nombre=c.nombre WHERE c.".$tipo."='1' and c.sinDinero='1' ";
+	$resultado= $conn->query($sql);
+        
+    $result = mysqli_query($conn, "SELECT * FROM categorias WHERE $tipo='1'");
+	echo '<table><tr>';
+
+	if($resultado->num_rows >0){
+			while($row = $resultado->fetch_assoc()){
+                //echo '<form action="lugares.php?usuario='.$usuario.'" method="post">';
+                echo '<table align="justify" width=100% cellspacing=2 cellpadding=0 id="data_table" border=4>';
+				echo '<tr>';
+				echo '<td width=60%><img src="'.$row["foto"].'"/></td>';
+                echo '<td align="center"><h2><strong>'.$row["nombre"].' </strong></h2>  <br/>
+                          '.$row["descripcion"].'
+                          <br/> <br/>
+                          <a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">Ver más</a>
                           <br/>';
                 echo '<input type="hidden" id="selusuario" value="'.$usuario.'" /> ';
                        echo '<input style="border-style: hidden;  border-radius: 5px;" type="button" class="lugar" value="'.$row["nombre"].'" selected="selected">';
