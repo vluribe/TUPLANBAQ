@@ -135,7 +135,7 @@ include('conexiongen.php');
              
                     <center>
                     <p class="text-left"><strong>Bio: </strong><br>
-                        Aun no aÒades una descripcion, hazlo ahora</p>
+                        Aun no a√±ades una descripcion, hazlo ahora</p>
                     <br>
                 </center>
               
@@ -172,7 +172,7 @@ include('conexiongen.php');
 	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 	} else {
-	$sql = "SELECT l.* FROM favoritos f join lugaresbaq l on l.nombre=f.id_lugar WHERE f.id_usuario='$usuario'";
+	$sql = "SELECT l.* FROM favoritos f join lugaresbaq l on l.ID_lugar=f.id_lugar WHERE f.id_usuario='$usuario'";
 	$resultado= $conn->query($sql);
 	echo '<table><tr>';
 
@@ -185,7 +185,7 @@ include('conexiongen.php');
                 echo '<td align="center"><h2><strong>'.$row["nombre"].' </strong></h2>  <br/>
                           '.$row["descripcion"].'
                           <br/> <br/>
-                          <a href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">Ver m·s</a>
+                          <a href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">Ver m√°s</a>
                           <br/>';
                 echo '<input type="hidden" id="selusuario" value="'.$usuario.'" /> ';
                        echo '<i class="fas fa-heart"></i>

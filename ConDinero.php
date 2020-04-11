@@ -40,21 +40,20 @@ include('conexiongen.php');
 
   <title>TU PLAN BAQ</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     
 
   <!-- Custom styles for this template -->
-  <link href="css/grayscale.min.css" rel="stylesheet">
+  
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
 </head>
 
-<body id="page-top">
+<body>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -103,158 +102,21 @@ include('conexiongen.php');
     </div>
   </nav>
 
-  <!-- Header -->
-  <header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">PLANES CON DINERO</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">Descubre experiencias sin límite</h2>
-        <a href="#principal" class="btn btn-primary js-scroll-trigger">¡Empecemos!</a>
-      </div>
-    </div>
+    
+<!--header-->
+    
+ <header class="masthead" id="header"> <h1>Lugares</h1>
   </header>
     
-    <!-- Portfolio Section -->  
-  <section id="principal" class="title">
-    
-          <h2>¡Definitivamente debes ir!</h2>
-     
-  </section>
-    
-      <link href="css/creative.min.css" rel="stylesheet">
-    
-   <section id="portfolio">
-    <div class="container-fluid p-0">
-      <div class="row no-gutters">
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/thumbnails/add1.png">
-            <img class="img-fluid" src="img/portfolio/thumbnails/add1.png" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Lugar 
-              </div>
-              <div class="project-name">
-                Nombre
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/thumbnails/add1.png">
-            <img class="img-fluid" src="img/portfolio/thumbnails/add1.png" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Lugar
-              </div>
-              <div class="project-name">
-                Nombre
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <a class="portfolio-box" href="img/portfolio/thumbnails/add3.png">
-            <img class="img-fluid" src="img/portfolio/thumbnails/add3.png" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Lugar
-              </div>
-              <div class="project-name">
-                Nombre
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-        <a class="portfolio-box" href="img/portfolio/thumbnails/add1.png">
-            <img class="img-fluid" src="img/portfolio/thumbnails/add1.png" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Lugar
-              </div>
-              <div class="project-name">
-                nombre
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-         <a class="portfolio-box" href="img/portfolio/thumbnails/add3.png">
-            <img class="img-fluid" src="img/portfolio/thumbnails/add3.png" alt="">
-            <div class="portfolio-box-caption">
-              <div class="project-category text-white-50">
-                Lugar
-              </div>
-              <div class="project-name">
-                Nombre
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-         <a class="portfolio-box" href="img/portfolio/thumbnails/add1.png">
-            <img class="img-fluid" src="img/portfolio/thumbnails/add1.png" alt="">
-            <div class="portfolio-box-caption p-3">
-              <div class="project-category text-white-50">
-                Lugar
-              </div>
-              <div class="project-name">
-                Nombre
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-        </section>
-    
-    
- <link href="css/creative.css" rel="stylesheet">
-   
-    <!-- Aleatorio Section -->
 
-<section id="aleatorio">
-    <div class="aleatorio">
-        <h1>¡Deja que la rueda defina qué harás hoy!</h1>
-      <div id="wheel">
-    <canvas id="canvas" width="300" height="300"></canvas>
-      </div>
-    <br>
-    <button id="spin" class="btn btn-primary js-scroll-trigger">Stop!</button>
-    
-      <script  src="winwheel.js"></script>
+<!---page image---->
+<div class="container bodycontainer">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
       
-      </div>  
- </section> 
-    
-    
-        <!-- Portfolio Section -->  
-  <section id="categoria" class="title">
-    <div class="categorias">
-        <form action="ConDinero.php?usuario=<?php echo $usuario;?>#categoria" method="post">
-          <h2>¿Qué tipo de plan tienes para hoy?</h2>
-        <select name="tipo" required style="border: 2px solid red; border-radius: 5px;">
-                    <option disabled="disabled" selected="selected">Escoja una opción </option>
-                    <option value="amigos">Salir con amigos </option>
-                    <option value="familia" value="1">Salir con familia </option>
-                    <option value="pareja" value="1">Salir con tu pareja </option>
-                    <option value="noche" value="1">Salir de noche</option>
-                    <option value="deporte" value="1">Hacer deporte </option>
-                    <option value="ejercicio" value="1">Salir a ejercitarte </option>
-                    <option value="cultura" value="1">Enriquece tu cultura</option>
-                    <option value="aprende" value="1">Aprender algo nuevo</option>
-                    <option value="hijos" value="1">Para divertir a los niños</option>
-                    <option value="solo" value="1"> Salir solo </option>
-                    <option value="espiritual" value="1">Crece espiritualmente</option>
-                    <option value="relajarse" value="1">Tiempo para relajarse</option>
-            </select>
-         <input align="center" type="submit" value="Enviar"/>
-              </form>
-     </div>
+      <p class="lead">
+            
       
-                                        
-  </section>
-    
   <?php  
 //obtencion de datos de la tabla
 	                                                                                                                     
@@ -262,84 +124,115 @@ include('conexiongen.php');
 	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 	} else {
-        if(isset($_POST['tipo'])){
-            $tipo=$_POST['tipo'];
-            ?>
-    
-            <section id="categoria" class="title">
-            <h2><?php echo $tipo; ?></h2>
-            </section>
-            
-        <?php
-	$sql = "SELECT l.* FROM lugaresbaq l join categorias c on l.nombre=c.nombre WHERE c.".$tipo."='1' and c.conDinero='1' ";
+       
+	$sql = "SELECT * FROM lugaresbaq";
 	$resultado= $conn->query($sql);
         
-    $result = mysqli_query($conn, "SELECT * FROM lugaresbaq WHERE $tipo='1'");
-	echo '<table><tr>';
+    $result = mysqli_query($conn, "SELECT * FROM lugaresbaq");
 
 	if($resultado->num_rows >0){
 			while($row = $resultado->fetch_assoc()){
-                //echo '<form action="lugares.php?usuario='.$usuario.'" method="post">';
-                echo '<table align="justify" width=100% cellspacing=2 cellpadding=0 id="data_table" border=4>';
-				echo '<tr>';
-				echo '<td width=60%><img src="'.$row["foto"].'"/></td>';
-                echo '<td align="center"><h2><strong>'.$row["nombre"].' </strong></h2>  <br/>
-                          '.$row["descripcion"].'
-                          <br/> <br/>
-                          <a href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">Ver más</a>
-                          <br/>';
-                echo '<input type="hidden" id="selusuario" value="'.$usuario.'" /> ';
-                       echo '<input style="border-style: hidden;  border-radius: 5px;" type="button" class="lugar" value="'.$row["nombre"].'" selected="selected">';
-                       echo '<i class="far fa-heart"></i>
-                           </td>';
+                
+                echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
+                
+               
+                echo '<a class="btn btn-primary" href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_lugar"].'" /> ';
+                
+                 $sql2 = 'SELECT * FROM favoritos f where f.id_usuario="'.$usuario.'" AND f.id_lugar="'.$row["ID_lugar"].'"';
+	            $resultado2= $conn->query($sql2);
+                
+                if($resultado2->num_rows>0){
+        
+               echo  '<i class="icon-heart" id="ih" style="display:none;" "></i>  
+                <i class="icon-heart2" id="ih2" style="display:inline-block;"></i></div> </div>  <hr>';
+                }else{
+                    echo  '<i class="icon-heart" id="ih" style="display:inline-block;"></i>  
+                    <i class="icon-heart2" id="ih2" style="display:none;"></i></div> </div>  <hr>';
                     
-                echo '<br><br>';
-                echo '</tr>';
-                echo '</table>';
-           
+                } 
+
               
 			}
 	}
 	$resultado->close();
-	echo '</tr></table>';
-	}
+	
     }
 	mysqli_close($conn);
 
 ?>
-    <footer class="bg-black small text-center text-white-50">
+   
+    
+      </div>
+    </div>
+    </div>
+    </body>
+        <footer class="bg-black small text-center text-white-50">
     <div class="container">
       Copyright &copy; Your Website 2019
     </div>
   </footer>
-
-    
-    
-    </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    $(".lugar").click(function(){
+    $(".icon-heart").click(function(){
     /* Escribir en el Documento*/
         var selusu = $('#selusuario').val();
-        var sellugar = $(this).val();
+        var sellugar = $('#sellugar').val();
+        console.log(sellugar);
         if(selusu==''){
             alert("Debe iniciar sesión para añadir a favoritos");
         } else{
     $.post("lugares.php", {usuario:selusu, lugar:sellugar}, function(datos){
-        if(datos == 'ya'){
-            alert("Ya ha sido añadido a sus favoritos");
-            } else {
-            if (datos != 'error'){
-                alert("Añadido a sus favoritos");
+        if(datos == 'error'){
+                alert("Los datos no se han grabado");
             }else{
-                alert("Los datos no se han grabados");
+                document.getElementById("ih").style.display = "none";
+                document.getElementById("ih2").style.display = "inline-block";
             }
-        }
+        
     });
-    } });
+     }
+    });
+    
+    $(".icon-heart2").click(function(){
+    /* Escribir en el Documento*/
+        var selusu = $('#selusuario').val();
+        var sellugar = $('#sellugar').val();
+        if(selusu==''){
+            alert("Debe iniciar sesión para añadir a favoritos");
+        } else{
+    $.post("lugares.php", {usuario:selusu, lugar:sellugar}, function(datos){
+        if(datos == 'error'){
+                alert("Los datos no se han grabado");
+            }else{
+                document.getElementById("ih2").style.display = "none";
+                document.getElementById("ih").style.display = "inline-block";
+            }
+        
+    });
+     }
+    });
+    
+    
 });
+    
+
   
+</script>
+    
+    
+    <script>
+// script to scrool header
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("header").style.fontSize = "1rem";
+  } else {
+    document.getElementById("header").style.fontSize = "4.5rem";
+     
+  }
+}
 </script>
 
 </html>
