@@ -44,6 +44,7 @@ include('conexiongen.php');
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 
   <!-- Custom styles for this template -->
@@ -143,11 +144,9 @@ include('conexiongen.php');
                 
                 if($resultado2->num_rows>0){
         
-               echo  '<i class="icon-heart" id="ih" style="display:none;" "></i>  
-                <i class="icon-heart2" id="ih2" style="display:inline-block;"></i></div> </div>  <hr>';
+               echo  '<button class="place" value="'.$row["ID_lugar"].'" > <i class="heart fa fa-heart"></i></button></div> </div>  <hr>';
                 }else{
-                    echo  '<i class="icon-heart" id="ih" style="display:inline-block;"></i>  
-                    <i class="icon-heart2" id="ih2" style="display:none;"></i></div> </div>  <hr>';
+                    echo  '<button class="place" value="'.$row["ID_lugar"].'" > <i class="heart fa fa-heart-o"></i></button></div> </div>  <hr>';
                     
                 } 
 
@@ -174,10 +173,10 @@ include('conexiongen.php');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    $(".icon-heart").click(function(){
-    /* Escribir en el Documento*/
+
+    $(".place").click(function(){
         var selusu = $('#selusuario').val();
-        var sellugar = $('#sellugar').val();
+        var sellugar = $(this).val();
         console.log(sellugar);
         if(selusu==''){
             alert("Debe iniciar sesión para añadir a favoritos");
@@ -185,34 +184,16 @@ $(document).ready(function(){
     $.post("lugares.php", {usuario:selusu, lugar:sellugar}, function(datos){
         if(datos == 'error'){
                 alert("Los datos no se han grabado");
-            }else{
-                document.getElementById("ih").style.display = "none";
-                document.getElementById("ih2").style.display = "inline-block";
-            }
+               
+        }
         
     });
      }
     });
     
-    $(".icon-heart2").click(function(){
-    /* Escribir en el Documento*/
-        var selusu = $('#selusuario').val();
-        var sellugar = $('#sellugar').val();
-        if(selusu==''){
-            alert("Debe iniciar sesión para añadir a favoritos");
-        } else{
-    $.post("lugares.php", {usuario:selusu, lugar:sellugar}, function(datos){
-        if(datos == 'error'){
-                alert("Los datos no se han grabado");
-            }else{
-                document.getElementById("ih2").style.display = "none";
-                document.getElementById("ih").style.display = "inline-block";
-            }
-        
+   $(".heart").click(function() {
+      $(this).toggleClass("fa-heart fa-heart-o");
     });
-     }
-    });
-    
     
 });
     
