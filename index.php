@@ -104,88 +104,41 @@ include('conexiongen.php');
       </div>
     </div>
   </header>
-    
-      <!-- Projects Section -->
-  <section id="principal" class="projects-section bg-light">
+
+
+
+    <!-- LUGARES -->
+    <section  class="eventos-section">
     <div class="container">
-
-
-      <!-- Project One Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="img/money.png" alt="">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Planes sin dinero</h4>
-                <p class="mb-0 text-white-50"><?php echo $usuario;?>, encuentra cosas que puedes hacer en Barranquilla sin tener un peso, de cosa para los pasajes</p>
-                  <a href="SinDinero.php?usuario=<?php echo $usuario;?>" class="btn btn-primary js-scroll-trigger">AQUI</a>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-              </div>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">¡Asiste a nuestros eventos!</h2>
+          <p class="text-white">Barranquilla ofrece gran variedad de lugares para visitar, en ellos encontrarás muchos colores, culturas y temas,  atrévete a conocer una ciudad, y te mostraremos hasta lugares para los cuales no necesitas dinero! </p>
+            <a href="eventos_home.php?usuario=<?php echo $usuario;?>" class="btn btn-primary js-scroll-trigger">EVENTOS</a>
         </div>
       </div>
-
-      <!-- Project Two Row -->
-      <div class="row justify-content-center no-gutters">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="img/change.png" alt="">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">¡Tengo plata!</h4>
-                <p class="mb-0 text-white-50">Encuentra posibilidades para descubir Barranquilla, con algo de dinero</p>
-                  <a href="ConDinero.php?usuario=<?php echo $usuario;?>"class="btn btn-primary js-scroll-trigger">AQUI</a>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-<!-- Project Two Row -->
-<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="img/eventos.png" alt="">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">¡Hay evento cerca!</h4>
-                <p class="mb-0 text-white-50"><?php echo $usuario;?>Tenemos muchos eventos en nuestra ciudad</p>
-                  <a href="eventos_home.php?usuario=<?php echo $usuario;?>" class="btn btn-primary js-scroll-trigger">AQUI</a>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <img src="" class="img-fluid" alt="">
     </div>
   </section>
     
-      <!-- Aleatorio Section -->
- <link href="css/grayscale.css" rel="stylesheet">
-    <section id="aleatorio">
-    <div class="aleatorio">
-        <h1>¡Deja que la rueda defina qué harás hoy!</h1>
-      <div id="wheel">
-    <canvas id="canvas" width="300" height="300"></canvas>
+        <!-- eventos -->
+    <section  class="lugares-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">¡Conoce lugares!</h2>
+          <p class="text-white">Barranquilla ofrece gran variedad de lugares para visitar, en ellos encontrarás muchos colores, culturas y temas,  atrévete a conocer una ciudad, y te mostraremos hasta lugares para los cuales no necesitas dinero! </p>
+           <a href="ConDinero.php?usuario=<?php echo $usuario;?>"class="btn btn-primary js-scroll-trigger">LUGARES</a>
+        </div>
       </div>
-    <br>
-    <button id="spin">Stop!</button>
+      <img src="" class="img-fluid" alt="">
+    </div>
+  </section>
+
     
-      <script  src="winwheelIndex.js"></script>
-      
-      </div>  
- </section> 
-
-
+    
+    
+    
     
   <!-- About Section -->
   <section id="about" class="about-section text-center">
