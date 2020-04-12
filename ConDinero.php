@@ -144,9 +144,9 @@ include('conexiongen.php');
                 
                 if($resultado2->num_rows>0){
         
-               echo  '<button class="place" value="'.$row["ID_lugar"].'" > <i class="heart fa fa-heart"></i></button></div> </div>  <hr>';
+               echo  '<button style="border: none;  background-color: white;" class="place" value="'.$row["ID_lugar"].'" > <i class="heart fa fa-heart" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
                 }else{
-                    echo  '<button class="place" value="'.$row["ID_lugar"].'" > <i class="heart fa fa-heart-o"></i></button></div> </div>  <hr>';
+                    echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_lugar"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
                     
                 } 
 
