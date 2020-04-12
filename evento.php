@@ -78,7 +78,7 @@ include('conexiongen.php');
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 } else {
-$sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_lugar = p.ID_lugar ";
+$sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_evento = p.ID_evento ";
 $resultado= $conn->query($sql);
 if($resultado->num_rows >0){ ?>
     
@@ -127,7 +127,7 @@ if($resultado->num_rows >0){ ?>
                                                 die("Connection failed: " . mysqli_connect_error());
                                                 } else {
                                             
-                                                $sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_lugar = p.ID_lugar";
+                                                $sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_evento = p.ID_evento";
                                                 $resultado= $conn->query($sql);
                                                 if($resultado->num_rows >0){
                                                     while($row = $resultado->fetch_assoc()){
@@ -147,7 +147,7 @@ if($resultado->num_rows >0){ ?>
                                                 die("Connection failed: " . mysqli_connect_error());
                                                 } else {
                                             
-                                                $sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_lugar = p.ID_lugar";
+                                                $sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_evento = p.ID_evento";
                                                 $resultado= $conn->query($sql);
                                                 if($resultado->num_rows >0){
                                                     while($row = $resultado->fetch_assoc()){
@@ -222,7 +222,7 @@ if($resultado->num_rows >0){ ?>
                 echo '<br/><br/>';
                 echo '<table align="center"  width=70% cellspacing=2 cellpadding=0 id="data_table" border=4   >';
 				echo '<tr>';
-				echo '<td style="color:white;"> Teléfono: '.$row["telefono"].'
+				echo '<td style="color:white;"> Teléfono: '.$row["tel"].'
                 <br> Dirección: '.$row["direccion"].' <br> Propietarios: '.$row["empresa"].'</td>';
                 echo '<td align="center" style="color:white;"> <br/>'.$row["descripcion"].'<br/> <br/></td>';
                 echo '</tr>';
@@ -250,7 +250,7 @@ if($resultado->num_rows >0){ ?>
               if ($conn -> connect_error) {
                 die("La conexion fallo". $conn -> connect_error);
               } else {
-              $resultado=$conn -> query("SELECT u.user, c.comentario FROM comentarios c join eventosbaq l on c.ID_lugar = l.ID_lugar, usuarios u where l.nombre = '$lugar' and u.id_usuario = c.idUsuario");
+              $resultado=$conn -> query("SELECT u.user, c.comentario FROM comentarios c join eventosbaq l on c.ID_evento = l.ID_evento, usuarios u where l.nombre = '$lugar' and u.id_usuario = c.idUsuario");
               while ($fila=mysqli_fetch_row($resultado)) {
                 echo '<table style=" border-collapse:separate;
     border:solid white 1px;

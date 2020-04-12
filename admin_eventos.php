@@ -288,7 +288,7 @@ $(document).ready(function(){
 				echo '<td><input type="text" name="nombre" value="'.$row["nombre"].'" readonly /></td>';
 				echo '<td><input type="text" name="descripcion" value="'.$row["descripcion"].'" readonly /></td>';
                 echo '<td><input type="text" name="direccion" value="'.$row["direccion"].'" readonly /></td>';
-                echo '<td><input type="text" name="tel" value="'.$row["telefono"].'" readonly /></td>';
+                echo '<td><input type="text" name="tel" value="'.$row["tel"].'" readonly /></td>';
                 echo '<td><input type="text" name="empresa" value="'.$row["empresa"].'" readonly /></td>';
 				echo '<td><input type="text" name="foto" value="'.$row["foto"].'" readonly /></td>';
 				echo '<td><a href="../tuplanbaq/'.$row["foto"].'" style="color:white;">Descargar</a></td>';

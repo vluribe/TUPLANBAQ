@@ -94,11 +94,9 @@ include('conexiongen.php');
   <div class="col-md-5">
     <h3 name="nombre" readonly>'.$row["nombre"].'</h3>
     <p name="descripcion" readonly>'.$row["descripcion"].'</p>
-    <p>Direccion: '.$row["direccion"].'</p>
-    <p>Telefono: '.$row["telefono"].'</p>
-    <p>Empresa : '.$row["empresa"].'</p>
     <a class="btn btn-primary" href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'" style="background-color:green; border-color:green;">Ver mas</a>
-  </div>
+    <i class="far fa-heart"></i>
+    </div>
 </div>
 <hr>
 ';

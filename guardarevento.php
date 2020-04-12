@@ -56,7 +56,7 @@
         empresa,
         descripcion,
         direccion,
-        telefono,
+        tel,
         puntaje,
         foto,
         maps,
