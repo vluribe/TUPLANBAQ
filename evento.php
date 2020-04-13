@@ -35,6 +35,9 @@ include('conexiongen.php');
   <!-- Custom styles for this template -->
   <link href="css/grayscale.min.css" rel="stylesheet">
 
+  <link href="css/popup.css" rel="stylesheet" type="text/css" />
+
+
 </head>
 
 <body id="page-top" >
@@ -109,7 +112,7 @@ if($resultado->num_rows >0){ ?>
                 <li>Teléfono: '.$row["tel"].'</li>
                 <li>Dirección: '.$row["direccion"].'</li>
                 <li>Propietarios: '.$row["empresa"].'</li>
-                <li href="#mapa">Ver mapa</li>
+                <li ><a href="#mapa">Ver mapa</a></li>
               </ul>
             </div>
         
@@ -117,29 +120,32 @@ if($resultado->num_rows >0){ ?>
           <!-- /.row -->
         
           <!-- Related Projects Row -->
-          <h3 class="my-4">Related Projects</h3>
         
-          <div class="row">
+          <div class="row" style="padding-top:2%;">
         
             <div class="col-md-3 col-sm-6 mb-4">
+            <h3>Cronograma</h3>
+              <a href="#popup">
+                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                  </a>
+            </div>
+        
+            <div class="col-md-3 col-sm-6 mb-4">
+            <h3>Reglamento</h3>
               <a href="#">
                     <img class="img-fluid" src="http://placehold.it/500x300" alt="">
                   </a>
             </div>
         
             <div class="col-md-3 col-sm-6 mb-4">
+            <h3>Horarios</h3>
               <a href="#">
                     <img class="img-fluid" src="http://placehold.it/500x300" alt="">
                   </a>
             </div>
-        
+           
             <div class="col-md-3 col-sm-6 mb-4">
-              <a href="#">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-                  </a>
-            </div>
-        
-            <div class="col-md-3 col-sm-6 mb-4">
+            <h3>Mas imagenes</h3>
               <a href="#">
                     <img class="img-fluid" src="http://placehold.it/500x300" alt="">
                   </a>
@@ -147,11 +153,22 @@ if($resultado->num_rows >0){ ?>
         
           </div>
           <!-- /.row -->
-        <div id="#mapa">
+        <div id="mapa">
         <center>'.$row["maps"].'</center>
         </div>
         </div>
         <!-- /.container -->';
+
+        echo' <div id="popup" class="overlay">
+            <div id="popupBody">
+                <h2 style="color:white;">Cronograma:</h2>
+                <a id="cerrar" href="#">&times;</a>
+                <div class="popupContent">
+                <iframe id="iframepdf" src="http://carnavaldebarranquilla.org/files/2019/BAILA_LA_CALLE_PROGRAMACION.pdf"></iframe>
+                   
+                </div>
+            </div>
+            </div>';
 			}
 	}
 	$resultado->close();
