@@ -35,13 +35,12 @@ include('conexiongen.php');
   <!-- Custom styles for this template -->
   <link href="css/grayscale.min.css" rel="stylesheet">
 
-
 </head>
 
-<body id="page-top">
+<body id="page-top" >
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color:black;">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
@@ -50,7 +49,7 @@ include('conexiongen.php');
       <div class="collapse navbar-collapse" id="navbarResponsive" >
         <ul class="navbar-nav ml-auto" >
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Volver al inicio</a>
+            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>" style="color:white;">Volver al inicio</a>
           </li>
          
         </ul>
@@ -60,18 +59,9 @@ include('conexiongen.php');
 
     
   <!-- Header -->
-  <header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">
-                <?php echo $lugar
-                ?>
-        </h1>
-      </div>
-    </div>
-  </header>
+ 
     <!-- Details section -->
-<section style="background: linear-gradient(to bottom, #181716, orange);">
+<section>
 <!-- carousel -->
 <section> 
 <?php 
@@ -81,10 +71,6 @@ die("Connection failed: " . mysqli_connect_error());
 $sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_evento = p.ID_evento ";
 $resultado= $conn->query($sql);
 if($resultado->num_rows >0){ ?>
-    
-
-
-
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -93,106 +79,82 @@ if($resultado->num_rows >0){ ?>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src=
-                                                <?php
-                                                if (!$conn) {
-                                                die("Connection failed: " . mysqli_connect_error());
-                                                } else {
-                                            
-                                                $sql = "SELECT l.* FROM eventosbaq l WHERE l.nombre='$lugar' ";
-                                                $resultado= $conn->query($sql);
-                                                if($resultado->num_rows >0){
-                                                    while($row = $resultado->fetch_assoc()){
-                                                        echo '"'. $row["foto"] .'"';
-                                                    
-                                                    }
-                                                }
-                                                
-                                                }
-                                            
-                                                ?>
-            alt="First slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src= <?php
-                                                if (!$conn) {
-                                                die("Connection failed: " . mysqli_connect_error());
-                                                } else {
-                                            
-                                                $sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_evento = p.ID_evento";
-                                                $resultado= $conn->query($sql);
-                                                if($resultado->num_rows >0){
-                                                    while($row = $resultado->fetch_assoc()){
-                                                        echo '"'. $row["foto2"] .'"';
-                                                    
-                                                    }
-                                                }
-                                                
-                                                }
-                                                ?> 
-                                                alt="Second slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src=
-                                                <?php
-                                                if (!$conn) {
-                                                die("Connection failed: " . mysqli_connect_error());
-                                                } else {
-                                            
-                                                $sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_evento = p.ID_evento";
-                                                $resultado= $conn->query($sql);
-                                                if($resultado->num_rows >0){
-                                                    while($row = $resultado->fetch_assoc()){
-                                                        echo '"'. $row["foto3"] .'"';
-                                                    
-                                                    }
-                                                }
-                                                
-                                                }
-                                        
-                                                ?>
-            alt="Third slide">
-        </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>   
-
-
-
-
-
-
-
 <?php
 } else {
     
     $sql = "SELECT l.* FROM eventosbaq l WHERE l.nombre='$lugar' ";
 	$resultado= $conn->query($sql);
-        
-	echo '<table><tr>';
 
 	if($resultado->num_rows >0){
 			while($row = $resultado->fetch_assoc()){
-                echo '<center><img src="'.$row["foto"].'"/></center>';
+        echo'<!-- Page Content -->
+        <div class="container" style="color:black; padding-top:5%;">
+        
+          <!-- Portfolio Item Heading -->
+          <h1 class="my-4" >'.$row["nombre"].'
+          </h1>
+        
+          <!-- Portfolio Item Row -->
+          <div class="row">
+        
+            <div class="col-md-8">
+              <img class="img-fluid" src="'.$row["foto"].'" alt="">
+            </div>
+        
+            <div class="col-md-4">
+              <h3 class="my-3">Project Description</h3>
+              <p>'.$row["descripcion"].'</p>
+              <h3 class="my-3">Project Details</h3>
+              <ul>
+                <li>Teléfono: '.$row["tel"].'</li>
+                <li>Dirección: '.$row["direccion"].'</li>
+                <li>Propietarios: '.$row["empresa"].'</li>
+                <li href="#mapa">Ver mapa</li>
+              </ul>
+            </div>
+        
+          </div>
+          <!-- /.row -->
+        
+          <!-- Related Projects Row -->
+          <h3 class="my-4">Related Projects</h3>
+        
+          <div class="row">
+        
+            <div class="col-md-3 col-sm-6 mb-4">
+              <a href="#">
+                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                  </a>
+            </div>
+        
+            <div class="col-md-3 col-sm-6 mb-4">
+              <a href="#">
+                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                  </a>
+            </div>
+        
+            <div class="col-md-3 col-sm-6 mb-4">
+              <a href="#">
+                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                  </a>
+            </div>
+        
+            <div class="col-md-3 col-sm-6 mb-4">
+              <a href="#">
+                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                  </a>
+            </div>
+        
+          </div>
+          <!-- /.row -->
+        <div id="#mapa">
+        <center>'.$row["maps"].'</center>
+        </div>
+        </div>
+        <!-- /.container -->';
 			}
 	}
 	$resultado->close();
-	echo '</tr></table>';
 	
 }
 
@@ -205,43 +167,11 @@ if($resultado->num_rows >0){ ?>
 
 
 
-<?php
-	// Create connection
-	// Check connection
-	
-	if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-	} else {
- 
-	$sql = "SELECT l.* FROM eventosbaq l WHERE l.nombre='$lugar' ";
-	$resultado= $conn->query($sql);
-        
-
-	if($resultado->num_rows >0){
-			while($row = $resultado->fetch_assoc()){
-                echo '<br/><br/>';
-                echo '<table align="center"  width=70% cellspacing=2 cellpadding=0 id="data_table" border=4   >';
-				echo '<tr>';
-				echo '<td style="color:white;"> Teléfono: '.$row["tel"].'
-                <br> Dirección: '.$row["direccion"].' <br> Propietarios: '.$row["empresa"].'</td>';
-                echo '<td align="center" style="color:white;"> <br/>'.$row["descripcion"].'<br/> <br/></td>';
-                echo '</tr>';
-                echo '</table>';
-                echo '<br><br><h1 class="mx-auto my-0 text-uppercase text-center" style="color:white;">Ubicación</h1>';
-                echo '<center>'.$row["maps"].'</center>';
-                
-			}
-	}
-	$resultado->close();
-        
-    }
-	
-?>
     
 </section>
 
  <!-- Comments Section -->
-  <section id="Comments" class="about-section">
+  <section id="Comments" class="about-section" style="padding-top:2%;padding-bottom:2%;">
     <div class="container">
         <div class="col-lg-8 mx-auto">
           <h1 class="mx-auto my-0 text-uppercase text-center" style="color:white;">Comentarios</h1>;
@@ -250,7 +180,7 @@ if($resultado->num_rows >0){ ?>
               if ($conn -> connect_error) {
                 die("La conexion fallo". $conn -> connect_error);
               } else {
-              $resultado=$conn -> query("SELECT u.user, c.comentario FROM comentarios c join eventosbaq l on c.ID_evento = l.ID_evento, usuarios u where l.nombre = '$lugar' and u.id_usuario = c.idUsuario");
+              $resultado=$conn -> query("SELECT u.user, c.comentario FROM comentariose c join eventosbaq l on c.ID_evento = l.ID_evento, usuarios u where l.nombre = '$lugar' and u.id_usuario = c.idUsuario");
               while ($fila=mysqli_fetch_row($resultado)) {
                 echo '<table style=" border-collapse:separate;
     border:solid white 1px;
