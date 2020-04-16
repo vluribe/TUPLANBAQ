@@ -44,19 +44,39 @@ include('conexiongen.php');
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">Sobre nosotros</a>
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#aleatorio">Aleatorio</a>
+            <a class="nav-link js-scroll-trigger" href="ConDinero.php?usuario=<?php echo $usuario;?>">Lugares</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signup">Subscribe</a>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
+                <?php  echo $usuario;?>
+            </a>
           </li>
+                        
+             <?php 
+          if($usuario == "admin"){ ?>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="admin_eventos.php?usuario=admin">Administrar eventos</a>
+          </li>
+            <?php
+            }
+           ?> 
+            <?php 
+          if($usuario != ""){ ?>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
+          </li>
+            <?php
+            }
+           ?>
         </ul>
       </div>
     </div>
   </nav>
+
 
   <!-- Header -->
   <header class="masthead">
@@ -88,7 +108,7 @@ include('conexiongen.php');
         <div class="row">
   <div class="col-md-7">
     <a href="#">
-      <img class="img-fluid rounded mb-3 mb-md-0" src="'.$row["foto"].'" alt="">
+      <img class="img-fluid rounded mb-3 mb-md-0" src="'.$row["foto"].'" height="300" width="700" alt="logo">
     </a>
   </div>
   <div class="col-md-5">

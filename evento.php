@@ -54,7 +54,9 @@ include('conexiongen.php');
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>" style="color:white;">Volver al inicio</a>
           </li>
-         
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="eventos_home.php?usuario=<?php echo $usuario;?>" style="color:white;">Más eventos.</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -125,28 +127,28 @@ if($resultado->num_rows >0){ ?>
         
             <div class="col-md-3 col-sm-6 mb-4">
             <h3>Cronograma</h3>
-              <a href="#popup">
+              <a href="#popupcron">
                     <img class="img-fluid" src="http://placehold.it/500x300" alt="">
                   </a>
             </div>
         
             <div class="col-md-3 col-sm-6 mb-4">
             <h3>Reglamento</h3>
-              <a href="#">
+              <a href="#popupreg">
                     <img class="img-fluid" src="http://placehold.it/500x300" alt="">
                   </a>
             </div>
         
             <div class="col-md-3 col-sm-6 mb-4">
             <h3>Horarios</h3>
-              <a href="#">
+              <a href="#popuphor">
                     <img class="img-fluid" src="http://placehold.it/500x300" alt="">
                   </a>
             </div>
            
             <div class="col-md-3 col-sm-6 mb-4">
             <h3>Mas imagenes</h3>
-              <a href="#">
+              <a href="#popupmas">
                     <img class="img-fluid" src="http://placehold.it/500x300" alt="">
                   </a>
             </div>
@@ -159,12 +161,32 @@ if($resultado->num_rows >0){ ?>
         </div>
         <!-- /.container -->';
 
-        echo' <div id="popup" class="overlay">
+        echo' <div id="popupcron" class="overlay">
             <div id="popupBody">
                 <h2 style="color:white;">Cronograma:</h2>
                 <a id="cerrar" href="#">&times;</a>
                 <div class="popupContent">
-                <iframe id="iframepdf" src="http://carnavaldebarranquilla.org/files/2019/BAILA_LA_CALLE_PROGRAMACION.pdf"></iframe>
+                <iframe id="iframepdf" src="'.$row["cronograma"].'"></iframe>
+                   
+                </div>
+            </div>
+            </div>';
+            echo' <div id="popupreg" class="overlay">
+            <div id="popupBody">
+                <h2 style="color:white;">Reglamento:</h2>
+                <a id="cerrar" href="#">&times;</a>
+                <div class="popupContent">
+                <iframe id="iframepdf" src="'.$row["reglamento"].'"></iframe>
+                   
+                </div>
+            </div>
+            </div>';
+            echo' <div id="popuphor" class="overlay">
+            <div id="popupBody">
+                <h2 style="color:white;">Horario:</h2>
+                <a id="cerrar" href="#">&times;</a>
+                <div class="popupContent">
+                <p>'.$row["info_horarios"].'</p>
                    
                 </div>
             </div>
