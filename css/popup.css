@@ -46,3 +46,10 @@ transition: all 200ms;
     height:100%;
     width:100%;
 }
+
+.img-flui{
+    height:80%;
+}
+.col-md-3{
+    height: 120px;
+}

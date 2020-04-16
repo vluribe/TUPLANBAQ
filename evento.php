@@ -33,42 +33,66 @@ include('conexiongen.php');
     
 
   <!-- Custom styles for this template -->
-  <link href="css/grayscale.min.css" rel="stylesheet">
+ 
 
   <link href="css/popup.css" rel="stylesheet" type="text/css" />
-
+  <link href="css/grayscale.min.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top" >
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color:black;">
+  <script src="includes/js/jquery-3.3.1.js"></script>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive" >
-        <ul class="navbar-nav ml-auto" >
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>" style="color:white;">Volver al inicio</a>
+            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="eventos_home.php?usuario=<?php echo $usuario;?>" style="color:white;">Más eventos.</a>
+            <a class="nav-link js-scroll-trigger" href="eventos_home.php?usuario=<?php echo $usuario;?>">Más eventos</a>
           </li>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
+                <?php  echo $usuario;?>
+            </a>
+          </li>
+                        
+             <?php 
+          if($usuario == "admin"){ ?>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="admin_eventos.php?usuario=admin">Administrar eventos</a>
+          </li>
+            <?php
+            }
+           ?> 
+            <?php 
+          if($usuario != ""){ ?>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
+          </li>
+            <?php
+            }
+           ?>
         </ul>
       </div>
     </div>
   </nav>
-
     
   <!-- Header -->
  
     <!-- Details section -->
-<section>
+
 <!-- carousel -->
-<section> 
+<section style="background: rgb(23,23,23);
+background: linear-gradient(90deg, rgba(23,23,23,1) 0%, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%);"> 
 <?php 
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
@@ -93,7 +117,7 @@ if($resultado->num_rows >0){ ?>
 	if($resultado->num_rows >0){
 			while($row = $resultado->fetch_assoc()){
         echo'<!-- Page Content -->
-        <div class="container" style="color:black; padding-top:5%;">
+        <div class="container" style="color:white; padding-top:10%;">
         
           <!-- Portfolio Item Heading -->
           <h1 class="my-4" >'.$row["nombre"].'
@@ -123,33 +147,33 @@ if($resultado->num_rows >0){ ?>
         
           <!-- Related Projects Row -->
         
-          <div class="row" style="padding-top:2%;">
+          <div class="row" style="padding-top:2%;padding-bottom:2%;">
         
             <div class="col-md-3 col-sm-6 mb-4">
             <h3>Cronograma</h3>
               <a href="#popupcron">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                    <img class="img-flui" src="img/calendario.png" alt="">
                   </a>
             </div>
         
             <div class="col-md-3 col-sm-6 mb-4">
             <h3>Reglamento</h3>
               <a href="#popupreg">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                    <img class="img-flui" src="img/reglas.png" alt="">
                   </a>
             </div>
         
             <div class="col-md-3 col-sm-6 mb-4">
             <h3>Horarios</h3>
               <a href="#popuphor">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                    <img class="img-flui" src="img/reloj.png" alt="">
                   </a>
             </div>
            
             <div class="col-md-3 col-sm-6 mb-4">
             <h3>Mas imagenes</h3>
               <a href="#popupmas">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                    <img class="img-flui" src="img/mas.png" alt="">
                   </a>
             </div>
         
@@ -176,7 +200,7 @@ if($resultado->num_rows >0){ ?>
                 <h2 style="color:white;">Reglamento:</h2>
                 <a id="cerrar" href="#">&times;</a>
                 <div class="popupContent">
-                <iframe id="iframepdf" src="'.$row["reglamento"].'"></iframe>
+                <center><iframe id="iframepdf" src="'.$row["reglamento"].'"></iframe></center>
                    
                 </div>
             </div>
@@ -245,7 +269,7 @@ if($resultado->num_rows >0){ ?>
               <input type="hidden" name="usuarios" value = <?php echo '"'.$usuario.='"' ?>>
                 
                 <br><br>
-              <textarea style="border-radius:6px;"   placeholder='Escribe tu comentario aqui...' rows="5" cols="86" name="comentario" required></textarea>
+              <textarea style="border-radius:6px; width: 100%;"   placeholder='Escribe tu comentario aqui...' rows="5" cols="86" name="comentario" required></textarea>
               <input type="hidden"  name="lugar" value = <?php echo '"'.$lugar.='"' ?> >
                 <button type="submit" class="btn btn-primary mx-auto">Enviar</button>
             </form>
@@ -259,6 +283,15 @@ if($resultado->num_rows >0){ ?>
       Copyright &copy; Tu plan A 2019
     </div>
   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/grayscale.min.js"></script>
     
     </body>
 </html>
