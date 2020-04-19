@@ -45,12 +45,16 @@ include('conexiongen.php');
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
 
   <!-- Custom styles for this template -->
-  
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="css/style.css" rel="stylesheet">
+
+
 
 </head>
 
@@ -106,17 +110,78 @@ include('conexiongen.php');
     
 <!--header-->
     
- <header class="masthead" id="header"> <h1>Lugares</h1>
+ <header class="masthead" id="header"> <h1>Lugares <?php if(isset($_POST['tipo'])){$tipo=$_POST['tipo']; echo " : ".$tipo;} ?> </h1>
   </header>
     
 
+    
 <!---page image---->
 <div class="container bodycontainer">
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
-      
-      <p class="lead">
-            
+        
+        <!--Filter by-->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            filtrar por
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              
+            <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="todos" > ver todo </button>
+            </form>  
+              
+            <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="amigos" >Salir con amigos </button>
+            </form>
+              
+            <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="familia" >Salir con familia </button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="pareja" >Salir con tu pareja </button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="noche" >Salir de noche</button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="deporte" >Hacer deporte </button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="ejercicio" >Salir a ejercitarte </button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="cultura" >Enriquece tu cultura</button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="aprende" >Aprender algo nuevo</button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="hijos" >Para divertir a los niños</button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="solo" > Salir solo </button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="espiritual">Crece espiritualmente</button>
+              </form>
+              
+              <form action="ConDinero.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="relajarse" >Tiempo para relajarse</button>
+              </form>
+              
+          </div>
+        </div>
+
       
   <?php  
 //obtencion de datos de la tabla
@@ -125,8 +190,26 @@ include('conexiongen.php');
 	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 	} else {
+    
+    if(isset($_POST['tipo'])){
+            $tipo=$_POST['tipo'];
+        
+        //para mostrar todos los campos
+        if (strcmp($tipo, "todos") == 0 ){
+            
+            $sql = "SELECT * FROM lugaresbaq";
+            
+        }else {
+           //mostrar solo la categoria seleccionada
+            $sql = "SELECT l.* FROM lugaresbaq l join categorias c on l.nombre=c.nombre WHERE c.".$tipo."='1'";
+        }
+        
+        }else {
+            //para cuando aun no ha escogido nada
+            $sql = "SELECT * FROM lugaresbaq";
+        
+            }
        
-	$sql = "SELECT * FROM lugaresbaq";
 	$resultado= $conn->query($sql);
         
     $result = mysqli_query($conn, "SELECT * FROM lugaresbaq");
@@ -154,7 +237,7 @@ include('conexiongen.php');
 			}
 	}
 	$resultado->close();
-	
+    
     }
 	mysqli_close($conn);
 
@@ -194,6 +277,7 @@ $(document).ready(function(){
    $(".heart").click(function() {
       $(this).toggleClass("fa-heart fa-heart-o");
     });
+    
     
 });
     
