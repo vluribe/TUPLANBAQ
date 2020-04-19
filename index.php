@@ -80,6 +80,12 @@ include('conexiongen.php');
             }
            ?>
         </ul>
+        <!-- Collapsible content -->
+        
+        <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
+      <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="buscador">
+      <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">Search</button>
+    </form>
       </div>
     </div>
   </nav>
@@ -134,8 +140,7 @@ include('conexiongen.php');
       <img src="" class="img-fluid" alt="">
     </div>
   </section>
-
-    
+  
     
     
     

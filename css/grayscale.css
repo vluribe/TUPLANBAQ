@@ -215,7 +215,7 @@
 }
 
 .about-section {
-  padding-top: 10rem;
+  padding-top: 5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(#B6722F), color-stop(40%, rgba(182, 114, 47, 0.9)), to(rgb(163, 201, 236, 0.7)));
   background: linear-gradient(to bottom, #B6722F 0%, rgba(182, 114, 47, 0.9) 40%, rgba(163, 201, 236, 1) 100%);
 }
