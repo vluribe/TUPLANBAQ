@@ -263,16 +263,6 @@ a:focus, a:hover {
 
 }
 
-.fa-heart  {
-  font-size: 50px !important;
-  cursor: pointer;
-  user-select: none;
-}
-
-.fa :hover {
-  color: darkblue;
-}
-
 @-webkit-keyframes animateLove {
    0% { background-position: 0px 0px; }
    100% { background-position: -2800px 0px; }
@@ -287,10 +277,6 @@ hr {
     border-top: 2px solid rgba(0, 0, 0, 0.27);
 
 
-}
-button{
-    border: none;
-    background-color: white;
 }
 
 footer {
