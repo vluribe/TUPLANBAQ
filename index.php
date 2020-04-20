@@ -49,13 +49,19 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#inicio">Inicio</a>
           </li>
         <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#principal">Tipos de planes</a>
+            <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#aleatorio">Plan aleatorio</a>
+            <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#signup">Subscribirse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#social">Contactanos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
           </li>
             <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
@@ -114,7 +120,7 @@ include('conexiongen.php');
 
 
     <!-- LUGARES -->
-    <section  class="eventos-section">
+    <section  class="eventos-section" id="eventos-sec">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -128,7 +134,7 @@ include('conexiongen.php');
   </section>
     
         <!-- eventos -->
-    <section  class="lugares-section">
+    <section  class="lugares-section" id="lugares-sec">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -219,7 +225,7 @@ include('conexiongen.php');
   </section>
 
   <!-- Contact Section -->
-  <section class="contact-section bg-black">
+  <section class="contact-section bg-black" id="social">
     <div class="container">
 
       <div class="row">
@@ -278,7 +284,7 @@ include('conexiongen.php');
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Copyright &copy; Your Website 2019
+      Copyright &copy; TU PLAN A 2020
     </div>
   </footer>
 

@@ -363,7 +363,7 @@ $(document).ready(function(){
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Copyright &copy; Your Website 2019
+      Copyright &copy; TU PLAN A 2020
     </div>
   </footer>
 
