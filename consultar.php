@@ -104,50 +104,56 @@ include('conexiongen.php');
           if($resultado->num_rows >0){
             echo'<section class="resultadosbusqueda" >
             <h2 style="Text-align:Center;color:white;"><strong>Eventos</strong></h2>
-            <div class="row" style="margin-left: 12.5%;
-            margin-right: 12.5%;">';
+            
+            <div class="container">
+            <div class="row">';
           while($row = $resultado->fetch_assoc()){
             
             echo '
-            <div class="col-lg-4 col-sm-6 mb-4" >
-              <div class="card h-100">
+      
+              <div class="col-md-4 mb-3 mb-md-0" style="margin-bottom: 5px !important;" >
+                <div class="card py-4 h-100" style="padding-top: 0px !important;">
+                  <div class="card-body text-center">
                 <a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'"><img class="card-img-top" src="'.$row["foto"].'" height="100%" width="100%" alt="logo"></a>
                 <div class="card-body">
                   <h6 class="card-title">
                     <a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">'.$row["nombre"].'</a>
                   </h6>
-                  <p class="card-text">'.$row["descripcion"].'</p>
+                  <hr class="my-4">
                 </div>
               </div>
-            </div>';
+            </div></div>';
             
               }
-             echo'</div></section>';
+             echo'</div></div></section>';
             }
             $sql = "SELECT * FROM lugaresbaq where nombre LIKE '%$busqueda%'";
           $resultado= $conn->query($sql);
           if($resultado->num_rows >0){
             echo'<section class="resultadosbusqueda" >
             <h2 style="Text-align:Center;color:white;"><strong>Lugares</strong></h2>
-            <div class="row" style="margin-left: 12.5%;
-            margin-right: 12.5%;">';
+            
+            <div class="container">
+            <div class="row">';
           while($row = $resultado->fetch_assoc()){
             
             echo '
-            <div class="col-lg-4 col-sm-6 mb-4" >
-              <div class="card h-100">
+      
+              <div class="col-md-4 mb-3 mb-md-0" style="margin-bottom: 5px !important;" >
+                <div class="card py-4 h-100" style="padding-top: 0px !important;">
+                  <div class="card-body text-center">
                 <a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'"><img class="card-img-top" src="'.$row["foto"].'" height="100%" width="100%" alt="logo"></a>
                 <div class="card-body">
                   <h6 class="card-title">
                     <a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">'.$row["nombre"].'</a>
                   </h6>
-                  <p class="card-text">'.$row["descripcion"].'</p>
+                  <hr class="my-4">
                 </div>
               </div>
-            </div>';
+            </div></div>';
             
               }
-             echo'</div></section>';
+             echo'</div></div></section>';
             }
             echo'</section>';
         }
