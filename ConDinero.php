@@ -121,7 +121,7 @@ include('conexiongen.php');
 
     
 <!---page image---->
-<div class="container" id="listaeventos" style="padding-top:3%;">
+<div class="container" id="listalugares" style="padding-top:3%;">
         
         <!--Filter by-->
         <div class="dropdown">

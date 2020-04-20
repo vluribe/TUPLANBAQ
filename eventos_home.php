@@ -91,6 +91,72 @@ include('conexiongen.php');
   <!--Section lista eventos-->
   <!-- Page Content -->
 <div class="container" id="listaeventos" style="padding-top:3%;">
+    
+            <!--Filter by-->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            filtrar por
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              
+            <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="todos" > ver todo </button>
+            </form>  
+              
+            <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="amigos" >Salir con amigos </button>
+            </form>
+              
+            <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="familia" >Salir con familia </button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="pareja" >Salir con tu pareja </button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="noche" >Salir de noche</button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="deporte" >Hacer deporte </button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="ejercicio" >Salir a ejercitarte </button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="cultura" >Enriquece tu cultura</button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="aprende" >Aprender algo nuevo</button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="hijos" >Para divertir a los niños</button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="solo" > Salir solo </button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="espiritual">Crece espiritualmente</button>
+              </form>
+              
+              <form action="eventos_home.php?usuario=<?php echo $usuario;?>" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="relajarse" >Tiempo para relajarse</button>
+              </form>
+              
+          </div>
+        </div>
+    
+    
+    
+    
 <?php  
 //obtencion de datos de la tabla
 
@@ -99,8 +165,25 @@ include('conexiongen.php');
 	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 	} else {
-	
-	$sql = "SELECT * FROM eventosbaq";
+    
+    if(isset($_POST['tipo'])){
+            $tipo=$_POST['tipo'];
+        
+        //para mostrar todos los campos
+        if (strcmp($tipo, "todos") == 0 ){
+            
+            $sql = "SELECT * FROM eventosbaq";
+            
+        }else {
+           //mostrar solo la categoria seleccionada
+            $sql = "SELECT l.* FROM eventosbaq l join categorias c on l.nombre=c.nombre WHERE c.".$tipo."='1'";
+        }
+        
+        }else {
+            //para cuando aun no ha escogido nada
+            $sql = "SELECT * FROM eventosbaq";
+        
+            }
 	$resultado= $conn->query($sql);
 	if($resultado->num_rows >0){
       while($row = $resultado->fetch_assoc()){
