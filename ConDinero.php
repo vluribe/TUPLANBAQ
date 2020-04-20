@@ -52,7 +52,9 @@ include('conexiongen.php');
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/creative.css" rel="stylesheet">
+    <link href="css/owncss.css" rel="stylesheet">
 
 
 
@@ -61,6 +63,7 @@ include('conexiongen.php');
 <body>
 
   <!-- Navigation -->
+ <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,27 +72,22 @@ include('conexiongen.php');
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">Sobre nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#aleatorio">Aleatorio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">Elige tu plan</a>
-          </li>
-             <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
           </li>
-             <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="ConDinero.php?usuario=<?php echo $usuario;?>">Lugares</a>
+          </li>
+            <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
                 <?php  echo $usuario;?>
             </a>
-          </li>  
+          </li>
+                        
              <?php 
           if($usuario == "admin"){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
+            <a class="nav-link js-scroll-trigger" href="admin_eventos.php?usuario=admin">Administrar eventos</a>
           </li>
             <?php
             }
@@ -109,16 +107,21 @@ include('conexiongen.php');
 
     
 <!--header-->
-    
- <header class="masthead" id="header"> <h1>Lugares <?php if(isset($_POST['tipo'])){$tipo=$_POST['tipo']; echo " : ".$tipo;} ?> </h1>
-  </header>
+<header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">TU PLAN BAQ</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5">Lugares <?php if(isset($_POST['tipo'])){$tipo=$_POST['tipo']; echo " : ".$tipo;} ?> </h2>
+        <a href="#listaeventos" class="btn btn-primary js-scroll-trigger">¡Empecemos!</a>
+      </div>
+    </div>
+  </header>    
+
     
 
     
 <!---page image---->
-<div class="container bodycontainer">
-  <div class="card border-0 shadow my-5">
-    <div class="card-body p-5">
+<div class="container" id="listaeventos" style="padding-top:3%;">
         
         <!--Filter by-->
         <div class="dropdown">
@@ -243,16 +246,97 @@ include('conexiongen.php');
 
 ?>
    
+<ul class="pagination justify-content-center">
+  <li class="page-item">
+    <a class="page-link" href="#" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+      <span class="sr-only">Previous</span>
+    </a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="#">1</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="#">2</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="#">3</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="#" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+      <span class="sr-only">Next</span>
+    </a>
+  </li>
+</ul>
+
+</div>
     
+        
+<section class="contact-section bg-black">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Address</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-envelope text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Email</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">
+                <a href="#">hello@yourdomain.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-mobile-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Phone</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">+1 (555) 902-8832</div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div class="social d-flex justify-content-center">
+        <a href="#" class="mx-2">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="mx-2">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="mx-2">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
     </div>
-    </div>
-    </body>
-        <footer class="bg-black small text-center text-white-50">
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
     <div class="container">
       Copyright &copy; Your Website 2019
     </div>
   </footer>
+    </body>
+    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
