@@ -8,7 +8,11 @@
     padding-bottom: 2%;
     background-image: url(6.jpg);
 }
-
+.resize {
+    width: 700px;
+    height: 300px;
+    
+}
 #titulocat{
     font-size: 15px;
     

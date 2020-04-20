@@ -191,7 +191,7 @@ include('conexiongen.php');
         <div class="row">
   <div class="col-md-7">
     <a href="#">
-      <img class="img-fluid rounded mb-3 mb-md-0" src="'.$row["foto"].'" height="300" width="700" alt="logo">
+      <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo">
     </a>
   </div>
   <div class="col-md-5">
