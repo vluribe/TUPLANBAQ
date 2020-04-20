@@ -131,9 +131,9 @@ if($resultado->num_rows >0){ ?>
             </div>
         
             <div class="col-md-4">
-              <h3 class="my-3">Project Description</h3>
+              <h3 class="my-3">Descripción del evento</h3>
               <p>'.$row["descripcion"].'</p>
-              <h3 class="my-3">Project Details</h3>
+              <h3 class="my-3">Más detalles</h3>
               <ul>
                 <li>Teléfono: '.$row["tel"].'</li>
                 <li>Dirección: '.$row["direccion"].'</li>
@@ -295,6 +295,12 @@ if($resultado->num_rows >0){ ?>
     
     </body>
 </html>
+
+
+
+
+
+
 
 
 
