@@ -56,38 +56,72 @@ include('conexiongen.php');
     <link href="css/creative.css" rel="stylesheet">
     <link href="css/owncss.css" rel="stylesheet">
 
-
+    <style>
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
 
 </head>
 
 <body>
-
+<script src="includes/js/jquery-3.3.1.js"></script>
   <!-- Navigation -->
- <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">TU PLAN A: LUGARES</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <?php 
+          if($usuario == ""){ ?>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
+          </li>
+            <?php
+            }else{
+           ?>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
           </li>
+          <?php
+            }
+           ?>
+          <?php 
+          if($usuario == ""){ ?>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="eventos_home.php">Eventos</a>
+          </li>
+            <?php
+            }else{
+           ?>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="eventos_home.php?usuario=<?php echo $usuario;?>">Eventos</a>
           </li>
+          <?php
+            }
+           ?>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#social">Contactanos</a>
+          </li>
             <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
-                <?php  echo $usuario;?>
+                <?php echo $usuario;?>
             </a>
           </li>
                         
-             <?php 
+             <?php
           if($usuario == "admin"){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin_eventos.php?usuario=admin">Administrar eventos</a>
+            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
           </li>
             <?php
             }
@@ -101,21 +135,55 @@ include('conexiongen.php');
             }
            ?>
         </ul>
+        <!-- Collapsible content -->
+        <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
+          <input class="form-control nav-item" type="text" placeholder="Search" aria-label="Search" name="buscador">
+          <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;text-size:15px">Buscar</button>
+        </form>
       </div>
-    </div>
-  </nav>
+  </div>
+</nav>
 
-    
-<!--header-->
-<header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">TU PLAN BAQ</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">Lugares <?php if(isset($_POST['tipo'])){$tipo=$_POST['tipo']; echo " : ".$tipo;} ?> </h2>
-        <a href="#listaeventos" class="btn btn-primary js-scroll-trigger">¡Empecemos!</a>
+<header>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url('img/lugar1.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4">Estamos en tu ciudad</h2>
+          <p class="lead">Y te ayudamos a descubrirla.</p>
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('img/aleatorio.jpeg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4">Los dias y las noches.</h2>
+          <p class="lead">No volveras a ver tu ciudad como antes.</p>
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('img/lugar3.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4">Dejate enamorar.</h2>
+          <p class="lead">Una tierra magica que te cautivara.</p>
+        </div>
       </div>
     </div>
-  </header>    
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+</header>  
 
     
 
@@ -273,7 +341,7 @@ include('conexiongen.php');
 </div>
     
         
-<section class="contact-section bg-black">
+<section class="contact-section bg-black" id="social">
     <div class="container">
 
       <div class="row">
