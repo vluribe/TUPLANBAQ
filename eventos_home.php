@@ -17,19 +17,22 @@ include('conexiongen.php');
   <meta name="author" content="">
 
   <title>TU PLAN BAQ</title>
-
-  <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Custom styles for this template -->
-  <link href="css/grayscale.min.css" rel="stylesheet">
-  <link href="css/creative.css" rel="stylesheet">
-  <link href="css/owncss.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/creative.css" rel="stylesheet">
+    <link href="css/owncss.css" rel="stylesheet">
   <style>
 .carousel-item {
   height: 100vh;
@@ -226,10 +229,9 @@ include('conexiongen.php');
     
     
     
-<?php  
+        <?php  
 //obtencion de datos de la tabla
-
-	// Check connection
+	                                                                                                                     
 	
 	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -253,31 +255,39 @@ include('conexiongen.php');
             $sql = "SELECT * FROM eventosbaq";
         
             }
+       
 	$resultado= $conn->query($sql);
+        
+    $result = mysqli_query($conn, "SELECT * FROM eventosbaq");
+
 	if($resultado->num_rows >0){
-      while($row = $resultado->fetch_assoc()){
-        echo '
-        <div class="row">
-  <div class="col-md-7">
-    <a href="#">
-      <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo">
-    </a>
-  </div>
-  <div class="col-md-5">
-    <h3 name="nombre" readonly>'.$row["nombre"].'</h3>
-    <p name="descripcion" readonly>'.$row["descripcion"].'</p>
-    <a class="btn btn-primary" href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'" style="background-color:green; border-color:green;">Ver mas</a>
-    <i class="far fa-heart"></i>
-    </div>
-</div>
-<hr>
-';
-      }
-    }
+			while($row = $resultado->fetch_assoc()){
+                
+                echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
+                
+               
+                echo '<a class="btn btn-primary" href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_evento"].'" /> ';
+                
+                 $sql2 = 'SELECT * FROM favoritos f where f.id_usuario="'.$usuario.'" AND f.id_evento="'.$row["ID_evento"].'"';
+	            $resultado2= $conn->query($sql2);
+                
+                if($resultado2->num_rows>0){
+        
+               echo  '<button style="border: none;  background-color: white;" class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
+                }else{
+                    echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
+                    
+                } 
+
+              
+			}
+	}
+	$resultado->close();
     
-  }
-      
-      ?>
+    }
+	mysqli_close($conn);
+
+?>
 
 
 <!-- Pagination -->
@@ -382,5 +392,36 @@ include('conexiongen.php');
   <script src="js/grayscale.min.js"></script>
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+    $(".place").click(function(){
+        var selusu = $('#selusuario').val();
+        var sellugar = $(this).val();
+        console.log(sellugar);
+        if(selusu==''){
+            alert("Debe iniciar sesión para añadir a favoritos");
+        } else{
+    $.post("lugares.php", {usuario:selusu, lugar:sellugar}, function(datos){
+        if(datos == 'error'){
+                alert("Los datos no se han grabado");
+               
+        }
+        
+    });
+     }
+    });
+    
+   $(".heart").click(function() {
+      $(this).toggleClass("fa-heart fa-heart-o");
+    });
+    
+    
+});
+    
+
+  
+</script>
 
 </html>
