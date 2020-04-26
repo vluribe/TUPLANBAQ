@@ -152,11 +152,16 @@ include('conexiongen.php');
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
           </li>
-            <li class="nav-item">
+          <?php
+          if($usuario != "admin"){ ?>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
                 <?php echo $usuario;?>
             </a>
           </li>
+          <?php
+            }
+           ?> 
                         
              <?php
           if($usuario == "admin"){ ?>
@@ -174,12 +179,15 @@ include('conexiongen.php');
             <?php
             }
            ?>
-        </ul>
-        <!-- Collapsible content -->
-        <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
+           <li>
+           <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
           <input class="form-control nav-item" type="text" placeholder="Search" aria-label="Search" name="buscador">
           <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;text-size:15px">Buscar</button>
         </form>
+           </li>
+        </ul>
+        <!-- Collapsible content -->
+        
       </div>
   </div>
 </nav>
