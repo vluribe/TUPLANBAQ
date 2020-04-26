@@ -403,7 +403,7 @@ $(document).ready(function(){
         if(selusu==''){
             alert("Debe iniciar sesión para añadir a favoritos");
         } else{
-    $.post("lugares.php", {usuario:selusu, lugar:sellugar}, function(datos){
+    $.post("eventosfav.php", {usuario:selusu, lugar:sellugar}, function(datos){
         if(datos == 'error'){
                 alert("Los datos no se han grabado");
                
