@@ -191,28 +191,55 @@ include('conexiongen.php');
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
+    
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
       <div class="carousel-item active" style="background-image: url('img/bg-masthead.jpg')">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption d-md-block">
           <h2 class="display-4">Estamos en tu ciudad</h2>
           <p class="lead">Y te ayudamos a descubrirla.</p>
+          <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
+    padding-right: 40px;">Ingresar</a>
+               <a  href="signup.php" class="btn btn-primary js-scroll-trigger" style="max-width: 10rem;
+    max-height: 4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 17px;
+    padding-right: 17px;">Crea una cuenta</a>
+            
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('img/aleatorio.jpeg')">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Los dias y las noches.</h2>
           <p class="lead">No volveras a ver tu ciudad como antes.</p>
+          <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
+    padding-right: 40px;">Ingresar</a>
+               <a  href="signup.php" class="btn btn-primary js-scroll-trigger" style="max-width: 10rem;
+    max-height: 4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 17px;
+    padding-right: 17px;">Crea una cuenta</a>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('img/Carnaval.jpg')">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption d-md-block">
           <h2 class="display-4">Dejate enamorar.</h2>
           <p class="lead">Una tierra magica que te cautivara.</p>
+          <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
+    padding-right: 40px;">Ingresar</a>
+               <a  href="signup.php" class="btn btn-primary js-scroll-trigger" style="max-width: 10rem;
+    max-height: 4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 17px;
+    padding-right: 17px;">Crea una cuenta</a>
         </div>
       </div>
+      
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

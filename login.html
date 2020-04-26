@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>TU PLAN A: Login</title>
+	<title>Login V2</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -24,7 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/mainlogin.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -32,35 +32,31 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<!--<div class="login100-pic js-tilt" data-tilt>
-					<img src="img/icons/Tuplan512x512.png" alt="">
-				</div>-->
-
-				<form action="" method="post" enctype="multipart/form-data" class="login100-form validate-form">
-				<span class="login100-form-title p-b-26">
-						Bienvenido
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-26">
+						Welcome
 					</span>
 					<span class="login100-form-title p-b-48">
-						<image src="img/icons/Tuplan72x72.png">
+						<i class="zmdi zmdi-font"></i>
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						<input class="input100" type="text" name="email" placeholder="Email" id="email">
-						<span class="focus-input100" ></span>
+						<input class="input100" type="text" name="email">
+						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" name="password" placeholder="Password" id="pwd">
-						<span class="focus-input100" ></span>
+						<input class="input100" type="password" name="pass">
+						<span class="focus-input100" data-placeholder="Password"></span>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" id="login">
+							<button class="login100-form-btn">
 								Login
 							</button>
 						</div>
@@ -71,7 +67,7 @@
 							Don’t have an account?
 						</span>
 
-						<a class="txt2" href="signup.php">
+						<a class="txt2" href="#">
 							Sign Up
 						</a>
 					</div>
@@ -80,41 +76,25 @@
 		</div>
 	</div>
 	
-	
 
+	<div id="dropDownSelect1"></div>
 	
-<!--===============================================================================================--	
+<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================--
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================--
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================--
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		});
-	</script>
-<script src="js/main.js"></script>
 <!--===============================================================================================-->
-	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    //emai = dato post
-$("#login").click(function(){
-    $.post('conexionLogin.php', {email:$("#email").val(), password:$("#pwd").val()}, function(datos){
-        if (datos.trim() != 'error'){
-            alert("El usuario devuelto "+datos);
-            window.location.href = "index.php?usuario="+datos.trim();
-        } else {
-            alert(datos);
-        }
-});
-})
-});
-</script>
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
 </body>
 </html>
