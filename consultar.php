@@ -113,9 +113,14 @@ include('conexiongen.php');
       
               <div class="col-md-4 mb-3 mb-md-0" style="margin-bottom: 5px !important;max-height: 500px;" >
                 <div class="card py-4 h-100" style="padding-top: 0px !important;max-height: 500px;">
-                  <div class="card-body text-center" style="max-height: 300px;">
-                <a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'"><img class="card-img-top" src="'.$row["foto"].'"  width="100%" style="max-height: 300px;" height="100%" alt="logo"></a>
-                <div class="card-body" style="padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; max-width: 100%; max-height: 100%;">
+                  <div class="card-body text-center" style="max-height: 300px;">';
+                  if($row["foto"]==""){
+                    echo '<a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'"><img class="card-img-top" src="img/NoPlaceFound.png"  width="100%" style="max-height: 300px;" height="100%" alt="logo"></a>';
+                  }else{
+                    echo '<a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'"><img class="card-img-top" src="'.$row["foto"].'"  width="100%" style="max-height: 300px;" height="100%" alt="logo"></a>';
+                  }
+                
+                echo '<div class="card-body" style="padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; max-width: 100%; max-height: 100%;">
                   <h6 class="card-title">
                     <a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">'.$row["nombre"].'</a>
                   </h6>
