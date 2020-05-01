@@ -27,10 +27,10 @@
 	<link rel="stylesheet" type="text/css" href="css/mainlogin.css">
 <!--===============================================================================================-->
 </head>
-<body>
+<body id="page-top" >
 	
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100" >
 			<div class="wrap-login100">
 				<!--<div class="login100-pic js-tilt" data-tilt>
 					<img src="img/icons/Tuplan512x512.png" alt="">
@@ -68,11 +68,11 @@
 
 					<div class="text-center p-t-115">
 						<span class="txt1">
-							Don’t have an account?
+							¿Aun no tienes una cuenta?
 						</span>
 
 						<a class="txt2" href="signup.php">
-							Sign Up
+							Registrarse
 						</a>
 					</div>
 				</form>

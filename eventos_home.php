@@ -130,21 +130,21 @@ include('conexiongen.php');
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
       <div class="carousel-item active" style="background-image: url('img/evento1.jpg')">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Estamos en tu ciudad</h2>
           <p class="lead">Y te ayudamos a descubrirla.</p>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('img/evento2.jpeg')">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Los dias y las noches.</h2>
           <p class="lead">No volveras a ver tu ciudad como antes.</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url('img/evento3.jpg')">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Dejate enamorar.</h2>
           <p class="lead">Una tierra magica que te cautivara.</p>
         </div>

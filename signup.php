@@ -1,104 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V1</title>
+	<title>TU PLAN A: SignUp</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="imag/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="css/checkboxsup.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/mainlogin.css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--===============================================================================================-->
 </head>
-<body>
+<body id="page-top" >
 	
 	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="img/icons/Tuplan512x512.png" alt="IMG">
-				</div>
-
-				<form action="conexionSignup.php" method="post" enctype="multipart/form-data" class="login100-form validate-form">
-					<span class="login100-form-title">
-						Member Login
+		<div class="container-login100" >
+			<div class="wrap-login100" style="width: 25rem;">
+					<form action="conexionSignup.php" method="post" enctype="multipart/form-data" class="login100-form validate-form">
+				<span class="login100-form-title p-b-26">
+						Registrate!!
+					</span>
+					<span class="login100-form-title p-b-48">
+						<image src="img/icons/Tuplan72x72.png">
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: a@b.c">
+					<input class="input100" type="text" name="email" placeholder="Email" id="email">
+					<span class="focus-input100" ></span>
 					</div>
                     
                     <div class="wrap-input100">
 						<input class="input100" type="text" name="user" placeholder="User">
 						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
 					</div>
                                       
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
 						</span>
+						<input class="input100" type="password" name="password" placeholder="Password" id="pwd">
+						<span class="focus-input100" ></span>
 					</div>
                     
                      
                     <div class="wrap-input100">
 						<input class="input100" type="text" name="age" placeholder="Age">
 						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
 					</div>
                     
                      <div class="wrap-input100">
 						<input class="input100" placeholder="Photo"  type="file" name="foto">
 						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
 					</div>
                     
                     
-                    
-                    <h4><strong>Seleccione todas las categorias en las que este interesado</strong></h4>
+                    <div style="">
+                    <span class="login100-form-title p-b-25">
+						Selecciona las categorias de tu interes.
+					</span>
              
-          <table align='center' cellspacing=0 cellpadding=0 id="data_table" border=1>
-                <tr>
-                    <th><input type="checkbox" name="amigos" value="1">Salir con amigos</th>
-                    <th><input type="checkbox" name="familia" value="1">Salir con familia</th>
-                    <th><input type="checkbox" name="pareja" value="1">Salir con tu pareja</th>
-                </tr>
-              <tr>
-                    <th><input type="checkbox" name="noche" value="1">Salir de noche</th>
-                    <th><input type="checkbox" name="deporte" value="1">Hacer deporte</th>
-                    <th><input type="checkbox" name="ejercicio" value="1">Salir a ejercitarte</th>
-                </tr>
-              <tr>
-                    <th><input type="checkbox" name="cultura" value="1">Enriquece tu cultura</th>
-                    <th><input type="checkbox" name="aprende" value="1">Aprender algo nuevo</th>
-                    <th><input type="checkbox" name="hijos" value="1">Para divertir a los niños</th>
-                </tr>
-              <tr>
-                    <th><input type="checkbox" name="solo" value="1"> Salir solo</th>
-                    <th><input type="checkbox" name="espiritual" value="1">Crece espiritualmente</th>
-                    <th><input type="checkbox" name="relajarse" value="1">Tiempo para relajarse</th>
-                </tr>
-            </table>
+					
+<div class="container">
+	<div class="row">
+	    <div >
+	    <div class="card" style="margin:50px 0">
+                <!-- Default panel contents -->
+                <div class="card-header">Categorias</div>
+            
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+					Salir con amigos
+                                <label class="switch ">
+								<input type="checkbox" class="success" name="amigos" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+                    <li class="list-group-item">
+					Salir con familia
+                                <label class="switch ">
+								<input type="checkbox" class="success" name="familia" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+                    <li class="list-group-item">
+					Salir con tu pareja
+                                <label class="switch ">
+								<input type="checkbox" class="success" name="pareja" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+                    <li class="list-group-item">
+					Salir de noche
+                               <label class="switch ">
+							   <input type="checkbox" class="success" name="noche" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+                    <li class="list-group-item">
+					Hacer deporte
+                               <label class="switch ">
+							   <input type="checkbox" class="success" name="deporte" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+                    <li class="list-group-item">
+					Salir a ejercitarte
+                              <label class="switch ">
+							  <input type="checkbox" class="success" name="ejercicio" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+					<li class="list-group-item">
+					Enriquece tu cultura
+                              <label class="switch ">
+							  <input type="checkbox" class="success" name="cultura" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+					<li class="list-group-item">
+					Aprender algo nuevo
+                              <label class="switch ">
+							  <input type="checkbox" class="success" name="aprende" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+					<li class="list-group-item">
+					Para divertir a los niños
+                              <label class="switch ">
+							  <input type="checkbox" class="success" name="hijos" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+					<li class="list-group-item">
+					Salir solo
+                              <label class="switch ">
+							  <input type="checkbox" class="success" name="solo" value="1"> 
+          <span class="slider"></span>
+        </label>
+                    </li>
+					<li class="list-group-item">
+					Crece espiritualmente
+                              <label class="switch ">
+							  <input type="checkbox" class="success" name="espiritual" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+					<li class="list-group-item">
+					Tiempo para relajarse
+                              <label class="switch ">
+							  <input type="checkbox" class="success" name="relajarse" value="1">
+          <span class="slider"></span>
+        </label>
+                    </li>
+                </ul>
+            </div> 
+            </div>
+			</div> 
+            </div>
+					
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" id="login">
-							Sign Up
-						</button>
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" id="login">
+								Sign Up
+							</button>
+						</div>
 					</div>
 
+					<div class="text-center p-t-115">
+						<span class="txt1">
+							¿Ya tienes una cuenta?
+						</span>
+
+						<a class="txt2" href="login.php">
+							Login
+						</a>
+					</div>
 				</form>
 			</div>
 		</div>
