@@ -35,7 +35,7 @@
 	
 	<div class="limiter">
 		<div class="container-login100" >
-			<div class="wrap-login100" style="width: 25rem;">
+			<div class="wrap-login100" style="width: 70rem;">
 					<form action="conexionSignup.php" method="post" enctype="multipart/form-data" class="login100-form validate-form">
 				<span class="login100-form-title p-b-26">
 						Registrate!!
@@ -43,7 +43,7 @@
 					<span class="login100-form-title p-b-48">
 						<image src="img/icons/Tuplan72x72.png">
 					</span>
-
+					<div class="contenedor_texto" style="width:50%;margin-left: 25%;margin-right: 25%;">
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: a@b.c">
 					<input class="input100" type="text" name="email" placeholder="Email" id="email">
 					<span class="focus-input100" ></span>
@@ -73,7 +73,7 @@
 						<input class="input100" placeholder="Photo"  type="file" name="foto">
 						<span class="focus-input100"></span>
 					</div>
-                    
+                    </div>
                     
                     <div style="">
                     <span class="login100-form-title p-b-25">
@@ -83,7 +83,7 @@
 					
 <div class="container">
 	<div class="row">
-	    <div >
+	    <div class="col-md-6">
 	    <div class="card" style="margin:50px 0">
                 <!-- Default panel contents -->
                 <div class="card-header">Categorias</div>
@@ -110,6 +110,15 @@
           <span class="slider"></span>
         </label>
                     </li>
+					</ul>
+		</div>
+		</div>
+	    <div class="col-md-6">
+	    <div class="card" style="margin:50px 0">
+                <!-- Default panel contents -->
+                <div class="card-header">Categorias</div>
+            
+                <ul class="list-group list-group-flush">
                     <li class="list-group-item">
 					Salir de noche
                                <label class="switch ">
@@ -131,6 +140,15 @@
           <span class="slider"></span>
         </label>
                     </li>
+					</lu>
+					</div>
+					</div>
+	    <div class="col-md-6">
+	    <div class="card" style="margin:50px 0">
+                <!-- Default panel contents -->
+                <div class="card-header">Categorias</div>
+            
+                <ul class="list-group list-group-flush">
 					<li class="list-group-item">
 					Enriquece tu cultura
                               <label class="switch ">
@@ -152,6 +170,12 @@
           <span class="slider"></span>
         </label>
                     </li>
+					</lu>
+					</div>
+					</div>
+					<div class="col-md-6">
+	    <div class="card" style="margin:50px 0">
+		<div class="card-header">Categorias</div>
 					<li class="list-group-item">
 					Salir solo
                               <label class="switch ">
@@ -180,7 +204,7 @@
             </div>
 					
 					
-					<div class="container-login100-form-btn">
+					<div class="container-login100-form-btn" style="width:50%;margin-left: 25%;margin-right: 25%;">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn" id="login">
@@ -189,7 +213,7 @@
 						</div>
 					</div>
 
-					<div class="text-center p-t-115">
+					<div class="text-center p-t-115" style="padding-top: 20px;">
 						<span class="txt1">
 							¿Ya tienes una cuenta?
 						</span>

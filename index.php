@@ -206,6 +206,8 @@ include('conexiongen.php');
         <div class="carousel-caption d-md-block">
           <h2 class="display-4">Estamos en tu ciudad</h2>
           <p class="lead">Y te ayudamos a descubrirla.</p>
+          <?php 
+          if($usuario == ""){ ?>
           <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
     padding-right: 40px;">Ingresar</a>
                <a  href="signup.php" class="btn btn-primary js-scroll-trigger" style="max-width: 10rem;
@@ -214,6 +216,9 @@ include('conexiongen.php');
     padding-bottom: 5px;
     padding-left: 17px;
     padding-right: 17px;">Crea una cuenta</a>
+    <?php
+            }
+           ?>
             
         </div>
       </div>
@@ -222,6 +227,8 @@ include('conexiongen.php');
         <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Los dias y las noches.</h2>
           <p class="lead">No volveras a ver tu ciudad como antes.</p>
+          <?php 
+          if($usuario == ""){ ?>
           <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
     padding-right: 40px;">Ingresar</a>
                <a  href="signup.php" class="btn btn-primary js-scroll-trigger" style="max-width: 10rem;
@@ -230,6 +237,9 @@ include('conexiongen.php');
     padding-bottom: 5px;
     padding-left: 17px;
     padding-right: 17px;">Crea una cuenta</a>
+    <?php
+            }
+           ?>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
@@ -237,6 +247,8 @@ include('conexiongen.php');
         <div class="carousel-caption d-md-block">
           <h2 class="display-4">Dejate enamorar.</h2>
           <p class="lead">Una tierra magica que te cautivara.</p>
+          <?php 
+          if($usuario == ""){ ?>
           <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
     padding-right: 40px;">Ingresar</a>
                <a  href="signup.php" class="btn btn-primary js-scroll-trigger" style="max-width: 10rem;
@@ -245,6 +257,9 @@ include('conexiongen.php');
     padding-bottom: 5px;
     padding-left: 17px;
     padding-right: 17px;">Crea una cuenta</a>
+    <?php
+            }
+           ?>
         </div>
       </div>
       
