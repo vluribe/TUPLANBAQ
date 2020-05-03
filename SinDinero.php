@@ -277,7 +277,7 @@ include('conexiongen.php');
 
 	if($resultado->num_rows >0){
 			while($row = $resultado->fetch_assoc()){
-                //echo '<form action="lugares.php?usuario='.$usuario.'" method="post">';
+                //echo '<form action="conexion_lugar.php?usuario='.$usuario.'" method="post">';
                 echo '<table align="justify" width=100% cellspacing=2 cellpadding=0 id="data_table" border=4>';
 				echo '<tr>';
 				echo '<td width=60%><img src="'.$row["foto"].'"/></td>';
@@ -331,7 +331,7 @@ include('conexiongen.php');
 
 	if($resultado->num_rows >0){
 			while($row = $resultado->fetch_assoc()){
-                //echo '<form action="lugares.php?usuario='.$usuario.'" method="post">';
+                //echo '<form action="conexion_lugar.php?usuario='.$usuario.'" method="post">';
                 echo '<table align="justify" width=100% cellspacing=2 cellpadding=0 id="data_table" border=4>';
 				echo '<tr>';
 				echo '<td width=60%><img src="'.$row["foto"].'"/></td>';
@@ -379,7 +379,7 @@ $(document).ready(function(){
         if(selusu==''){
             alert("Debe iniciar sesión para añadir a favoritos");
         } else{
-    $.post("lugares.php", {usuario:selusu, lugar:sellugar}, function(datos){
+    $.post("conexion_lugar.php", {usuario:selusu, lugar:sellugar}, function(datos){
         if(datos == 'ya'){
             alert("Ya ha sido añadido a sus favoritos");
             } else {

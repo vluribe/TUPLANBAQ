@@ -83,13 +83,13 @@ include('conexiongen.php');
           <?php 
           if($usuario == ""){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="ConDinero.php">Lugares</a>
+            <a class="nav-link js-scroll-trigger" href="lugares_home.php">Lugares</a>
           </li>
             <?php
             }else{
            ?>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="ConDinero.php?usuario=<?php echo $usuario;?>">Lugares</a>
+            <a class="nav-link js-scroll-trigger" href="lugares_home.php?usuario=<?php echo $usuario;?>">Lugares</a>
           </li>
           <?php
             }

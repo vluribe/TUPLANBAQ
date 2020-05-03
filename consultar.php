@@ -54,7 +54,7 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="eventos_home.php?usuario=<?php echo $usuario;?>">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="ConDinero.php?usuario=<?php echo $usuario;?>">Lugares</a>
+            <a class="nav-link js-scroll-trigger" href="lugares_home.php?usuario=<?php echo $usuario;?>">Lugares</a>
           </li>
             <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >

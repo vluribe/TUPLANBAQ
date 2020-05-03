@@ -46,85 +46,7 @@ include('conexiongen.php');
 
 <body id="page-top">
 <script src="includes/js/jquery-3.3.1.js"></script>
-  <!-- Navigation -->
-  <!--<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#inicio">Inicio</a>
-          </li>
-        <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signup">Subscribirse</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#social">Contactanos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
-          </li>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
-                <?php/*  echo $usuario;*/?>
-            </a>
-          </li>
-                        
-             <?php /*
-          if($usuario == "admin"){ ?>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
-          </li>
-            <?php
-            }
-           ?> 
-            <?php 
-          if($usuario != ""){ ?>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
-          </li>
-            <?php
-            }
-           */?>
-        </ul>-->
-        <!-- Collapsible content -->
-        <!--<form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
-          <input class="form-control nav-item" type="text" placeholder="Search" aria-label="Search" name="buscador">
-          <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;">Buscar</button>
-        </form>
-      </div>
-    </div>
-  </nav>-->
 
-  <!-- Header -->
- <!-- <header class="masthead" id="inicio">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">TU PLAN BAQ</h1>
-          <?php /*
-          if($usuario == ""){?>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">Descubre qué hacer cuando no tienes idea</h2>   
-           <table align='center' cellspacing=10px cellpadding=0 id="data_table" border=0>  
-            <tr>
-                <td> <a  href="login.php" class="btn btn-primary js-scroll-trigger">Ingresar</a></td>
-                <td> <a  href="signup.php" class="btn btn-primary js-scroll-trigger">Crea una cuenta</a></td>
-            </tr>
-         </table>
-        <?php
-          }*/
-        ?>
-      </div>
-    </div>
-  </header>-->
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
@@ -298,7 +220,7 @@ include('conexiongen.php');
         <div class="col-lg-8 mx-auto">
           <h2 class="text-white mb-4">¡Conoce lugares!</h2>
           <p class="text-white">Barranquilla ofrece gran variedad de lugares para visitar, en ellos encontrarás muchos colores, culturas y temas,  atrévete a conocer una ciudad, y te mostraremos hasta lugares para los cuales no necesitas dinero! </p>
-           <a href="ConDinero.php?usuario=<?php echo $usuario;?>"class="btn btn-primary js-scroll-trigger">LUGARES</a>
+           <a href="lugares_home.php?usuario=<?php echo $usuario;?>"class="btn btn-primary js-scroll-trigger">LUGARES</a>
         </div>
       </div>
       <img src="" class="img-fluid" alt="">
