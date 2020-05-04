@@ -1,13 +1,16 @@
 <?php
+session_start();
 if(isset($_GET['lugar'])){
-        $cadena = $_GET['lugar'];
-        $datos=explode(";",$cadena );
-        $lugar=$datos[0];
-        $usuario=$datos[1];
+        $lugar = $_GET['lugar'];
     }else{
         $lugar = "";
-        $usuario="";
     }
+
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+    $usuario='';
+} else {
+     $usuario=$_SESSION['usuario'];
+}
 include('conexiongen.php');
     ?>
 
@@ -54,13 +57,13 @@ include('conexiongen.php');
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
+            <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="eventos_home.php?usuario=<?php echo $usuario;?>">Más eventos</a>
+            <a class="nav-link js-scroll-trigger" href="eventos_home.php">Más eventos</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
                 <?php  echo $usuario;?>
             </a>
           </li>
@@ -68,7 +71,7 @@ include('conexiongen.php');
              <?php 
           if($usuario == "admin"){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin_eventos.php?usuario=admin">Administrar eventos</a>
+            <a class="nav-link js-scroll-trigger" href="admin_eventos.php">Administrar eventos</a>
           </li>
             <?php
             }
@@ -76,7 +79,7 @@ include('conexiongen.php');
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
           </li>
             <?php
             }
@@ -135,7 +138,7 @@ if($resultado->num_rows >0){ ?>
               <p>'.$row["descripcion"].'</p>
               <h3 class="my-3">Más detalles</h3>
               <ul>
-                <li>Teléfono: '.$row["tel"].'</li>
+                <li>Teléfono: '.$row["telefono"].'</li>
                 <li>Dirección: '.$row["direccion"].'</li>
                 <li>Propietarios: '.$row["empresa"].'</li>
                 <li ><a href="#mapa">Ver mapa</a></li>

@@ -1,8 +1,9 @@
 <?php
-if(isset($_GET['usuario'])){
-    $usuario = $_GET['usuario'];
-}else{
-    $usuario = "";
+session_start();
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+    $usuario='';
+} else {
+     $usuario=$_SESSION['usuario'];
 }
 include('conexiongen.php');
 ?>
@@ -48,16 +49,16 @@ include('conexiongen.php');
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
+            <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
         <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="eventos_home.php?usuario=<?php echo $usuario;?>">Eventos</a>
+            <a class="nav-link js-scroll-trigger" href="eventos_home.php">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="lugares_home.php?usuario=<?php echo $usuario;?>">Lugares</a>
+            <a class="nav-link js-scroll-trigger" href="lugares_home.php">Lugares</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
                 <?php  echo $usuario;?>
             </a>
           </li>
@@ -65,7 +66,7 @@ include('conexiongen.php');
              <?php 
           if($usuario == "admin"){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
+            <a class="nav-link js-scroll-trigger" href="admin.php">Administrar lugares</a>
           </li>
             <?php
             }
@@ -73,7 +74,7 @@ include('conexiongen.php');
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
           </li>
             <?php
             }
@@ -115,14 +116,14 @@ include('conexiongen.php');
                 <div class="card py-4 h-100" style="padding-top: 0px !important;max-height: 500px;">
                   <div class="card-body text-center" style="max-height: 300px;">';
                   if($row["foto"]==""){
-                    echo '<a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'"><img class="card-img-top" src="img/NoPlaceFound.png"  width="100%" style="max-height: 300px;" height="100%" alt="logo"></a>';
+                    echo '<a href="evento.php?lugar='.urlencode($row["nombre"]).'"><img class="card-img-top" src="img/NoPlaceFound.png"  width="100%" style="max-height: 300px;" height="100%" alt="logo"></a>';
                   }else{
-                    echo '<a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'"><img class="card-img-top" src="'.$row["foto"].'"  width="100%" style="max-height: 300px;" height="100%" alt="logo"></a>';
+                    echo '<a href="evento.php?lugar='.urlencode($row["nombre"]).'"><img class="card-img-top" src="'.$row["foto"].'"  width="100%" style="max-height: 300px;" height="100%" alt="logo"></a>';
                   }
                 
                 echo '<div class="card-body" style="padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; max-width: 100%; max-height: 100%;">
                   <h6 class="card-title">
-                    <a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">'.$row["nombre"].'</a>
+                    <a href="evento.php?lugar='.urlencode($row["nombre"]).'">'.$row["nombre"].'</a>
                   </h6>
                   <hr class="my-4">
                 </div>
@@ -150,7 +151,7 @@ include('conexiongen.php');
             <a href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'"><img class="card-img-top" src="'.$row["foto"].'"  width="100%" style="max-height: 300px;" height="100%" alt="logo"></a>
                 <div class="card-body" style="padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; max-width: 100%; max-height: 100%;">
                   <h6 class="card-title">
-                    <a href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">'.$row["nombre"].'</a>
+                    <a href="lugar.php?lugar='.urlencode($row["nombre"]).'">'.$row["nombre"].'</a>
                   </h6>
                   <hr class="my-4">
                 </div>

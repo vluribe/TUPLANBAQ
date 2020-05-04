@@ -37,12 +37,12 @@
 					<img src="img/icons/Tuplan512x512.png" alt="">
 				</div>-->
 
-				<form action="" method="post" enctype="multipart/form-data" class="login100-form validate-form">
+				<form action="conexionLogin.php" method="post" enctype="multipart/form-data" class="login100-form validate-form">
 				<span class="login100-form-title p-b-26">
 						Bienvenido
 					</span>
 					<span class="login100-form-title p-b-48">
-						<image src="img/icons/Tuplan72x72.png">
+                        <image src="img/icons/Tuplan72x72.png"></image>
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
@@ -72,7 +72,7 @@
 							¿Aun no tienes una cuenta?
 						</span>
 
-						<a class="txt2" href="signup.php">
+						<a class="txt2" type="submit" href="signup.php">
 							Registrarse
 						</a>
 					</div>
@@ -102,6 +102,7 @@
 ===============================================================================================-->
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--===============================================================================================--	    
 <script>
 $(document).ready(function(){
     //emai = dato post
@@ -117,5 +118,6 @@ $("#login").click(function(){
 })
 });
 </script>
+===============================================================================================-->
 </body>
 </html>

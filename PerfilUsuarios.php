@@ -1,8 +1,9 @@
 <?php
-if(isset($_GET['usuario'])){
-    $usuario = $_GET['usuario'];
-}else{
-    $usuario = "";
+session_start();
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+    $usuario='';
+} else {
+     $usuario=$_SESSION['usuario'];
 }
 header('Content-type: text/html; charset=utf-8');
 include('conexiongen.php');
@@ -46,7 +47,7 @@ include('conexiongen.php');
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" style="background-color: black; color: white;font-weight: bold;" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
+            <a class="nav-link js-scroll-trigger" style="background-color: black; color: white;font-weight: bold;" href="index.php">Inicio</a>
             </li>                     
              <?php 
           if($usuario == "admin"){ ?>
@@ -59,7 +60,7 @@ include('conexiongen.php');
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a style="background-color: red; color: white;font-weight: bold;" class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
+            <a style="background-color: red; color: white;font-weight: bold;" class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
           </li>
             <?php
             }
@@ -184,7 +185,7 @@ include('conexiongen.php');
                 echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
               }
              
-              echo '<a class="btn btn-primary" href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_lugar"].'" /> ';
+              echo '<a class="btn btn-primary" href="lugar.php?lugar='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_lugar"].'" /> ';
               
                $sql2 = 'SELECT * FROM favoritos f where f.id_usuario="'.$usuario.'" AND f.id_lugar="'.$row["ID_lugar"].'"';
             $resultado2= $conn->query($sql2);

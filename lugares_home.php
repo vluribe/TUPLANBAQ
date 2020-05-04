@@ -1,8 +1,9 @@
 <?php
-if(isset($_GET['usuario'])){
-    $usuario = $_GET['usuario'];
-}else{
-    $usuario = "";
+session_start();
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+    $usuario='';
+} else {
+     $usuario=$_SESSION['usuario'];
 }
 include('conexiongen.php');
 ?>
@@ -107,7 +108,7 @@ include('conexiongen.php');
             }else{
            ?>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
+            <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
           <?php
             }
@@ -121,7 +122,7 @@ include('conexiongen.php');
             }else{
            ?>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="eventos_home.php?usuario=<?php echo $usuario;?>">Eventos</a>
+            <a class="nav-link js-scroll-trigger" href="eventos_home.php">Eventos</a>
           </li>
           <?php
             }
@@ -130,7 +131,7 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#social">Contactanos</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
                 <?php echo $usuario;?>
             </a>
           </li>
@@ -146,7 +147,7 @@ include('conexiongen.php');
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
           </li>
             <?php
             }
@@ -215,55 +216,55 @@ include('conexiongen.php');
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               
-            <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+            <form action="lugares_home.php" method="post">
                   <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="todos" > ver todo </button>
             </form>  
               
-            <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+            <form action="lugares_home.php" method="post">
                   <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="amigos" >Salir con amigos </button>
             </form>
               
-            <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+            <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="familia" >Salir con familia </button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="pareja" >Salir con tu pareja </button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="noche" >Salir de noche</button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="deporte" >Hacer deporte </button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="ejercicio" >Salir a ejercitarte </button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="cultura" >Enriquece tu cultura</button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="aprende" >Aprender algo nuevo</button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="hijos" >Para divertir a los niños</button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="solo" > Salir solo </button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="espiritual">Crece espiritualmente</button>
               </form>
               
-              <form action="lugares_home.php?usuario=<?php echo $usuario;?>" method="post">
+              <form action="lugares_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="relajarse" >Tiempo para relajarse</button>
               </form>
               
@@ -308,7 +309,7 @@ include('conexiongen.php');
                 echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
                 
                
-                echo '<a class="btn btn-primary" href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_lugar"].'" /> ';
+                echo '<a class="btn btn-primary" href="lugar.php?lugar='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_lugar"].'" /> ';
                 
                  $sql2 = 'SELECT * FROM favoritos f where f.id_usuario="'.$usuario.'" AND f.id_lugar="'.$row["ID_lugar"].'"';
 	            $resultado2= $conn->query($sql2);

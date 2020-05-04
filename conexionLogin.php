@@ -1,4 +1,5 @@
 <?php
+session_start();
 	$result = 0;
     $msj = "";
     include('conexiongen.php');
@@ -8,7 +9,7 @@
 	} else {
 	//echo "Connected successfully";
 		$email=$_POST['email'];
-        $password=$_POST['password'];
+        $password=md5($_POST['password']);
         //Sentencia sql
 		$sqli="SELECT id_usuario, password, user FROM usuarios WHERE id_usuario='$email' and password='$password'";
         $sql="SELECT id_usuario, password, user FROM admin WHERE id_usuario='$email' and password='$password'";
@@ -29,10 +30,12 @@
               $msj = "error";  
             }
                 else {
-                    $msj = $row['user'];
+                    $_SESSION['usuario'] = $row['user'];
+                    header("Location: index.php");
                 }
         } else {
-                    $msj = $row['user'];
+                    $_SESSION['usuario'] = $row['user'];
+                    header("Location: index.php");
                 }
         
         

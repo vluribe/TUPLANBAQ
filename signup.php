@@ -41,7 +41,7 @@
 						Registrate!!
 					</span>
 					<span class="login100-form-title p-b-48">
-						<image src="img/icons/Tuplan72x72.png">
+                        <image src="img/icons/Tuplan72x72.png"></image>
 					</span>
 					<div class="contenedor_texto" style="width:50%;margin-left: 25%;margin-right: 25%;">
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: a@b.c">
@@ -207,7 +207,7 @@
 					<div class="container-login100-form-btn" style="width:50%;margin-left: 25%;margin-right: 25%;">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" id="login">
+							<button class="login100-form-btn" type="submit" id="login">
 								Sign Up
 							</button>
 						</div>
@@ -231,11 +231,12 @@
 
 	
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery.min.js"></script>
+
 <!--===============================================================================================-->
 <!--===============================================================================================-->
 <!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1

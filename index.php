@@ -1,8 +1,9 @@
 <?php
-if(isset($_GET['usuario'])){
-    $usuario = $_GET['usuario'];
-}else{
-    $usuario = "";
+session_start();
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+    $usuario='';
+} else {
+     $usuario=$_SESSION['usuario'];
 }
 include('conexiongen.php');
 ?>
@@ -77,7 +78,7 @@ include('conexiongen.php');
           <?php
           if($usuario != "admin"){ ?>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
                 <?php echo $usuario;?>
             </a>
           </li>
@@ -96,7 +97,7 @@ include('conexiongen.php');
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
           </li>
             <?php
             }
@@ -206,7 +207,7 @@ include('conexiongen.php');
         <div class="col-lg-8 mx-auto">
           <h2 class="text-white mb-4">¡Asiste a nuestros eventos!</h2>
           <p class="text-white">Barranquilla ofrece gran variedad de lugares para visitar, en ellos encontrarás muchos colores, culturas y temas,  atrévete a conocer una ciudad, y te mostraremos hasta lugares para los cuales no necesitas dinero! </p>
-            <a href="eventos_home.php?usuario=<?php echo $usuario;?>" class="btn btn-primary js-scroll-trigger">EVENTOS</a>
+            <a href="eventos_home.php" class="btn btn-primary js-scroll-trigger">EVENTOS</a>
         </div>
       </div>
       <img src="" class="img-fluid" alt="">
@@ -220,7 +221,7 @@ include('conexiongen.php');
         <div class="col-lg-8 mx-auto">
           <h2 class="text-white mb-4">¡Conoce lugares!</h2>
           <p class="text-white">Barranquilla ofrece gran variedad de lugares para visitar, en ellos encontrarás muchos colores, culturas y temas,  atrévete a conocer una ciudad, y te mostraremos hasta lugares para los cuales no necesitas dinero! </p>
-           <a href="lugares_home.php?usuario=<?php echo $usuario;?>"class="btn btn-primary js-scroll-trigger">LUGARES</a>
+           <a href="lugares_home.php"class="btn btn-primary js-scroll-trigger">LUGARES</a>
         </div>
       </div>
       <img src="" class="img-fluid" alt="">

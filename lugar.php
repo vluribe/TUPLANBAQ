@@ -1,15 +1,20 @@
 <?php
+session_start();
 if(isset($_GET['lugar'])){
-        $cadena = $_GET['lugar'];
-        $datos=explode(";",$cadena );
-        $lugar=$datos[0];
-        $usuario=$datos[1];
+        $lugar = $_GET['lugar'];
     }else{
         $lugar = "";
-        $usuario="";
     }
+
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+    $usuario='';
+} else {
+     $usuario=$_SESSION['usuario'];
+}
+
 include('conexiongen.php');
     ?>
+
  
 <!DOCTYPE html>
 <html lang="en">
@@ -54,13 +59,13 @@ include('conexiongen.php');
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
+            <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="lugares_home.php?usuario=<?php echo $usuario;?>">Más Lugares</a>
+            <a class="nav-link js-scroll-trigger" href="lugares_home.php">Más Lugares</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
                 <?php  echo $usuario;?>
             </a>
           </li>
@@ -68,7 +73,7 @@ include('conexiongen.php');
              <?php 
           if($usuario == "admin"){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin_eventos.php?usuario=admin">Administrar eventos</a>
+            <a class="nav-link js-scroll-trigger" href="admin_eventos.php">Administrar eventos</a>
           </li>
             <?php
             }
@@ -76,7 +81,7 @@ include('conexiongen.php');
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
           </li>
             <?php
             }
@@ -279,35 +284,36 @@ if($resultado->num_rows >0){ ?>
   <section id="Comments" class="about-section" style="padding-top:2%;padding-bottom:2%;">
     <div class="container">
         <div class="col-lg-8 mx-auto">
-          <h1 class="mx-auto my-0 text-uppercase text-center" style="color:white;">Comentarios</h1>;
+          <h1 class="mx-auto my-0 text-uppercase text-center" style="color:white;">Comentarios</h1>
           
             <?php
               if ($conn -> connect_error) {
                 die("La conexion fallo". $conn -> connect_error);
               } else {
-              $resultado=$conn -> query("SELECT u.user, c.comentario FROM comentariose c join lugaresbaq l on c.ID_lugar = l.ID_lugar, usuarios u where l.nombre = '$lugar' and u.id_usuario = c.idUsuario");
-              while ($fila=mysqli_fetch_row($resultado)) {
-                echo '<table style=" border-collapse:separate;
-    border:solid white 1px;
-    border-radius:6px;
-    -moz-border-radius:6px;" width=100% cellspacing=2 cellpadding=0 id="data_table" border=4   >';
-        echo '<tr style=" border-left:solid white 1px;
-    border-top:solid black 1px;">';
-                echo '<td  style=" border-left:solid white 1px;
-    border-top:solid white 1px;">';
-                echo '<h5  style="padding: 10px;" class= "text-white mb-4">';
-                echo "<b>".$fila[0]."</b> dijo:";
-                echo "<br>";
-                echo "".$fila[1];
-                echo '</h5>';
-                echo '</td>';
-                echo '</tr>';
-                echo '</table>';
-              }
+                  $resultado=$conn -> query("SELECT u.user, c.comentario FROM comentarios c join lugaresbaq l on c.ID_lugar = l.ID_lugar, usuarios u where l.nombre = '$lugar' and u.id_usuario = c.idUsuario");
+                  
+                  while ($fila=mysqli_fetch_row($resultado)) {
+                    echo '<table style=" border-collapse:separate;
+                            border:solid white 1px;
+                            border-radius:6px;
+                            -moz-border-radius:6px;" width=100% cellspacing=2 cellpadding=0 id="data_table" border=4   >';
+                    echo '<tr style=" border-left:solid white 1px;
+                            border-top:solid black 1px;">';
+                    echo '<td  style=" border-left:solid white 1px;
+                            border-top:solid white 1px;">';
+                    echo '<h5  style="padding: 10px;" class= "text-white mb-4">';
+                    echo "<b>".$fila[0]."</b> dijo:";
+                    echo "<br>";
+                    echo "".$fila[1];
+                    echo '</h5>';
+                    echo '</td>';
+                    echo '</tr>';
+                    echo '</table>';
+                  }
               }
                mysqli_close($conn);
             ?>
-            <form action=<?php echo '"Procesar_Mensaje.php?lugar='.urlencode($lugar).';'.$usuario.'"';?>  method="POST">
+            <form action=<?php echo '"Procesar_Mensaje.php?lugar='.urlencode($lugar).'"';?>  method="POST">
               <input type="hidden" name="usuarios" value = <?php echo '"'.$usuario.='"' ?>>
                 
                 <br><br>

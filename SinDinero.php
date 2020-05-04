@@ -78,13 +78,13 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#">Elige tu plan</a>
           </li>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
           </li>
              <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="index.php?usuario=<?php echo $usuario;?>">Inicio</a>
+            <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
              <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
                 <?php  echo $usuario;?>
             </a>
           </li>
@@ -229,7 +229,7 @@ include('conexiongen.php');
         <!-- Portfolio Section -->  
   <section id="categoria" class="title">
     <div class="categorias">
-        <form action="SinDinero.php?usuario=<?php echo $usuario;?>#categoria" method="post">
+        <form action="SinDinero.php#categoria" method="post">
           <h2>¿Qué tipo de plan tienes para hoy?</h2>
         <select name="tipo" required style="border: 2px solid red; border-radius: 5px;">
                     <option disabled="disabled" selected="selected">Escoja una opción </option>
@@ -284,7 +284,7 @@ include('conexiongen.php');
                 echo '<td align="center"><h2><strong>'.$row["nombre"].' </strong></h2>  <br/>
                           '.$row["descripcion"].'
                           <br/> <br/>
-                          <a href="lugar.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">Ver más</a>
+                          <a href="lugar.php?lugar='.urlencode($row["nombre"]).'">Ver más</a>
                           <br/>';
                 echo '<input type="hidden" id="selusuario" value="'.$usuario.'" /> ';
                        echo '<input style="border-style: hidden;  border-radius: 5px;" type="button" class="lugar" value="'.$row["nombre"].'" selected="selected">';
@@ -338,7 +338,7 @@ include('conexiongen.php');
                 echo '<td align="center"><h2><strong>'.$row["nombre"].' </strong></h2>  <br/>
                           '.$row["descripcion"].'
                           <br/> <br/>
-                          <a href="evento.php?lugar='.urlencode($row["nombre"]).';'.$usuario.'">Ver más</a>
+                          <a href="evento.php?lugar='.urlencode($row["nombre"]).'">Ver más</a>
                           <br/>';
                 echo '<input type="hidden" id="selusuario" value="'.$usuario.'" /> ';
                        echo '<input style="border-style: hidden;  border-radius: 5px;" type="button" class="lugar" value="'.$row["nombre"].'" selected="selected">';

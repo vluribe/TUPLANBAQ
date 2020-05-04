@@ -1,14 +1,17 @@
 <?php
-
+session_start();
 if(isset($_GET['lugar'])){
-        $cadena = $_GET['lugar'];
-        $datos=explode(";", $cadena );
-        $lugar=$datos[0];
-        $usuario=$datos[1];
+        $lugar = $_GET['lugar'];
     }else{
         $lugar = "";
-        $usuario="";
     }
+
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+    $usuario='';
+} else {
+     $usuario=$_SESSION['usuario'];
+}
+
     include('conexiongen.php');
     if($usuario != 'admin' and $usuario!=''){
 	if ($conn -> connect_error) {
@@ -42,7 +45,7 @@ if(isset($_GET['lugar'])){
 			
 			//mensaje
 			alert("Listo!");
-			window.location.href='lugar.php?lugar=<?php echo $_POST["lugar"]; ?>'+';'+'<?php echo $_POST["usuarios"]; ?>';
+			window.location.href='lugar.php?lugar=<?php echo $_POST["lugar"]; ?>';
 		</script>
  
 		<?php
@@ -54,7 +57,7 @@ if(isset($_GET['lugar'])){
 		<script language="JavaScript">
 			//mensaje
 			alert("Falló");
-			window.location.href='lugar.php?lugar=<?php echo $_POST["lugar"]; ?>'+';'+'<?php echo $_POST["usuarios"]; ?>';
+			window.location.href='lugar.php?lugar=<?php echo $_POST["lugar"]; ?>';
 		</script>
  
 		<?php
@@ -63,7 +66,7 @@ if(isset($_GET['lugar'])){
         <script language="JavaScript">
 			//mensaje
 			alert("Debe iniciar sesión para comentar");
-			window.location.href='lugar.php?lugar=<?php echo $_POST["lugar"]; ?>'+';'+'<?php echo $_POST["usuarios"]; ?>';
+			window.location.href='lugar.php?lugar=<?php echo $_POST["lugar"]; ?>';
 		</script>
             <?php 
     }

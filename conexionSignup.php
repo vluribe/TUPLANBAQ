@@ -8,7 +8,7 @@
         $id=$_POST['email'];
 		$user=$_POST['user'];
         echo $user;
-        $password=$_POST['password'];
+        $password=md5($_POST['password']);
         $age=$_POST['age'];
         $nombre=$_FILES['foto']['name'];
         $nombre=str_replace(' ', '', $nombre);
