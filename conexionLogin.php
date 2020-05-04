@@ -31,11 +31,14 @@ session_start();
             }
                 else {
                     $_SESSION['usuario'] = $row['user'];
-                    header("Location: index.php");
+                    
+                    echo "script>window.location.href='index.php';</script>";
+    exit;
+
                 }
         } else {
                     $_SESSION['usuario'] = $row['user'];
-                    header("Location: index.php");
+                    echo " <script>window.location.href='index.php';</script>";
                 }
         
         

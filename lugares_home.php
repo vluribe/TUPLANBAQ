@@ -89,7 +89,7 @@ include('conexiongen.php');
 </head>
 
 <body>
-<script src="includes/js/jquery-3.3.1.js"></script>
+
   <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
@@ -440,6 +440,7 @@ $(document).ready(function(){
         var selusu = $('#selusuario').val();
         var sellugar = $(this).val();
         console.log(sellugar);
+        console.log(selusu);
         if(selusu==''){
             alert("Debe iniciar sesión para añadir a favoritos");
         } else{
@@ -447,6 +448,8 @@ $(document).ready(function(){
         if(datos == 'error'){
                 alert("Los datos no se han grabado");
                
+        }else{
+            console.log(datos);
         }
         
     });
