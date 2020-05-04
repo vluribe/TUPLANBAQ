@@ -6,7 +6,11 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
      $usuario=$_SESSION['usuario'];
 }
 include('conexiongen.php');
+<<<<<<< HEAD
  ?>
+=======
+?>
+>>>>>>> master
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,8 +1,9 @@
 <?php
-if(isset($_GET['usuario'])){
-    $usuario = $_GET['usuario'];
-}else{
-    $usuario = "";
+session_start();
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+    $usuario='';
+} else {
+     $usuario=$_SESSION['usuario'];
 }
 include('conexiongen.php');
 ?>
@@ -30,43 +31,65 @@ include('conexiongen.php');
   <!-- Custom styles for this template -->
   <link href="css/grayscale.css" rel="stylesheet">
  
-
+<style>
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
 
 </head>
 
 <body id="page-top">
 <script src="includes/js/jquery-3.3.1.js"></script>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">TU PLAN A</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#inicio">Inicio</a>
           </li>
         <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#principal">Tipos de planes</a>
+            <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#aleatorio">Plan aleatorio</a>
+            <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#signup">Subscribirse</a>
           </li>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="https://tuplanbaq.sisedigital.com/PerfilUsuarios.php?usuario=<?php echo $usuario;?>" >
-                <?php  echo $usuario;?>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#social">Contactanos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
+          </li>
+          <?php
+          if($usuario != "admin"){ ?>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
+                <?php echo $usuario;?>
             </a>
           </li>
+          <?php
+            }
+           ?> 
                         
-             <?php 
+             <?php
           if($usuario == "admin"){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="https://tuplanbaq.sisedigital.com/admin.php?usuario=admin">Administrar lugares</a>
+            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
           </li>
             <?php
             }
@@ -74,100 +97,140 @@ include('conexiongen.php');
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="https://tuplanbaq.sisedigital.com/index.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
           </li>
             <?php
             }
            ?>
+           <li>
+           <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
+          <input class="form-control nav-item" type="text" placeholder="Search" aria-label="Search" name="buscador">
+          <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;text-size:15px">Buscar</button>
+        </form>
+           </li>
         </ul>
+        <!-- Collapsible content -->
+        
       </div>
-    </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Header -->
-  <header class="masthead" id="inicio">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">TU PLAN BAQ</h1>
-          <?php 
-          if($usuario == ""){?>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">Descubre qué hacer cuando no tienes idea</h2>   
-           <table align='center' cellspacing=10px cellpadding=0 id="data_table" border=0>  
-            <tr>
-                <td> <a  href="https://tuplanbaq.sisedigital.com/login.php" class="btn btn-primary js-scroll-trigger">Ingresar</a></td>
-                <td> <a  href="https://tuplanbaq.sisedigital.com/signup.php" class="btn btn-primary js-scroll-trigger">Crea una cuenta</a></td>
-            </tr>
-         </table>
-        <?php
-          }
-        ?>
-      </div>
-    </div>
-  </header>
+<header>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
     
-      <!-- Projects Section -->
-  <section id="principal" class="projects-section bg-light">
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url('img/bg-masthead.jpg')">
+        <div class="carousel-caption d-md-block">
+          <h2 class="display-4">Estamos en tu ciudad</h2>
+          <p class="lead">Y te ayudamos a descubrirla.</p>
+          <?php 
+          if($usuario == ""){ ?>
+          <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
+    padding-right: 40px;">Ingresar</a>
+               <a  href="signup.php" class="btn btn-primary js-scroll-trigger" style="max-width: 10rem;
+    max-height: 4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 17px;
+    padding-right: 17px;">Crea una cuenta</a>
+    <?php
+            }
+           ?>
+            
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('img/aleatorio.jpeg')">
+        <div class="carousel-caption  d-md-block">
+          <h2 class="display-4">Los dias y las noches.</h2>
+          <p class="lead">No volveras a ver tu ciudad como antes.</p>
+          <?php 
+          if($usuario == ""){ ?>
+          <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
+    padding-right: 40px;">Ingresar</a>
+               <a  href="signup.php" class="btn btn-primary js-scroll-trigger" style="max-width: 10rem;
+    max-height: 4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 17px;
+    padding-right: 17px;">Crea una cuenta</a>
+    <?php
+            }
+           ?>
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('img/Carnaval.jpg')">
+        <div class="carousel-caption d-md-block">
+          <h2 class="display-4">Dejate enamorar.</h2>
+          <p class="lead">Una tierra magica que te cautivara.</p>
+          <?php 
+          if($usuario == ""){ ?>
+          <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
+    padding-right: 40px;">Ingresar</a>
+               <a  href="signup.php" class="btn btn-primary js-scroll-trigger" style="max-width: 10rem;
+    max-height: 4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 17px;
+    padding-right: 17px;">Crea una cuenta</a>
+    <?php
+            }
+           ?>
+        </div>
+      </div>
+      
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
+</header>
+
+
+
+    <!-- LUGARES -->
+    <section  class="eventos-section" id="eventos-sec">
     <div class="container">
-
-
-      <!-- Project One Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="img/money.png" alt="">
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Planes sin dinero</h4>
-                <p class="mb-0 text-white-50"><?php echo $usuario;?>, encuentra cosas que puedes hacer en Barranquilla sin tener un peso, de cosa para los pasajes</p>
-                  <a href="https://tuplanbaq.sisedigital.com/SinDinero.php?usuario=<?php echo $usuario;?>" class="btn btn-primary js-scroll-trigger">AQUI</a>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-              </div>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">¡Asiste a nuestros eventos!</h2>
+          <p class="text-white">Barranquilla ofrece gran variedad de lugares para visitar, en ellos encontrarás muchos colores, culturas y temas,  atrévete a conocer una ciudad, y te mostraremos hasta lugares para los cuales no necesitas dinero! </p>
+            <a href="eventos_home.php" class="btn btn-primary js-scroll-trigger">EVENTOS</a>
         </div>
       </div>
-
-      <!-- Project Two Row -->
-      <div class="row justify-content-center no-gutters">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="img/change.png" alt="">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">¡Tengo plata!</h4>
-                <p class="mb-0 text-white-50">Encuentra posibilidades para descubir Barranquilla, con algo de dinero</p>
-                  <a href="https://tuplanbaq.sisedigital.com/ConDinero.php?usuario=<?php echo $usuario;?>"class="btn btn-primary js-scroll-trigger">AQUI</a>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <img src="" class="img-fluid" alt="">
     </div>
   </section>
     
-      <!-- Aleatorio Section -->
- <link href="css/grayscale.css" rel="stylesheet">
-    <section id="aleatorio">
-    <div class="aleatorio">
-        <h1>¡Deja que la rueda defina qué harás hoy!</h1>
-      <div id="wheel">
-    <canvas id="canvas" width="300" height="300"></canvas>
+        <!-- eventos -->
+    <section  class="lugares-section" id="lugares-sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-white mb-4">¡Conoce lugares!</h2>
+          <p class="text-white">Barranquilla ofrece gran variedad de lugares para visitar, en ellos encontrarás muchos colores, culturas y temas,  atrévete a conocer una ciudad, y te mostraremos hasta lugares para los cuales no necesitas dinero! </p>
+           <a href="lugares_home.php"class="btn btn-primary js-scroll-trigger">LUGARES</a>
+        </div>
       </div>
-    <br>
-    <button id="spin">Stop!</button>
+      <img src="" class="img-fluid" alt="">
+    </div>
+  </section>
+  
     
-      <script  src="winwheelIndex.js"></script>
-      
-      </div>  
- </section> 
-
-
+    
+    
     
   <!-- About Section -->
   <section id="about" class="about-section text-center">
@@ -243,7 +306,7 @@ include('conexiongen.php');
   </section>
 
   <!-- Contact Section -->
-  <section class="contact-section bg-black">
+  <section class="contact-section bg-black" id="social">
     <div class="container">
 
       <div class="row">
@@ -302,7 +365,7 @@ include('conexiongen.php');
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Copyright &copy; Your Website 2019
+      Copyright &copy; TU PLAN A 2020
     </div>
   </footer>
 

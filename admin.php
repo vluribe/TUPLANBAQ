@@ -1,8 +1,9 @@
 <?php
-if(isset($_GET['usuario'])){
-    $usuario = $_GET['usuario'];
-}else{
-    $usuario = "";
+session_start();
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+    $usuario='';
+} else {
+     $usuario=$_SESSION['usuario'];
 }
 include('conexiongen.php');
 ?>
@@ -53,13 +54,10 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#listaL">lista lugares</a>
           </li>
 		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#addE">+eventos</a>
-          </li>
-		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#listaE">lista eventos</a>
+            <a class="nav-link js-scroll-trigger" href=<?php  echo 'admin_eventos.php?usuario='.$usuario;?>>+eventos</a>
           </li>
          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href=<?php  echo 'https://tuplanbaq.sisedigital.com/index.php?usuario='.$usuario;?>>Inicio</a>
+            <a class="nav-link js-scroll-trigger" href=<?php  echo 'index.php?usuario='.$usuario;?>>Inicio</a>
           </li>
         </ul>
       </div>
@@ -197,7 +195,7 @@ include('conexiongen.php');
                 echo '<td><input type="text" name="tel" value="'.$row["tel"].'" readonly /></td>';
                 echo '<td><input type="text" name="empresa" value="'.$row["empresa"].'" readonly /></td>';
 				echo '<td><input type="text" name="foto" value="'.$row["foto"].'" readonly /></td>';
-				echo '<td><a href="../tuplanbaq/'.$row["foto"].'">Descargar</a></td>';
+				echo '<td><a href="'.$row["foto"].'">Descargar</a></td>';
 			    echo '</tr>';
 			}
 	}
@@ -213,7 +211,7 @@ include('conexiongen.php');
 
  <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Copyright &copy; Your Website 2019
+      Copyright &copy; SISEdigital 2019
     </div>
   </footer>
 

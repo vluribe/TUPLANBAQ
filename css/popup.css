@@ -1,0 +1,55 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+#popupBody{
+    width: 80%;
+    height:80%;
+padding: 2%;
+border-radius: 15px;
+box-shadow: 0 0 5px #CCC;
+background: rgb(229, 226, 226)229, 226, 226);
+position: relative;
+margin: 8% auto;
+transition: all 5s ease-in-out;
+}
+
+#cerrar{
+    position: absolute;
+top: 20px;
+right: 30px;
+font-size: 30px;
+font-weight: bold;
+text-decoration: none;
+color: white;
+transition: all 200ms;
+}
+
+.popupContent{
+    height:90%;
+}
+
+#iframepdf{
+    height:100%;
+    width:100%;
+}
+
+.img-flui{
+    height:80%;
+}
+.col-md-3{
+    height: 120px;
+}
