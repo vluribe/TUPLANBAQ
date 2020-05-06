@@ -19,23 +19,23 @@
 }
 th{
     text-align: left;
-    background-color: green;
+    background-color: #506DB1;
 }
 #data_table{
     margin-bottom: 5%;
 }
 i{
-    color:green;
+    color:#506DB1;
 }
 
 .text-primary{
-    color:green !important;
+    color:#506DB1 !important;
 }
 
 .contact-section .bg-black a{
-    color:green !important;
+    color:#506DB1 !important;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active {
-    color: green !important;
+    color: #506DB1 !important;
 }

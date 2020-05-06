@@ -61,7 +61,7 @@ include('conexiongen.php');
   <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">TU PLAN A: EVENTOS</a>
+    <a class="navbar-brand" href="#">TU PLAN A: EVENTOS VIRTUALES</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -139,24 +139,24 @@ include('conexiongen.php');
     </ol>
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('img/evento1.jpg')">
+      <div class="carousel-item active" style="background-image: url('img/virtual-header.jpg ')">
         <div class="carousel-caption  d-md-block">
-          <h2 class="display-4">Estamos en tu ciudad</h2>
-          <p class="lead">Y te ayudamos a descubrirla.</p>
+          <h2 class="display-4">La distancia no es excusa</h2>
+          <p class="lead">Hay muchas opciones en linea.</p>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('img/evento2.jpeg')">
+      <div class="carousel-item" style="background-image: url('img/virual-header5.jpg')">
         <div class="carousel-caption  d-md-block">
-          <h2 class="display-4">Los dias y las noches.</h2>
-          <p class="lead">No volveras a ver tu ciudad como antes.</p>
+          <h2 class="display-4">Divierte.</h2>
+          <p class="lead">Internet te ofrece diversion a monton.</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('img/evento3.jpg')">
+      <div class="carousel-item" style="background-image: url('img/virtual-head4.jpg')">
         <div class="carousel-caption  d-md-block">
-          <h2 class="display-4">Dejate enamorar.</h2>
-          <p class="lead">Una tierra magica que te cautivara.</p>
+          <h2 class="display-4">Siempre hay opciones.</h2>
+          <p class="lead">Organizate para asistir a los eventos online mas grandes.</p>
         </div>
       </div>
     </div>
@@ -170,9 +170,9 @@ include('conexiongen.php');
         </a>
   </div>
 </header>
-  <!--Section lista eventos-->
+  <!--Section lista eventos virtuales-->
   <!-- Page Content -->
-<div class="container" id="listaeventos" style="padding-top:3%;">
+<div class="container" id="listaeventosvirtuales" style="padding-top:3%;">
     
             <!--Filter by-->
         <div class="dropdown">
@@ -181,56 +181,56 @@ include('conexiongen.php');
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               
-            <form action="eventos_home.php" method="post">
+            <form action="eventos_virtuales.php" method="post">
                   <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="todos" > ver todo </button>
             </form>  
               
-            <form action="eventos_home.php" method="post">
-                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="amigos" >Salir con amigos </button>
+            <form action="eventos_virtuales.php" method="post">
+                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="redessociales" >Redes sociales</button>
             </form>
               
-            <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="familia" >Salir con familia </button>
+            <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="paginasweb" >Paginas web</button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="pareja" >Salir con tu pareja </button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="stream" >Plataformas de stream</button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="noche" >Salir de noche</button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="tv" >Television</button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="deporte" >Hacer deporte </button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="facebook" >Facebook </button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="ejercicio" >Salir a ejercitarte </button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="instagram" >Instagram </button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="cultura" >Enriquece tu cultura</button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="youtube" >Youtube</button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="aprende" >Aprender algo nuevo</button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="twitter" >Twitter</button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="hijos" >Para divertir a los niños</button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="twitch" >Twitch</button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="solo" > Salir solo </button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="todopublico" > Para todo publico </button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="espiritual">Crece espiritualmente</button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="informativo">Informativos</button>
               </form>
               
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="relajarse" >Tiempo para relajarse</button>
+              <form action="eventos_virtuales.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="entretenimiento" >Entretenimiento</button>
               </form>
               
           </div>
@@ -253,39 +253,39 @@ include('conexiongen.php');
         //para mostrar todos los campos
         if (strcmp($tipo, "todos") == 0 ){
             
-            $sql = "SELECT * FROM eventosbaq";
+            $sql = "SELECT * FROM eventosvirtuales";
             
         }else {
            //mostrar solo la categoria seleccionada
-            $sql = "SELECT l.* FROM eventosbaq l join categorias c on l.nombre=c.nombre WHERE c.".$tipo."='1'";
+            $sql = "SELECT l.* FROM eventosvirtuales l join categorias c on l.nombre=c.nombre WHERE c.".$tipo."='1'";
         }
         
         }else {
             //para cuando aun no ha escogido nada
-            $sql = "SELECT * FROM eventosbaq";
+            $sql = "SELECT * FROM eventosvirtuales";
         
             }
        
 	$resultado= $conn->query($sql);
         
-    $result = mysqli_query($conn, "SELECT * FROM eventosbaq");
+    $result = mysqli_query($conn, "SELECT * FROM eventosvirtuales");
 
 	if($resultado->num_rows >0){
 			while($row = $resultado->fetch_assoc()){
                 
-                echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
+                echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p><p>'.$row["anfitrion"].'</p><p>Plataformas: '.$row["plataforma"].'</p>';
                 
                
-                echo '<a class="btn btn-primary" href="evento.php?evento='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_evento"].'" /> ';
+                echo '<a class="btn btn-primary" href="evento.php?lugar='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_virtual"].'" /> ';
                 
-                 $sql2 = 'SELECT * FROM favoritos f where f.id_usuario="'.$usuario.'" AND f.id_evento="'.$row["ID_evento"].'"';
+                 $sql2 = 'SELECT * FROM favoritos f where f.id_usuario="'.$usuario.'" AND f.id_evento="'.$row["ID_virtual"].'"';
 	            $resultado2= $conn->query($sql2);
                 
                 if($resultado2->num_rows>0){
         
-               echo  '<button style="border: none;  background-color: white;" class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
+               echo  '<button style="border: none;  background-color: white;" class="place" value="'.$row["ID_virtual"].'" > <i class="heart fa fa-heart" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
                 }else{
-                    echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
+                    echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_virtual"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
                     
                 } 
 
@@ -360,7 +360,7 @@ include('conexiongen.php');
         <div class="col-md-4 mb-3 mb-md-0">
           <div class="card py-4 h-100">
             <div class="card-body text-center">
-              <i class="fas fa-mobile-alt text-primary mb-2"></i>
+              <i class="fas fa-mobile-alt text-primary mb-2" ></i>
               <h4 class="text-uppercase m-0">Phone</h4>
               <hr class="my-4">
               <div class="small text-black-50">+1 (555) 902-8832</div>
