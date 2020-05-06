@@ -27,12 +27,16 @@ session_start();
             $result = $resultado2->num_rows;
             $row = $resultado2->fetch_assoc();
             if($result == 0){
-              $msj = "error";  
+              $msj = "error"; 
+              
+              echo "<script>alert('Usuario o contraseña incorrectas'); window.location.href='login.php';</script>";
+
+              
             }
                 else {
                     $_SESSION['usuario'] = $row['user'];
                     
-                    echo "script>window.location.href='index.php';</script>";
+                    echo "<script>window.location.href='index.php';</script>";
     exit;
 
                 }
