@@ -2,8 +2,16 @@
 session_start();
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
     $usuario='';
+    if(isset($_POST['tipo'])){
+      $tipo=$_POST['tipo'];}else{
+        $tipo="todos";
+      }
 } else {
      $usuario=$_SESSION['usuario'];
+     if(isset($_POST['tipo'])){
+      $tipo=$_POST['tipo'];}else{
+        $tipo="todos";
+      }
 }
 include('conexiongen.php');
 ?>
@@ -61,7 +69,7 @@ include('conexiongen.php');
   <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">TU PLAN A: EVENTOS</a>
+  <a class="navbar-brand" href="eventos_home.php">TU PLAN A: EVENTOS </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -139,21 +147,41 @@ include('conexiongen.php');
     </ol>
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('img/evento1.jpg')">
+      <?php 
+      if(strcmp($tipo, "virtuales") == 0 ){?>
+      <div class="carousel-item active" style="background-image: url('img/virtual-header.jpg')">
+      <?php }else{
+        ?>
+        <div class="carousel-item active" style="background-image: url('img/evento1.jpg')">
+      <?php }?>
         <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Estamos en tu ciudad</h2>
           <p class="lead">Y te ayudamos a descubrirla.</p>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('img/evento2.jpeg')">
+      <?php 
+      if(strcmp($tipo, "virtuales") == 0 ){?>
+      <div class="carousel-item" style="background-image: url('img/virual-header5.jpg')">
+      <?php }else{
+        ?>
+        <div class="carousel-item" style="background-image: url('img/evento2.jpeg')">
+      <?php }?>
+      
         <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Los dias y las noches.</h2>
           <p class="lead">No volveras a ver tu ciudad como antes.</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
-      <div class="carousel-item" style="background-image: url('img/evento3.jpg')">
+      <?php 
+      if(strcmp($tipo, "virtuales") == 0 ){?>
+      <div class="carousel-item" style="background-image: url('img/virtual-head4.jpg')">
+      <?php }else{
+        ?>
+        <div class="carousel-item" style="background-image: url('img/evento3.jpg')">
+      <?php }?>
+      
         <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Dejate enamorar.</h2>
           <p class="lead">Una tierra magica que te cautivara.</p>
@@ -175,6 +203,69 @@ include('conexiongen.php');
 <div class="container" id="listaeventos" style="padding-top:3%;">
     
             <!--Filter by-->
+          <?php if(strcmp($tipo, "virtuales") == 0 ){ ?>
+            <div class="dropdown" style="display:none;"><!--Quitar display none para cuando esten listos estos filtros-->
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            filtrar por
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              
+            <form action="eventos_home.php" method="post">
+                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="virtuales" > ver todo </button>
+            </form>  
+              
+            <form action="eventos_home.php" method="post">
+                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="redessociales" >Redes sociales</button>
+            </form>
+              
+            <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="paginasweb" >Paginas web</button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="stream" >Plataformas de stream</button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="tv" >Television</button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="facebook" >Facebook </button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="instagram" >Instagram </button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="youtube" >Youtube</button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="twitter" >Twitter</button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="twitch" >Twitch</button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="todopublico" > Para todo publico </button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="informativo">Informativos</button>
+              </form>
+              
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="entretenimiento" >Entretenimiento</button>
+              </form>
+              
+          </div>
+        </div>
+        <?php }else{
+        ?>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             filtrar por
@@ -232,10 +323,13 @@ include('conexiongen.php');
               <form action="eventos_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="relajarse" >Tiempo para relajarse</button>
               </form>
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="virtuales" >Eventos virtuales</button>
+              </form>
               
           </div>
         </div>
-    
+        <?php }?>
     
     
     
@@ -276,7 +370,7 @@ include('conexiongen.php');
                 echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
                 
                
-                echo '<a class="btn btn-primary" href="evento.php?lugar='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_evento"].'" /> ';
+                echo '<a class="btn btn-primary" href="evento.php?evento='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_evento"].'" /> ';
                 
                  $sql2 = 'SELECT * FROM favoritos f where f.id_usuario="'.$usuario.'" AND f.id_evento="'.$row["ID_evento"].'"';
 	            $resultado2= $conn->query($sql2);

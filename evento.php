@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(isset($_GET['lugar'])){
-        $lugar = $_GET['lugar'];
+if(isset($_GET['evento'])){
+        $evento = $_GET['evento'];
     }else{
-        $lugar = "";
+        $evento = "";
     }
 
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
@@ -100,7 +100,7 @@ background: linear-gradient(90deg, rgba(23,23,23,1) 0%, rgba(0,0,0,1) 100%, rgba
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 } else {
-$sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$lugar' and l.ID_evento = p.ID_evento ";
+$sql = "SELECT p.* FROM eventosbaq l, lpremium p WHERE l.nombre='$evento' and l.ID_evento = p.ID_evento ";
 $resultado= $conn->query($sql);
 if($resultado->num_rows >0){ ?>
 
@@ -114,7 +114,7 @@ if($resultado->num_rows >0){ ?>
 <?php
 } else {
     
-    $sql = "SELECT l.* FROM eventosbaq l WHERE l.nombre='$lugar' ";
+    $sql = "SELECT l.* FROM eventosbaq l WHERE l.nombre='$evento' ";
 	$resultado= $conn->query($sql);
 
 	if($resultado->num_rows >0){
@@ -246,7 +246,7 @@ if($resultado->num_rows >0){ ?>
               if ($conn -> connect_error) {
                 die("La conexion fallo". $conn -> connect_error);
               } else {
-              $resultado=$conn -> query("SELECT u.user, c.comentario FROM comentariose c join eventosbaq l on c.ID_evento = l.ID_evento, usuarios u where l.nombre = '$lugar' and u.id_usuario = c.idUsuario");
+              $resultado=$conn -> query("SELECT u.user, c.comentario FROM comentariose c join eventosbaq l on c.ID_evento = l.ID_evento, usuarios u where l.nombre = '$evento' and u.id_usuario = c.idUsuario");
               while ($fila=mysqli_fetch_row($resultado)) {
                 echo '<table style=" border-collapse:separate;
     border:solid white 1px;
@@ -268,12 +268,12 @@ if($resultado->num_rows >0){ ?>
               }
                mysqli_close($conn);
             ?>
-            <form action=<?php echo '"Procesar_Mensaje.php?lugar='.urlencode($lugar).';'.$usuario.'"';?>  method="POST">
+            <form action=<?php echo '"Procesar_Mensaje.php?evento='.urlencode($evento).'"';?>  method="POST">
               <input type="hidden" name="usuarios" value = <?php echo '"'.$usuario.='"' ?>>
                 
                 <br><br>
               <textarea style="border-radius:6px; width: 100%;"   placeholder='Escribe tu comentario aqui...' rows="5" cols="86" name="comentario" required></textarea>
-              <input type="hidden"  name="lugar" value = <?php echo '"'.$lugar.='"' ?> >
+              <input type="hidden"  name="evento" value = <?php echo '"'.$evento.='"' ?> >
                 <button type="submit" class="btn btn-primary mx-auto">Enviar</button>
             </form>
         </div>

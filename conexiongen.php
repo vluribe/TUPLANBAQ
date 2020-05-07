@@ -1,6 +1,6 @@
            <?php
             $servername = "localhost";
-            $database = "visitar";
+            $database = "tuplanbaq";
             $username = "root";
             // Create connection
             $conn = mysqli_connect($servername, $username, '', $database);

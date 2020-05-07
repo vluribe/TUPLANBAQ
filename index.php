@@ -201,7 +201,13 @@ include('conexiongen.php');
 
 
     <!-- LUGARES -->
-    <section  class="eventos-section" id="eventos-sec">
+    <section  class="eventos-section" id="eventos-sec" style="background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10%;
+    background-size: cover;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -215,7 +221,13 @@ include('conexiongen.php');
   </section>
     
         <!-- eventos -->
-    <section  class="lugares-section" id="lugares-sec">
+    <section  class="lugares-section" id="lugares-sec" style="background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10%;
+    background-size: cover;">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
