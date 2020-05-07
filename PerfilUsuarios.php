@@ -13,6 +13,16 @@ include('conexiongen.php');
 <!DOCTYPE html>
 <html>
     
+    
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    
+    
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <head>
 <meta content="text/html; charset=utf-8"/>
@@ -24,55 +34,165 @@ include('conexiongen.php');
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">  
         
+   <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+<style>
+.hovereffect {
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+}
+
+.hovereffect .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  background-color: rgba(0,0,0,0.5);
+  -webkit-transition: all 0.4s cubic-bezier(0.88,-0.99, 0, 1.81);
+  transition: all 0.4s cubic-bezier(0.88,-0.99, 0, 1.81);
+}
+
+.hovereffect img {
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.4s cubic-bezier(0.88,-0.99, 0, 1.81);
+  transition: all 0.4s cubic-bezier(0.88,-0.99, 0, 1.81);
+}
+
+.hovereffect h2 {
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  font-size: 17px;
+  background: rgba(0,0,0,0.6);
+  -webkit-transform: translatey(-100px);
+  -ms-transform: translatey(-100px);
+  transform: translatey(-100px);
+  -webkit-transition: all 0.4s cubic-bezier(0.88,-0.99, 0, 1.81);
+  transition: all 0.4s cubic-bezier(0.88,-0.99, 0, 1.81);
+  padding: 10px;
+}
+
+.hovereffect a.info {
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: transparent;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  margin: 50px 0 0;
+  padding: 7px 14px;
+}
+
+.hovereffect a.info:hover {
+  box-shadow: 0 0 5px #fff;
+}
+
+.hovereffect:hover img {
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.hovereffect:hover .overlay {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.hovereffect:hover h2,.hovereffect:hover a.info {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -ms-transform: translatey(0);
+  -webkit-transform: translatey(0);
+  transform: translatey(0);
+}
+
+.hovereffect:hover a.info {
+  -webkit-transition-delay: .2s;
+  transition-delay: .2s;
+}        
+        
+</style>
+        
+        
+
+<!------ Include the above in your HEAD tag ---------->
+        
+        
     <title>MI PERFIL</title>
         
 </head>
     
-    <body>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-<!------ Include the above in your HEAD tag ---------->
+    <body id="page-top">
+
         
-        
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.php">TU PLAN A</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" style="background-color: black; color: white;font-weight: bold;" href="index.php">Inicio</a>
-            </li>                     
-             <?php 
+            <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
+          </li>
+         
+                        
+             <?php
           if($usuario == "admin"){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin" style="background-color: blue;color: white;font-weight: bold;" >Administrar lugares</a>
+            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
           </li>
             <?php
             }
-           ?>
+           ?> 
             <?php 
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a style="background-color: red; color: white;font-weight: bold;" class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
           </li>
             <?php
             }
            ?>
+           <li>
+           <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
+          <input class="form-control nav-item" type="text" placeholder="Search" aria-label="Search" name="buscador">
+          <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;text-size:15px">Buscar</button>
+        </form>
+           </li>
         </ul>
+        <!-- Collapsible content -->
+        
       </div>
-    </div>
-  </nav>
+  </div>
+</nav>
         
         
 
-<div class="container">
+<div class="container" style="margin-top: 5%;">
     <div class="span3 well">
 
         <center>
@@ -150,7 +270,7 @@ include('conexiongen.php');
 </div>
                          
 
-        <h1 style="    padding-bottom: 2.5rem;
+<h1 style="    padding-bottom: 2.5rem;
     font-family: 'Varela Round';
   font-size: 3.5rem;
   line-height: 2.5rem;
@@ -164,7 +284,14 @@ include('conexiongen.php');
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;">Mis lugares favoritos</h1>
-<div class="container" id="listalugares" style="padding-top:3%;">
+        
+<div class="container">
+
+
+  <hr class="mt-2 mb-5">
+
+  <div class="row text-center text-lg-left">
+
 
     <?php 
         
@@ -179,24 +306,27 @@ include('conexiongen.php');
 
 	if($resultado->num_rows >0){
     while($row = $resultado->fetch_assoc()){
-              if($row["foto"]==""){
-                echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="img/NoPlaceFound.png" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
-              }else{
-                echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
-              }
-             
-              echo '<a class="btn btn-primary" href="lugar.php?lugar='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_lugar"].'" /> ';
-              
-               $sql2 = 'SELECT * FROM favoritos f where f.id_usuario="'.$usuario.'" AND f.id_lugar="'.$row["ID_lugar"].'"';
-            $resultado2= $conn->query($sql2);
-              
-              if($resultado2->num_rows>0){
-      
-             echo  '<button style="border: none;  background-color: white;" class="place" value="'.$row["ID_lugar"].'" > <i class="heart fa fa-heart" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
-              }else{
-                  echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_lugar"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
-                  
-              } 
+             if($row["foto"]==""){ 
+                echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="hovereffect">
+                        <img class="img-responsive" src="img/NoPlaceFound.png" alt="">
+                        <div class="overlay">
+                           <h2>Hover effect 1v2</h2>
+                           <a class="info" href=lugar.php?lugar="'.urlencode($row["nombre"]).'>ver más</a>
+                        </div>
+                    </div>
+                  </div>';
+                   }else{    
+                   echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="hovereffect">
+                        <img class="img-responsive" src="'.$row["foto"].'" height="300" width="400" alt="">
+                        <div class="overlay">
+                           <h2>'.urlencode($row["nombre"]).'</h2>
+                           <a class="info" href=lugar.php?lugar='.urlencode($row["nombre"]).'>ver más</a>
+                        </div>
+                    </div>
+                  </div>';
+                  }
 
             
     }
