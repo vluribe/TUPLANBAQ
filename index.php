@@ -30,7 +30,7 @@ include('conexiongen.php');
 
   <!-- Custom styles for this template -->
   <link href="css/grayscale.css" rel="stylesheet">
- 
+
 <style>
 .carousel-item {
   height: 100vh;
@@ -49,71 +49,93 @@ include('conexiongen.php');
 <script src="includes/js/jquery-3.3.1.js"></script>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">TU PLAN A</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#inicio">Inicio</a>
-          </li>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link js-scroll-trigger" href="#inicio">Inicio</a>
+        </li>
         <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signup">Subscribirse</a>
-          </li>
-          <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link js-scroll-trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Nosotros
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="nav-link js-scroll-trigger" href="#about">¿Quiénes somos?</a>
+            <a class="nav-link js-scroll-trigger" href="#signup">Suscribirse</a>
             <a class="nav-link js-scroll-trigger" href="#social">Contactanos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
-          </li>
-          <?php
-          if($usuario != "admin"){ ?>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
-                <?php echo $usuario;?>
-            </a>
-          </li>
-          <?php
-            }
-           ?> 
-                        
-             <?php
-          if($usuario == "admin"){ ?>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
-          </li>
-            <?php
-            }
-           ?> 
-            <?php 
-          if($usuario != ""){ ?>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
-          </li>
-            <?php
-            }
-           ?>
-           <li>
-           <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
-          <input class="form-control nav-item" type="text" placeholder="Search" aria-label="Search" name="buscador">
-          <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;text-size:15px">Buscar</button>
-        </form>
+        </li>
+        <?php if($usuario == "admin"){ ?>
+           <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
            </li>
-        </ul>
-        <!-- Collapsible content -->
-        
-      </div>
-  </div>
-</nav>
+       <?php } ?>
+
+       <!-- Pa' ti Sebascrack-->
+       <li>
+         <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
+            <input class="form-control nav-item" type="text" placeholder="Escriba" aria-label="Search" name="buscador">
+            <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;text-size:14px">Buscar</button>
+        </form>
+       </li>
+
+       <!--Hasta aqui  -->
+
+      </ul>
+
+      <?php if($usuario != "" && $usuario != "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 0px;">
+          <li style="list-style-type: none;" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0px;">
+                <!-- Laura inserta aquí la magia de la foto-->
+                <img class="imged" src="img/default.png" style="width:35px; height:35px; border-radius:25px;">
+                <?php echo $usuario;?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>">Ver mi perfil</a>
+              <!--  <a class="dropdown-item" href="#">Another action</a> -->
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Cerrar sesión</a>
+              </div>
+            </li>
+          </ul>
+      <?php }?>
+
+      <?php if($usuario == "" && $usuario != "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 0px;">
+          <li style="list-style-type: none;" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0px;">Acceder a mi cuenta</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="login.php">Conectarme</a>
+                <a class="dropdown-item" href="signup.php">Registrarme</a>
+              </div>
+            </li>
+          </ul>
+      <?php }?>
+
+      <?php if($usuario == "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 0px;">
+          <li style="list-style-type: none;" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0px;">
+                <?php echo $usuario;?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="logout.php">Cerrar sesión</a>
+              </div>
+            </li>
+          </ul>
+      <?php }?>
+  </nav>
 
 <header>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -122,14 +144,14 @@ include('conexiongen.php');
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    
+
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
       <div class="carousel-item active" style="background-image: url('img/bg-masthead.jpg')">
         <div class="carousel-caption d-md-block">
           <h2 class="display-4">Estamos en tu ciudad</h2>
           <p class="lead">Y te ayudamos a descubrirla.</p>
-          <?php 
+          <?php
           if($usuario == ""){ ?>
           <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
     padding-right: 40px;">Ingresar</a>
@@ -142,7 +164,7 @@ include('conexiongen.php');
     <?php
             }
            ?>
-            
+
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
@@ -150,7 +172,7 @@ include('conexiongen.php');
         <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Los dias y las noches.</h2>
           <p class="lead">No volveras a ver tu ciudad como antes.</p>
-          <?php 
+          <?php
           if($usuario == ""){ ?>
           <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
     padding-right: 40px;">Ingresar</a>
@@ -170,7 +192,7 @@ include('conexiongen.php');
         <div class="carousel-caption d-md-block">
           <h2 class="display-4">Dejate enamorar.</h2>
           <p class="lead">Una tierra magica que te cautivara.</p>
-          <?php 
+          <?php
           if($usuario == ""){ ?>
           <a  href="login.php" class="btn btn-primary js-scroll-trigger" style=" max-width: 10rem; max-height: 4rem; padding-top: 15px; padding-bottom: 15px; padding-left: 40px;
     padding-right: 40px;">Ingresar</a>
@@ -185,7 +207,7 @@ include('conexiongen.php');
            ?>
         </div>
       </div>
-      
+
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -219,7 +241,7 @@ include('conexiongen.php');
       <img src="" class="img-fluid" alt="">
     </div>
   </section>
-    
+
         <!-- eventos -->
     <section  class="lugares-section" id="lugares-sec" style="background-position: center;
     background-repeat: no-repeat;
@@ -239,11 +261,11 @@ include('conexiongen.php');
       <img src="" class="img-fluid" alt="">
     </div>
   </section>
-  
-    
-    
-    
-    
+
+
+
+
+
   <!-- About Section -->
   <section id="about" class="about-section text-center">
     <div class="container">
@@ -401,7 +423,7 @@ include('conexiongen.php');
              '.btn-ok').attr('href') + '</strong>');
         });
     </script>
-        
+
 <!-- MODAL ELIMINAR-->
     <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -409,17 +431,17 @@ include('conexiongen.php');
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">Mi cuenta <?php  echo $usuario;?></h4>
-                    
-                    
-                    
-                    <?php  
+
+
+
+                    <?php
 //obtencion de datos de la tabla
 
-	
+
 	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 	} else {
-	
+
 	$sql = "SELECT * FROM usuario WHERE user=$usuario";
 	$resultado= $conn->query($sql);
 	echo '<table><tr>';
@@ -434,11 +456,11 @@ include('conexiongen.php');
 
 ?>
 
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
 				</div>
 				<div class="modal-body">
 					<p>¿Deseas eliminar esta categoría?</p>
