@@ -110,11 +110,32 @@ include('conexiongen.php');
           <li style="list-style-type: none;" class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">
                 <!-- Laura inserta aquí la magia de la foto-->
-                <img class="imged" src="img/default.png" style="width:35px; height:35px; border-radius:25px;">
+                <img class="imged" src=<?php  
+                if (!$conn) {
+                echo 'img/default.png';
+                die("Connection failed: " . mysqli_connect_error());
+                } else {
+                        $sql = "SELECT * FROM usuarios WHERE user='$usuario'";
+                        $resultado=  $conn->query($sql);
+
+                     if($resultado->num_rows >0){
+                       while ($row = $resultado->fetch_assoc()){
+                           if($row["foto"]==''){
+                               echo 'img/default.png';
+                           } else {
+                             echo $row["foto"];
+                           }
+                        }
+                     }
+                     $resultado->close();
+                    }
+
+
+                      ?>  style="width:35px; height:35px; border-radius:25px;">
                 <?php echo $usuario;?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="PerfilUsuarios.php?usuario=<?php echo $usuario;?>">Ver mi perfil</a>
+                <a class="dropdown-item" href="PerfilUsuarios.php">Ver mi perfil</a>
               <!--  <a class="dropdown-item" href="#">Another action</a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout.php">Cerrar sesión</a>

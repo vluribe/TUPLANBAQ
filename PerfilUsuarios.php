@@ -38,6 +38,10 @@ include('conexiongen.php');
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         
 <style>
+div .hovereffect {
+    width: 300px;
+    height: 300px;
+    }
 .hovereffect {
   width: 100%;
   height: 100%;
@@ -320,7 +324,7 @@ include('conexiongen.php');
                    }else{    
                    echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
                     <div class="hovereffect">
-                        <img class="img-responsive" src="'.$row["foto"].'" height="300" width="400" alt="">
+                        <img class="img-responsive" src="'.$row["foto"].'" height="300" width="300" alt="">
                         <div class="overlay">
                            <h2>'.urlencode($row["nombre"]).'</h2>
                            <a class="info" href=lugar.php?lugar='.urlencode($row["nombre"]).'>ver más</a>
