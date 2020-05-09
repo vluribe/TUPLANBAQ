@@ -46,7 +46,7 @@ include('conexiongen.php');
   border: 0px ;
   background-color:transparent;
   background-image: url('img/searchicon.png');
-  background-position: 10px 12px; 
+  background-position: 10px 8px; 
   background-repeat: no-repeat;
   background-size: 16px 16px;
   padding: 6px 18px 6px 18px;
@@ -61,6 +61,11 @@ include('conexiongen.php');
   width: 80%;
   border: 2px solid #ccc;
   background-color: white;
+  background-position: 10px 12px; 
+}
+.nav-item{
+  display: flex; 
+  align-items: center;
 }
 </style>
 
@@ -70,24 +75,30 @@ include('conexiongen.php');
 <script src="includes/js/jquery-3.3.1.js"></script>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">TU PLAN A</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link js-scroll-trigger" href="#inicio">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
-        </li>
-        <li class="nav-item dropdown">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.php">TU PLAN A</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+       
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
+            
+            <input class="searchbuton"type="text" name="search">
+         
+          </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" style="display: flex; align-items: center;">
+            <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
+          </li>
+        <li class="nav-item" style="display: flex; align-items: center;">
+            <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
+          </li>
+          <li class="nav-item" style="display: flex; align-items: center;">
+            <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
+          </li>
+         <li class="nav-item dropdown" style="display: flex; align-items: center;">
           <a class="nav-link js-scroll-trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Nosotros
           </a>
@@ -95,8 +106,9 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#about">¿Quiénes somos?</a>
             <a class="nav-link js-scroll-trigger" href="#signup">Suscribirse</a>
             <a class="nav-link js-scroll-trigger" href="#social">Contactanos</a>
-        </li>
-        <?php if($usuario == "admin"){ ?>
+          </div>
+        </li>                        
+          <?php if($usuario == "admin"){ ?>
            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
            </li>
@@ -167,19 +179,12 @@ include('conexiongen.php');
             </li>
           </ul>
       <?php }?>
-      <li class="nav-item active">
-           <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
-            
-            <input class="searchbuton"type="text" name="search">
-         
-          </form>
-      </li>
-       <!--Hasta aqui  -->
-
-      </ul>
-
-      
-  </nav>
+        </ul>
+        <!-- Collapsible content -->
+        
+      </div>
+  </div>
+</nav>
 
 <header>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

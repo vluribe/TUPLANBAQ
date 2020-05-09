@@ -38,10 +38,6 @@ include('conexiongen.php');
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         
 <style>
-div .hovereffect {
-    width: 300px;
-    height: 300px;
-    }
 .hovereffect {
   width: 100%;
   height: 100%;
@@ -130,7 +126,32 @@ div .hovereffect {
   -webkit-transition-delay: .2s;
   transition-delay: .2s;
 }        
-        
+.searchbuton {
+  width: 5%;
+  border: 0px ;
+  background-color:transparent;
+  background-image: url('img/searchicon.png');
+  background-position: 10px 8px; 
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding: 6px 18px 6px 18px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border-radius: 70px 70px;
+  text-indent: 10px;
+}
+
+/* When the input field gets focus, change its width to 100% */
+.searchbuton:focus {
+  width: 80%;
+  border: 2px solid #ccc;
+  background-color: white;
+  background-position: 10px 12px; 
+}
+.nav-item{
+  display: flex; 
+  align-items: center;
+}
 </style>
         
         
@@ -153,15 +174,20 @@ div .hovereffect {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+        <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
+            
+            <input class="searchbuton"type="text" name="search">
+         
+          </form>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
         <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
+            <a class="nav-link js-scroll-trigger" href="eventos_home.php">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
+            <a class="nav-link js-scroll-trigger" href="lugares_home.php">Lugares</a>
           </li>
          
                         
@@ -181,12 +207,6 @@ div .hovereffect {
             <?php
             }
            ?>
-           <li>
-           <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
-          <input class="form-control nav-item" type="text" placeholder="Search" aria-label="Search" name="buscador">
-          <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;text-size:15px">Buscar</button>
-        </form>
-           </li>
         </ul>
         <!-- Collapsible content -->
         
@@ -324,7 +344,7 @@ div .hovereffect {
                    }else{    
                    echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
                     <div class="hovereffect">
-                        <img class="img-responsive" src="'.$row["foto"].'" height="300" width="300" alt="">
+                        <img class="img-responsive" src="'.$row["foto"].'" height="300" width="400" alt="">
                         <div class="overlay">
                            <h2>'.urlencode($row["nombre"]).'</h2>
                            <a class="info" href=lugar.php?lugar='.urlencode($row["nombre"]).'>ver más</a>
