@@ -210,9 +210,13 @@ if($resultado->num_rows >0){ ?>
           <!-- Portfolio Item Row -->
           <div class="row">
         
-            <div class="col-md-8">
-              <img class="img-fluid" src="'.$row["foto"].'" alt="">
-            </div>
+            <div class="col-md-8">';
+            if($row["foto"]==""){
+              echo '<img class="img-fluid" src="img/NoPlaceFound.png" alt="">';
+            }else{
+              echo '<img class="img-fluid" src="'.$row["foto"].'" alt="">';
+            }
+           echo'</div>
         
             <div class="col-md-4">
               <h3 class="my-3">Descripción del evento</h3>
@@ -284,7 +288,7 @@ if($resultado->num_rows >0){ ?>
                 <h2 style="color:white;">Reglamento:</h2>
                 <a id="cerrar" href="#">&times;</a>
                 <div class="popupContent">
-                <center><iframe id="iframepdf" src="'.$row["reglamento"].'"></iframe></center>
+                <iframe id="iframepdf" src="'.$row["reglamento"].'"></iframe>
                    
                 </div>
             </div>
