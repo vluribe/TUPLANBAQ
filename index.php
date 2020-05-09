@@ -41,6 +41,27 @@ include('conexiongen.php');
   -o-background-size: cover;
   background-size: cover;
 }
+.searchbuton {
+  width: 5%;
+  border: 0px ;
+  background-color:transparent;
+  background-image: url('img/searchicon.png');
+  background-position: 10px 12px; 
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding: 6px 18px 6px 18px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border-radius: 70px 70px;
+  text-indent: 10px;
+}
+
+/* When the input field gets focus, change its width to 100% */
+.searchbuton:focus {
+  width: 80%;
+  border: 2px solid #ccc;
+  background-color: white;
+}
 </style>
 
 </head>
@@ -82,21 +103,12 @@ include('conexiongen.php');
        <?php } ?>
 
        <!-- Pa' ti Sebascrack-->
-       <li>
-         <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
-            <input class="form-control nav-item" type="text" placeholder="Escriba" aria-label="Search" name="buscador">
-            <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;text-size:14px">Buscar</button>
-        </form>
-       </li>
-
-       <!--Hasta aqui  -->
-
-      </ul>
-
-      <?php if($usuario != "" && $usuario != "admin"){ ?>
-        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 0px;">
+       
+       
+       <?php if($usuario != "" && $usuario != "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
           <li style="list-style-type: none;" class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0px;">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">
                 <!-- Laura inserta aquí la magia de la foto-->
                 <img class="imged" src="img/default.png" style="width:35px; height:35px; border-radius:25px;">
                 <?php echo $usuario;?>
@@ -110,11 +122,10 @@ include('conexiongen.php');
             </li>
           </ul>
       <?php }?>
-
       <?php if($usuario == "" && $usuario != "admin"){ ?>
-        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 0px;">
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
           <li style="list-style-type: none;" class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0px;">Acceder a mi cuenta</a>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">Acceder a mi cuenta</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="login.php">Conectarme</a>
                 <a class="dropdown-item" href="signup.php">Registrarme</a>
@@ -122,11 +133,11 @@ include('conexiongen.php');
             </li>
           </ul>
       <?php }?>
-
+        
       <?php if($usuario == "admin"){ ?>
-        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 0px;">
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
           <li style="list-style-type: none;" class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0px;">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">
                 <?php echo $usuario;?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -135,6 +146,18 @@ include('conexiongen.php');
             </li>
           </ul>
       <?php }?>
+      <li class="nav-item active">
+           <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
+            
+            <input class="searchbuton"type="text" name="search">
+         
+          </form>
+      </li>
+       <!--Hasta aqui  -->
+
+      </ul>
+
+      
   </nav>
 
 <header>

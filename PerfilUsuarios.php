@@ -283,7 +283,8 @@ include('conexiongen.php');
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;">Mis lugares favoritos</h1>
+  user-select: none;
+  padding-top:40px;">Mis lugares favoritos</h1>
         
 <div class="container">
 
@@ -307,7 +308,7 @@ include('conexiongen.php');
 	if($resultado->num_rows >0){
     while($row = $resultado->fetch_assoc()){
              if($row["foto"]==""){ 
-                echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
                     <div class="hovereffect">
                         <img class="img-responsive" src="img/NoPlaceFound.png" alt="">
                         <div class="overlay">
@@ -317,7 +318,7 @@ include('conexiongen.php');
                     </div>
                   </div>';
                    }else{    
-                   echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                   echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
                     <div class="hovereffect">
                         <img class="img-responsive" src="'.$row["foto"].'" height="300" width="400" alt="">
                         <div class="overlay">
