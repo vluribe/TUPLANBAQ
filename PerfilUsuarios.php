@@ -13,21 +13,22 @@ include('conexiongen.php');
 <!DOCTYPE html>
 <html>
     
-    
-    <link href="//netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <script src="//netdna.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
-    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <head>
-<meta content="text/html; charset=utf-8"/>
-        <link href="css/grayscale.min.css" rel="stylesheet">
-          <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <meta name="description" content="">
+          <meta name="author" content="">
+          <meta content="text/html; charset=utf-8"/>
+          <link href="css/grayscale.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -35,7 +36,7 @@ include('conexiongen.php');
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">  
         
    <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
         
 <style>
 .hovereffect {
@@ -170,14 +171,14 @@ include('conexiongen.php');
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="index.php">TU PLAN A</a>
+      
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+      
         <div class="collapse navbar-collapse" id="navbarResponsive">
         <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
-            
             <input class="searchbuton"type="text" name="search">
-         
           </form>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -188,9 +189,7 @@ include('conexiongen.php');
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="lugares_home.php">Lugares</a>
-          </li>
-         
-                        
+          </li>        
              <?php
           if($usuario == "admin"){ ?>
             <li class="nav-item">
@@ -218,71 +217,56 @@ include('conexiongen.php');
 
 <div class="container" style="margin-top: 5%;">
     <div class="span3 well">
-
-        <center>
-     <img src=<?php  
-    //obtencion de datos de la tabla
-	
-	if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-	} else {
-        
-            $sql = "SELECT * FROM usuarios WHERE user='$usuario'";
-            $resultado=  $conn->query($sql);
-
-         if($resultado->num_rows >0){
-              while($row = $resultado->fetch_assoc()){
-                    echo $row["foto"];
+    <center>
+     <img name="aboutme" width="140" height="140" border="0" class="img-circle" onerror="this.src='img/default.png';" src=<?php  
+        if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        } else {
+                $sql = "SELECT * FROM usuarios WHERE user='$usuario'";
+                $resultado=  $conn->query($sql);
+                 if($resultado->num_rows >0){
+                      while($row = $resultado->fetch_assoc()){
+                            echo $row["foto"];
+                    }
+                 }
+                 $resultado->close();
             }
-         }
-         $resultado->close();
-        }
+          ?>  >
+            
+        <h3 class="media-heading"><?php echo $usuario ?></h3>
+        </center> 
         
-          
-          ?> 
-               
-          name="aboutme" width="140" height="140" border="0" class="img-circle" onerror="this.src='img/default.png';">
-                    <h3 class="media-heading"><?php echo $usuario ?></h3>
-             </center>   
         <?php
-        	//include('/conexiongen.php');
             if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
             } else {
-
                     $sql = "SELECT * FROM preferencias WHERE user='$usuario'";
                     $resultado=  $conn->query($sql);
                     $info_campo = $resultado->fetch_fields();
                     $row =$resultado->fetch_assoc();
                 
-                echo ' <center> <span><strong>Intereses: </strong></span>';
-                    foreach ($info_campo as $valor) {
-                        if($row[$valor->name]=='1'){
-                           echo' <span class="label label-warning">'.$valor->name.'</span>';
+                    echo ' <center> <span><strong>Intereses: </strong></span>';
+                        foreach ($info_campo as $valor) {
+                            if($row[$valor->name]=='1'){
+                               echo' <span class="label label-warning">'.$valor->name.'</span>';
+                            }
                         }
-                    }
-              echo ' <hr>';
+                    echo ' <hr>';
                 
-                
-                
-                
-                 if($resultado->num_rows >0){
-                      while($row = $resultado->fetch_assoc()){
-                            echo '<span class="label label-warning">'.$row['foto'].'';
-                    }
-                 }
-                 $resultado->close();
+                     if($resultado->num_rows >0){
+                          while($row = $resultado->fetch_assoc()){
+                                echo '<span class="label label-warning">'.$row['foto'].'';
+                        }
+                     }
+                     $resultado->close();
                 }
 
-
     ?>
-    
-             
-                    <center>
-                    <p class="text-left"><strong>Bio: </strong><br>
-                        Aun no añades una descripcion, hazlo ahora</p>
-                    <br>
-                </center>
+            <center>
+                <p class="text-left"><strong>Bio: </strong><br>
+                    Aun no añades una descripcion, hazlo ahora</p>
+                <br>
+            </center>
               
     
             
@@ -311,16 +295,11 @@ include('conexiongen.php');
   padding-top:40px;">Mis lugares favoritos</h1>
         
 <div class="container">
-
-
   <hr class="mt-2 mb-5">
-
   <div class="row text-center text-lg-left">
-
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <?php 
-        
-	// Check connection
 	
 	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -353,17 +332,14 @@ include('conexiongen.php');
                   </div>';
                   }
 
-            
+        }
     }
-}
 	$resultado->close();
 	echo '</tr></table>';
     }
-        
-
 	mysqli_close($conn);
-
     ?>
+      
     </div>
     </body>
 </html>
