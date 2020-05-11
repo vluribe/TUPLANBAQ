@@ -38,6 +38,11 @@ include('conexiongen.php');
    <!-- Bootstrap core CSS -->
 
         
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
 <style>
 .hovereffect {
   width: 100%;
@@ -130,6 +135,7 @@ include('conexiongen.php');
 .searchbuton {
   width: 5%;
   border: 0px ;
+  cursor: pointer;
   background-color:transparent;
   background-image: url('img/searchicon.png');
   background-position: 10px 8px; 
@@ -152,6 +158,14 @@ include('conexiongen.php');
 .nav-item{
   display: flex; 
   align-items: center;
+}
+    
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
 }
 </style>
         
@@ -177,10 +191,13 @@ include('conexiongen.php');
         </button>
       
         <div class="collapse navbar-collapse" id="navbarResponsive">
-        <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
+        
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
             <input class="searchbuton"type="text" name="search">
           </form>
-        <ul class="navbar-nav ml-auto">
+            </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
@@ -272,74 +289,98 @@ include('conexiongen.php');
             
                         
     </div>
-                       
-    <!-- Modal -->
-
 </div>
-                         
-
-<h1 style="    padding-bottom: 2.5rem;
-    font-family: 'Varela Round';
-  font-size: 3.5rem;
-  line-height: 2.5rem;
-  letter-spacing: 0.8rem;
-  background: -webkit-linear-gradient(rgba(217, 113, 17, 1), rgba(65, 47, 31, 1));
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text; display: block;
-  text-align: center;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding-top:40px;">Mis lugares favoritos</h1>
         
 <div class="container">
-  <hr class="mt-2 mb-5">
-  <div class="row text-center text-lg-left">
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <?php 
-	
-	if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-	} else {
-	$sql = "SELECT l.* FROM favoritos f join lugaresbaq l on l.ID_lugar=f.id_lugar WHERE f.id_usuario='$usuario'";
-	$resultado= $conn->query($sql);
-	echo '<table><tr>';
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">tus lugares</a></li>
+    <li><a data-toggle="tab" href="#menu1">tus eventos</a></li>
+    <li><a data-toggle="tab" href="#menu2">Guardado</a></li>
+  </ul>
+        
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+     <div class="container">
+      <hr class="mt-2 mb-5">
+      <div class="row text-center text-lg-left">
 
-	if($resultado->num_rows >0){
-    while($row = $resultado->fetch_assoc()){
-             if($row["foto"]==""){ 
-                echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
-                    <div class="hovereffect">
-                        <img class="img-responsive" src="img/NoPlaceFound.png" alt="">
-                        <div class="overlay">
-                           <h2>Hover effect 1v2</h2>
-                           <a class="info" href=lugar.php?lugar="'.urlencode($row["nombre"]).'>ver más</a>
+        <?php 
+
+        if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        } else {
+        $sql = "SELECT l.* FROM favoritos f join lugaresbaq l on l.ID_lugar=f.id_lugar WHERE f.id_usuario='$usuario'";
+        $resultado= $conn->query($sql);
+        echo '<table><tr>';
+
+        if($resultado->num_rows >0){
+        while($row = $resultado->fetch_assoc()){
+                 if($row["foto"]==""){ 
+                    echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="img/NoPlaceFound.png" alt="">
+                            <div class="overlay">
+                               <h2>Hover effect 1v2</h2>
+                               <a class="info" href=lugar.php?lugar="'.urlencode($row["nombre"]).'>ver más</a>
+                            </div>
                         </div>
-                    </div>
-                  </div>';
-                   }else{    
-                   echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
-                    <div class="hovereffect">
-                        <img class="img-responsive" src="'.$row["foto"].'" height="300" width="400" alt="">
-                        <div class="overlay">
-                           <h2>'.urlencode($row["nombre"]).'</h2>
-                           <a class="info" href=lugar.php?lugar='.urlencode($row["nombre"]).'>ver más</a>
+                      </div>';
+                       }else{    
+                       echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="'.$row["foto"].'" height="300" width="400" alt="">
+                            <div class="overlay">
+                               <h2>'.urlencode($row["nombre"]).'</h2>
+                               <a class="info" href=lugar.php?lugar='.urlencode($row["nombre"]).'>ver más</a>
+                            </div>
                         </div>
-                    </div>
-                  </div>';
-                  }
+                      </div>';
+                      }
 
+            }
         }
-    }
-	$resultado->close();
-	echo '</tr></table>';
-    }
-	mysqli_close($conn);
-    ?>
+        $resultado->close();
+        echo '</tr></table>';
+        }
+        mysqli_close($conn);
+        ?>
       
+        </div>
     </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+  </div>              
+</div>    
+    
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
