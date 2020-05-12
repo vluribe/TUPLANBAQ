@@ -40,6 +40,25 @@ include('conexiongen.php');
 
   <link href="css/popup.css" rel="stylesheet" type="text/css" />
   <link href="css/grayscale.min.css" rel="stylesheet">
+<<<<<<< Updated upstream
+=======
+  <style>
+ .searchbuton {
+  width: 5%;
+  border: 0px ;
+  cursor: pointer;
+  background-color:transparent;
+  background-image: url('img/searchicon.png');
+  background-position: 10px 8px; 
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding: 6px 18px 6px 18px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border-radius: 70px 70px;
+  text-indent: 10px;
+}
+>>>>>>> Stashed changes
 
 </head>
 

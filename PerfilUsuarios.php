@@ -38,6 +38,7 @@ include('conexiongen.php');
 <!------ Include the above in your HEAD tag ---------->
         
         
+<<<<<<< Updated upstream
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,6 +47,14 @@ include('conexiongen.php');
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+=======
+        <ul class="navbar-nav ml-auto" style="display: flex; align-items: left;">
+            <li class="nav-item">
+            <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
+            <input class="searchbuton"type="text" name="search">
+          </form>
+            </li>
+>>>>>>> Stashed changes
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" style="background-color: black; color: white;font-weight: bold;" href="index.php">Inicio</a>
             </li>                     

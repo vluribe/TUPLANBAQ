@@ -61,6 +61,36 @@ include('conexiongen.php');
   -o-background-size: cover;
   background-size: cover;
 }
+<<<<<<< Updated upstream
+=======
+.searchbuton {
+  width: 5%;
+  border: 0px ;
+  cursor: pointer;
+  background-color:transparent;
+  background-image: url('img/searchicon.png');
+  background-position: 10px 8px; 
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding: 6px 18px 6px 18px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border-radius: 70px 70px;
+  text-indent: 10px;
+}
+
+/* When the input field gets focus, change its width to 100% */
+.searchbuton:focus {
+  width: 80%;
+  border: 2px solid #ccc;
+  background-color: white;
+  background-position: 10px 12px; 
+}
+.nav-item{
+  display: flex; 
+  align-items: center;
+}
+>>>>>>> Stashed changes
 </style>
 
 </head>
