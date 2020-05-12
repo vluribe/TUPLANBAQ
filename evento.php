@@ -40,8 +40,7 @@ include('conexiongen.php');
 
   <link href="css/popup.css" rel="stylesheet" type="text/css" />
   <link href="css/grayscale.min.css" rel="stylesheet">
-<<<<<<< Updated upstream
-=======
+
   <style>
  .searchbuton {
   width: 5%;
@@ -58,12 +57,23 @@ include('conexiongen.php');
   border-radius: 70px 70px;
   text-indent: 10px;
 }
->>>>>>> Stashed changes
 
+/* When the input field gets focus, change its width to 100% */
+.searchbuton:focus {
+  width: 80%;
+  border: 2px solid #ccc;
+  background-color: white;
+  background-position: 10px 12px; 
+}
+.nav-item{
+  display: flex; 
+  align-items: center;
+}
+ </style>
 </head>
-
+ 
 <body id="page-top" >
-
+ 
   <!-- Navigation -->
   <script src="includes/js/jquery-3.3.1.js"></script>
   <!-- Navigation -->
@@ -74,40 +84,94 @@ include('conexiongen.php');
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
+      <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
+            
+            <input class="searchbuton"type="text" name="search">
+         
+          </form>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="eventos_home.php">Más eventos</a>
-          </li>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
-                <?php  echo $usuario;?>
-            </a>
-          </li>
-                        
-             <?php 
-          if($usuario == "admin"){ ?>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin_eventos.php">Administrar eventos</a>
-          </li>
-            <?php
-            }
-           ?> 
-            <?php 
-          if($usuario != ""){ ?>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
-          </li>
-            <?php
-            }
-           ?>
+          </li> 
+                               
+          <?php if($usuario == "admin"){ ?>
+           <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
+           </li>
+       <?php } ?>
+
+       <!-- Pa' ti Sebascrack-->
+       
+       
+       <?php if($usuario != "" && $usuario != "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
+          <li style="list-style-type: none;" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">
+                <!-- Laura inserta aquí la magia de la foto-->
+                <img class="imged" src=<?php  
+                if (!$conn) {
+                echo 'img/default.png';
+                die("Connection failed: " . mysqli_connect_error());
+                } else {
+                        $sql = "SELECT * FROM usuarios WHERE user='$usuario'";
+                        $resultado=  $conn->query($sql);
+
+                     if($resultado->num_rows >0){
+                       while ($row = $resultado->fetch_assoc()){
+                           if($row["foto"]==''){
+                               echo 'img/default.png';
+                           } else {
+                             echo $row["foto"];
+                           }
+                        }
+                     }
+                     $resultado->close();
+                    }
+
+
+                      ?>  style="width:35px; height:35px; border-radius:25px;">
+                <?php echo $usuario;?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="PerfilUsuarios.php">Ver mi perfil</a>
+              <!--  <a class="dropdown-item" href="#">Another action</a> -->
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Cerrar sesión</a>
+              </div>
+            </li>
+          </ul>
+      <?php }?>
+      <?php if($usuario == "" && $usuario != "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
+          <li style="list-style-type: none;" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">Acceder a mi cuenta</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="login.php">Conectarme</a>
+                <a class="dropdown-item" href="signup.php">Registrarme</a>
+              </div>
+            </li>
+          </ul>
+      <?php }?>
+        
+      <?php if($usuario == "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
+          <li style="list-style-type: none;" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">
+                <?php echo $usuario;?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="logout.php">Cerrar sesión</a>
+              </div>
+            </li>
+          </ul>
+      <?php }?>
         </ul>
       </div>
     </div>
   </nav>
-    
   <!-- Header -->
  
     <!-- Details section -->
@@ -148,9 +212,13 @@ if($resultado->num_rows >0){ ?>
           <!-- Portfolio Item Row -->
           <div class="row">
         
-            <div class="col-md-8">
-              <img class="img-fluid" src="'.$row["foto"].'" alt="">
-            </div>
+            <div class="col-md-8">';
+            if($row["foto"]==""){
+              echo '<img class="img-fluid" src="img/NoPlaceFound.png" alt="">';
+            }else{
+              echo '<img class="img-fluid" src="'.$row["foto"].'" alt="">';
+            }
+           echo'</div>
         
             <div class="col-md-4">
               <h3 class="my-3">Descripción del evento</h3>
@@ -222,7 +290,7 @@ if($resultado->num_rows >0){ ?>
                 <h2 style="color:white;">Reglamento:</h2>
                 <a id="cerrar" href="#">&times;</a>
                 <div class="popupContent">
-                <center><iframe id="iframepdf" src="'.$row["reglamento"].'"></iframe></center>
+                <iframe id="iframepdf" src="'.$row["reglamento"].'"></iframe>
                    
                 </div>
             </div>
