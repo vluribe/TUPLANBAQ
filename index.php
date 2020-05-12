@@ -41,9 +41,11 @@ include('conexiongen.php');
   -o-background-size: cover;
   background-size: cover;
 }
+
 .searchbuton {
   width: 5%;
   border: 0px ;
+  cursor: pointer;
   background-color:transparent;
   background-image: url('img/searchicon.png');
   background-position: 10px 8px; 
@@ -67,6 +69,7 @@ include('conexiongen.php');
   display: flex; 
   align-items: center;
 }
+
 </style>
 
 </head>

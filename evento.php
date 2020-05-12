@@ -40,10 +40,12 @@ include('conexiongen.php');
 
   <link href="css/popup.css" rel="stylesheet" type="text/css" />
   <link href="css/grayscale.min.css" rel="stylesheet">
+
   <style>
  .searchbuton {
   width: 5%;
   border: 0px ;
+  cursor: pointer;
   background-color:transparent;
   background-image: url('img/searchicon.png');
   background-position: 10px 8px; 
