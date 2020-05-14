@@ -1,17 +1,18 @@
 <?php
 	
 include('conexiongen.php');
-if (!$conn) {
+	
+	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 	} else {
         $usuario=$_POST['usuario'];
-        $lugar=$_POST['lugar'];
+        $evento=$_POST['evento'];
         
-        $sql = "SELECT * FROM favoritos f where f.id_usuario='$usuario' AND f.id_evento='$lugar'";
+        $sql = "SELECT * FROM favoritos f where f.id_usuario='$usuario' AND f.id_lugar='$evento'";
         $resultado= $conn->query($sql);
         if($resultado->num_rows >0){
              //Sentencia sql
-                $sqli="DELETE FROM favoritos WHERE id_usuario='$usuario' AND id_evento='$lugar'";
+                $sqli="DELETE FROM favoritos WHERE id_usuario='$usuario' AND id_lugar='$evento'";
                 //ejecutar sentencia
                 $ejecutar=mysqli_query($conn, $sqli);
                 //verificar ejecucion
@@ -20,13 +21,12 @@ if (!$conn) {
                 } else {
                     echo "eliminado";
                 }
-        }else{
+            }else{
                 //Sentencia sql
-                $sqli="INSERT INTO favoritos
+                $sqli="INSERT INTO eventos_favoritos
                 (id_usuario,
-                id_lugar,
                 id_evento)
-                VALUES ('$usuario', '','$lugar')";
+                VALUES ('$usuario', '$evento')";
                 //ejecutar sentencia
                 $ejecutar=mysqli_query($conn, $sqli);
                 //verificar ejecucion

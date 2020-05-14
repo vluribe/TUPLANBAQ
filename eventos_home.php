@@ -15,6 +15,27 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
 }
 include('conexiongen.php');
 ?>
+<?php
+
+  function accion($usuario, $evento){
+    
+	
+	if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+	} else {
+        $sqli="INSERT INTO eventos_favoritos (id_usuario,id_evento) VALUES ('$usuario','$evento')";
+		//ejecutar sentencia
+		$ejecutar=mysqli_query($conn, $sqli);
+		//verificar ejecucion
+		if(!$ejecutar){
+			echo "hubo un error insertando en favoritos";
+		} else {
+			echo "Datos guardados correctamente";
+            echo $usuario;
+		}
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -434,26 +455,26 @@ include('conexiongen.php');
     $result = mysqli_query($conn, "SELECT * FROM eventosbaq");
 
 	if($resultado->num_rows >0){
-			while($row = $resultado->fetch_assoc()){
+    while($row = $resultado->fetch_assoc()){
                 
-                echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
-                
-               
-                echo '<a class="btn btn-primary" href="evento.php?evento='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="sellugar" value="'.$row["ID_evento"].'" /> ';
-                
-                 $sql2 = 'SELECT * FROM favoritos f where f.id_usuario="'.$usuario.'" AND f.id_evento="'.$row["ID_evento"].'"';
-	            $resultado2= $conn->query($sql2);
-                
-                if($resultado2->num_rows>0){
-        
-               echo  '<button style="border: none;  background-color: white;" class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
-                }else{
-                    echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
-                    
-                } 
+      echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
+      
+     
+      echo '<a class="btn btn-primary" href="evento.php?evento='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="selevento" value="'.$row["ID_evento"].'" /> ';
+      
+       $sql2 = 'SELECT * FROM eventos_favoritos f where f.id_usuario="'.$usuario.'" AND f.id_evento="'.$row["ID_evento"].'"';
+    $resultado2= $conn->query($sql2);
+      
+      if($resultado2->num_rows>0){
 
-              
-			}
+     echo  '<button style="border: none;  background-color: white;" class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
+      }else{
+          echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
+          
+      } 
+
+    
+}
 	}
 	$resultado->close();
     
@@ -571,15 +592,18 @@ $(document).ready(function(){
 
     $(".place").click(function(){
         var selusu = $('#selusuario').val();
-        var sellugar = $(this).val();
-        console.log(sellugar);
+        var selevento = $(this).val();
+        console.log(selevento);
+        console.log(selusu);
         if(selusu==''){
             alert("Debe iniciar sesión para añadir a favoritos");
         } else{
-    $.post("eventosfav.php", {usuario:selusu, lugar:sellugar}, function(datos){
+    $.post("eventosfav.php", {usuario:selusu, evento:selevento}, function(datos){
         if(datos == 'error'){
                 alert("Los datos no se han grabado");
                
+        }else{
+            console.log(datos);
         }
         
     });
@@ -596,5 +620,6 @@ $(document).ready(function(){
 
   
 </script>
+
 
 </html>

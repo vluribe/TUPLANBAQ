@@ -157,14 +157,14 @@ include('conexiongen.php');
            </li>
        <?php } ?>
 
-       <!-- Pa' ti Sebascrack-->
+       
        
        
        <?php if($usuario != "" && $usuario != "admin"){ ?>
         <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
           <li style="list-style-type: none;" class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">
-                <!-- Laura inserta aquí la magia de la foto-->
+                  
                 <img class="imged" src=<?php  
                 if (!$conn) {
                 echo 'img/default.png';
