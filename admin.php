@@ -188,7 +188,9 @@ include('conexiongen.php');
 	if($resultado->num_rows >0){
 			while($row = $resultado->fetch_assoc()){
 				echo '<table align="justify" cellspacing=2 cellpadding=0 id="data_table" border=1>';
+                echo '<form action="editar-lugar.php"  method="post">';
 				echo '<tr>';
+                echo '<td><input type="submit" value="Editar"></td>';
 				echo '<td><input type="text" name="nombre" value="'.$row["nombre"].'" readonly /></td>';
 				echo '<td><input type="text" name="descripcion" value="'.$row["descripcion"].'" readonly /></td>';
                 echo '<td><input type="text" name="direccion" value="'.$row["direccion"].'" readonly /></td>';
@@ -197,6 +199,7 @@ include('conexiongen.php');
 				echo '<td><input type="text" name="foto" value="'.$row["foto"].'" readonly /></td>';
 				echo '<td><a href="'.$row["foto"].'">Descargar</a></td>';
 			    echo '</tr>';
+                echo '</form>';
 			}
 	}
 	$resultado->close();
@@ -208,7 +211,9 @@ include('conexiongen.php');
       </div>
     </section>
     
-
+<form action="editar.php"  method="post">
+    <input type="submit" value="Editar">
+    </form>
  <footer class="bg-black small text-center text-white-50">
     <div class="container">
       Copyright &copy; SISEdigital 2019
