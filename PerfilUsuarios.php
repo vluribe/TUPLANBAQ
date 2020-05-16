@@ -167,6 +167,17 @@ include('conexiongen.php');
     font-weight: 600;
     color: #0062cc;
 }
+    @media only screen and (min-width: 992px){
+        #navbarResponsive{
+                display: flex !important;
+    justify-content: flex-end;
+    align-items: initial;
+        }
+        ul{
+            display: block;
+    align-self: center;
+        }
+    }
 </style>
         
         
@@ -190,14 +201,12 @@ include('conexiongen.php');
           <span class="navbar-toggler-icon"></span>
         </button>
       
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-        
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-            <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
+        <div class="collapse navbar-collapse" id="navbarResponsive" >
+        <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
             <input class="searchbuton"type="text" name="search">
           </form>
-            </li>
+        <ul class="navbar-nav ml-auto">
+           
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
