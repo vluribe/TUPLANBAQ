@@ -11,6 +11,7 @@
         $direccion=$_POST['direccion'];
 		$tel=$_POST['tel'];
         $maps=$_POST['maps'];
+        $ID_lugar="$nombre.$direccion";
 		$nombre=$_FILES['foto']['name'];
         $nombre=str_replace(' ', '', $nombre);
         
@@ -18,7 +19,7 @@
 		echo "El archivo se grabo correctamente. <br />";
 		echo "Archivo guardado ".$nombre;
         
-        $sql="SELECT nombre FROM lugaresbaq WHERE nombre='$name'";
+        $sql="SELECT nombre FROM lugaresbaq WHERE ID_lugar = '$ID_lugar'";
         $resultado= $conn->query($sql);
 	       if($resultado->num_rows >0){
                $repetido='si';

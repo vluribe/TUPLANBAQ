@@ -10,21 +10,30 @@ include('conexiongen.php');
         $empresa=$_POST['empresa'];
         $descripcion=$_POST['descripcion'];
         $direccion=$_POST['direccion'];
-        $tel=$_POST['tel'];
-        $foto=$_FILES['foto']['name'];
-        $foto=str_replace(' ', '', $foto);
+        $tel=$_POST['tele'];
         $ID_lugar="$nombre.$direccion";
+        $fotos=$_FILES['foto']['name'];
+        $fotos=str_replace(' ', '', $fotos);
+        echo "as ".$fotos;
+        if ($fotos!=''){
+           $fotos=str_replace(' ', '', $fotos);  
+           copy($_FILES['foto']['tmp_name'], $fotos);
+		   echo "El archivo se grabo correctamente. <br />";
+		   echo "Archivo guardado ".$fotos;
+            $sqli="UPDATE lugaresbaq SET empresa = '$empresa', descripcion = '$descripcion', tel = '$tel', foto = '$fotos' WHERE lugaresbaq.ID_lugar = '$ID_lugar'";
+		} else {
+             $sqli="UPDATE lugaresbaq SET empresa = '$empresa', descripcion = '$descripcion', tel = '$tel' WHERE lugaresbaq.ID_lugar = '$ID_lugar'";  
+		}
+        echo $sqli;
         
-        copy($_FILES['foto']['tmp_name'], $foto);
-		echo "El archivo se grabo correctamente. <br />";
-		echo "Archivo guardado ".$foto;
+        
+        
+        
         
         $sql = "SELECT * FROM lugaresbaq WHERE lugaresbaq.ID_lugar='$ID_lugar'";
         echo $sql;
         $resultado= $conn->query($sql);
         if($resultado->num_rows >0){
-             //Sentencia sql
-                $sqli="UPDATE lugaresbaq SET empresa = '$empresa', descripcion = '$descripcion', tel = '$tel', maps = '$maps', foto = '$foto' WHERE lugaresbaq.ID_lugar = '$ID_lugar'";
                 //ejecutar sentencia
                 $ejecutar=mysqli_query($conn, $sqli);
                 //verificar ejecucion
