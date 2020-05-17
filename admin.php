@@ -27,17 +27,17 @@ if($usuario != 'admin' ){
   <title>TU PLAN ADMIN</title>
 
   <!-- Theme CSS - Includes Bootstrap -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/grayscale.min.css" rel="stylesheet">
   <link href="css/creative.css" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-
-
-
+  <link href="css/owncss.css" rel="stylesheet">
 
 
 </head>
@@ -128,7 +128,7 @@ if($usuario != 'admin' ){
                 </table>
                 <br/>
             <br/>
-            <h3><strong>Seleccione todas las categorias a las que pertenezca su lugar</strong></h3>
+            <h3 id="titulocat" style="font-size:25px; text-align:center;"><strong>Seleccione todas las categorias a las que pertenezca su lugar</strong></h3>
              
           <table align='center' cellspacing=0 cellpadding=0 id="data_table" border=1>
                 <tr>
@@ -189,7 +189,7 @@ if($usuario != 'admin' ){
 	
 	$sql = "SELECT * FROM lugaresbaq";
 	$resultado= $conn->query($sql);
-    echo '<table style="margin:0px; padding:0px; width:80% !important;"   cellpadding=0 id="data_table" border=1>';
+    echo '<center><table style="margin:0px; padding:0px; width:80% !important;"   cellpadding=0 id="data_table" border=1>';
     echo '<tr> <th></th>  <th></th> <th>nombre</th> <th>descripción</th> <th>dirección</th> <th>teléfono</th> <th>empresa</th> <th>foto</th> <th></th> </tr>';
         
 	if($resultado->num_rows >0){
@@ -210,7 +210,7 @@ if($usuario != 'admin' ){
 			}
 	}
 	$resultado->close();
-	echo '</tr></table>';
+	echo '</tr></table></center>';
 	}
 
 

@@ -14,6 +14,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
       }
 }
 include('conexiongen.php');
+
 ?>
 <?php
 
@@ -451,12 +452,12 @@ include('conexiongen.php');
             }
        
 	$resultado= $conn->query($sql);
-        
+  $currentDateTime = date('Y-m-d');
     $result = mysqli_query($conn, "SELECT * FROM eventosbaq");
 
 	if($resultado->num_rows >0){
     while($row = $resultado->fetch_assoc()){
-                
+      if($row["fin"]>$currentDateTime) {         
       echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
       
      
@@ -472,6 +473,7 @@ include('conexiongen.php');
           echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
           
       } 
+    }
 
     
 }

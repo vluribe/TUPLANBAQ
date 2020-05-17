@@ -1,11 +1,14 @@
 <?php
 session_start();
-if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == '' || $_SESSION['usuario'] != 'admin'){
     $usuario='';
 } else {
      $usuario=$_SESSION['usuario'];
 }
 include('conexiongen.php');
+if($usuario != 'admin' ){
+  echo "<script>window.location.href='index.php';</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -194,7 +197,7 @@ $("#otroprecio").prop("disabled", false);
       <small id="otrosdochelp" class="form-text text-muted"> Si tiene un documento que desee compartir para el publico.</small>
     </div>
   </fieldset>
-  <h3 id="titulocat" style="font-size:25px;">Seleccione todas las categorias a las que pertenezca su evento</h3>
+  <h3 id="titulocat" style="font-size:25px; text-align:center;">Seleccione todas las categorias a las que pertenezca su evento</h3>
              
           <table align='center' cellspacing=0 cellpadding=0 id="data_table" border=1>
                 <tr>
@@ -220,6 +223,7 @@ $("#otroprecio").prop("disabled", false);
                <tr>
                     <th><input type="checkbox" name="cdinero" value="1">Con dinero</th>
                     <th><input type="checkbox" name="sdinero" value="1">Sin dinero</th>
+                    <th><input type="checkbox" name="virtuales" value="1">Virtuales</th>
                 </tr>
             </table>
             <input align="center" type="submit" value="Enviar"/>
@@ -261,14 +265,15 @@ $(document).ready(function(){
 </script>
   <!-- codigo php -->
     
-  <section class="page-section bg-primary" id="listaE" style="background-color:green !important;">
-    <div class="container">
+  <section class="page-section bg-primary" id="listaL">
+    <div class="container" style="margin: 0px; padding: 0px; width:100% !important;">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
-          <h2 class="text-white mt-0">Eventos existentes</h2>
+          <h2 class="text-white mt-0">Eventos Existentes</h2>
           </div>
         </div>    
-    
+     </div>
+    </section>
 <?php  
 //obtencion de datos de la tabla
 
@@ -280,30 +285,61 @@ $(document).ready(function(){
 	
 	$sql = "SELECT * FROM eventosbaq";
 	$resultado= $conn->query($sql);
-	echo '<table><tr>';
-
+    echo '<center><table style="margin:0px; padding:0px; width:80% !important;"   cellpadding=0 id="data_table" border=1>';
+    echo '<tr> <th></th>  <th></th> <th>nombre</th> <th>descripción</th> <th>dirección</th> <th>teléfono</th> <th>empresa</th> <th>foto</th> <th></th> </tr>';
+        
 	if($resultado->num_rows >0){
 			while($row = $resultado->fetch_assoc()){
-				echo '<table align="justify" cellspacing=2 cellpadding=0 id="data_table" border=1>';
-				echo '<tr>';
-				echo '<td><input type="text" name="nombre" value="'.$row["nombre"].'" readonly /></td>';
-				echo '<td><input type="text" name="descripcion" value="'.$row["descripcion"].'" readonly /></td>';
-                echo '<td><input type="text" name="direccion" value="'.$row["direccion"].'" readonly /></td>';
-                echo '<td><input type="text" name="telefono" value="'.$row["telefono"].'" readonly /></td>';
-                echo '<td><input type="text" name="empresa" value="'.$row["empresa"].'" readonly /></td>';
-				echo '<td><input type="text" name="foto" value="'.$row["foto"].'" readonly /></td>';
-				echo '<td><a href="../tuplanbaq/'.$row["foto"].'" style="color:white;">Descargar</a></td>';
+				echo '<tr id="'.$row["ID_evento"].'" >';?>
+                <td style="width:5%;"><button class="btn btn-danger btn-sm remove">Delete</button></td> <?php  
+                echo '<form action="editar-evento.php"  method="post">';
+				echo '<td style="width:5%;"><input type="submit" value="Editar" class="btn btn-success btn-sm"></td>';
+				echo '<td style="width:12%;"><input type="text" name="nombre" value="'.$row["nombre"].'" readonly /></td>';
+				echo '<td style="width:12%;"><input type="text" name="descripcion" value="'.$row["descripcion"].'" readonly /></td>';
+                echo '<td style="width:12%;"><input type="text" name="direccion" value="'.$row["direccion"].'" readonly /></td>';
+                echo '<td style="width:12%;"><input type="text" name="tel" value="'.$row["telefono"].'" readonly /></td>';
+                echo '<td style="width:12%;"><input type="text" name="empresa" value="'.$row["empresa"].'" readonly /></td>';
+				echo '<td style="width:12%;"><input type="text" name="foto" value="'.$row["foto"].'" readonly /></td>';
+				echo '<td style="width:12%;"><a href="'.$row["foto"].'">Descargar</a></td>';
+                echo '</form>'; 
 			    echo '</tr>';
 			}
 	}
 	$resultado->close();
-	echo '</tr></table>';
+	echo '</tr></table></center>';
 	}
 
 
 ?>
-      </div>
-    </section>
+    <script type="text/javascript">
+$(document).ready(function(){    
+    $(".remove").click(function(){
+        var id = $(this).parents("tr").attr("id");
+
+
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+               url: 'eliminar-evento.php',
+               type: 'POST',
+               data: {id: id},
+               error: function() {
+                  alert('Something is wrong');
+               },
+               success: function(data) {
+                    $("#"+id).remove();
+                    alert("Record removed successfully");
+                    location.reload();
+               }
+            });
+        }
+    });
+
+});
+</script>
+    <form action="editar.php"  method="post">
+    <input type="submit" value="Editar">
+    </form>
   <!-- Contact Section -->
   <section class="contact-section bg-black">
     <div class="container">
