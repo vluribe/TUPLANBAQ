@@ -111,11 +111,7 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#social">Contactanos</a>
           </div>
         </li>                        
-          <?php if($usuario == "admin"){ ?>
-           <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="admin.php?usuario=admin">Administrar lugares</a>
-           </li>
-       <?php } ?>
+          
 
        <!-- Pa' ti Sebascrack-->
        
@@ -177,6 +173,10 @@ include('conexiongen.php');
                 <?php echo $usuario;?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="admin.php">Administrar lugares</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="admin_eventos.php">Administrar eventos</a>
+                  <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout.php">Cerrar sesión</a>
               </div>
             </li>

@@ -6,6 +6,9 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
      $usuario=$_SESSION['usuario'];
 }
 include('conexiongen.php');
+if($usuario != 'admin' ){
+    echo "<script>window.location.href='index.php';</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,10 +59,10 @@ include('conexiongen.php');
             <a class="nav-link js-scroll-trigger" href="#listaL">lista lugares</a>
           </li>
 		  <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href=<?php  echo 'admin_eventos.php?usuario='.$usuario;?>>+eventos</a>
+            <a class="nav-link js-scroll-trigger" href=<?php  echo 'admin_eventos.php' ?> >+eventos</a>
           </li>
          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href=<?php  echo 'index.php?usuario='.$usuario;?>>Inicio</a>
+            <a class="nav-link js-scroll-trigger" href=<?php  echo 'index.php'?> > Inicio</a>
           </li>
         </ul>
       </div>
@@ -243,7 +246,7 @@ $(document).ready(function(){
     
  <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Copyright &copy; SISEdigital 2019
+      Copyright &copy; SISEdigital 2020
     </div>
   </footer>
 
