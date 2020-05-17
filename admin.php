@@ -234,7 +234,8 @@ $(document).ready(function(){
                },
                success: function(data) {
                     $("#"+id).remove();
-                    alert("Record removed successfully");
+                    console.log(data);
+                    alert("Record removed successfully "+data);
                     location.reload();
                }
             });
