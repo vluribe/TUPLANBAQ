@@ -94,7 +94,6 @@
             } else { 
                 ?>
                  <script language="JavaScript">
-                alert("Listo!");
                 window.location.href='index.php';
 		       </script> 
                 <?php 

@@ -28,7 +28,7 @@ include('conexiongen.php');
     <label for="">descripcion</label><br>
     <input type="text" name="descripcion" value=<?php echo "'$descripcion'";?> ><br>
     <label for="">tel</label><br>
-    <input type="text" name="tele" value=<?php echo "'$tel'";?> ><br>
+    <input type="text" name="tel" value=<?php echo "'$tel'";?> ><br>
     <label for="">empresa</label><br>
     <input type="text" name="empresa" value=<?php echo "'$empresa'";?> ><br>
     <label for="">foto</label><br>

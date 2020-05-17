@@ -10,7 +10,7 @@ include('conexiongen.php');
         $empresa=$_POST['empresa'];
         $descripcion=$_POST['descripcion'];
         $direccion=$_POST['direccion'];
-        $tel=$_POST['tele'];
+        $tel=$_POST['tel'];
         $ID_lugar="$nombre.$direccion";
         $fotos=$_FILES['foto']['name'];
         $fotos=str_replace(' ', '', $fotos);

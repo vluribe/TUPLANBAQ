@@ -17,6 +17,9 @@ include('conexiongen.php');
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
   <title>TU PLAN ADMIN</title>
 
@@ -30,8 +33,7 @@ include('conexiongen.php');
   <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
-  <!-- Plugin CSS -->
-  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
 
 
 
@@ -165,13 +167,14 @@ include('conexiongen.php');
   <!-- codigo php -->
     
   <section class="page-section bg-primary" id="listaL">
-    <div class="container">
+    <div class="container" style="margin: 0px; padding: 0px; width:100% !important;">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
           <h2 class="text-white mt-0">Lugares Existentes</h2>
           </div>
         </div>    
-    
+     </div>
+    </section>
 <?php  
 //obtencion de datos de la tabla
 
@@ -183,23 +186,24 @@ include('conexiongen.php');
 	
 	$sql = "SELECT * FROM lugaresbaq";
 	$resultado= $conn->query($sql);
-	echo '<table><tr>';
-
+    echo '<table style="margin:0px; padding:0px; width:80% !important;"   cellpadding=0 id="data_table" border=1>';
+    echo '<tr> <th></th>  <th></th> <th>nombre</th> <th>descripción</th> <th>dirección</th> <th>teléfono</th> <th>empresa</th> <th>foto</th> <th></th> </tr>';
+        
 	if($resultado->num_rows >0){
 			while($row = $resultado->fetch_assoc()){
-				echo '<table align="justify" cellspacing=2 cellpadding=0 id="data_table" border=1>';
+				echo '<tr id="'.$row["ID_lugar"].'" >';?>
+                <td style="width:5%;"><button class="btn btn-danger btn-sm remove">Delete</button></td> <?php  
                 echo '<form action="editar-lugar.php"  method="post">';
-				echo '<tr>';
-                echo '<td><input type="submit" value="Editar"></td>';
-				echo '<td><input type="text" name="nombre" value="'.$row["nombre"].'" readonly /></td>';
-				echo '<td><input type="text" name="descripcion" value="'.$row["descripcion"].'" readonly /></td>';
-                echo '<td><input type="text" name="direccion" value="'.$row["direccion"].'" readonly /></td>';
-                echo '<td><input type="text" name="tel" value="'.$row["tel"].'" readonly /></td>';
-                echo '<td><input type="text" name="empresa" value="'.$row["empresa"].'" readonly /></td>';
-				echo '<td><input type="text" name="foto" value="'.$row["foto"].'" readonly /></td>';
-				echo '<td><a href="'.$row["foto"].'">Descargar</a></td>';
+				echo '<td style="width:5%;"><input type="submit" value="Editar" class="btn btn-success btn-sm"></td>';
+				echo '<td style="width:12%;"><input type="text" name="nombre" value="'.$row["nombre"].'" readonly /></td>';
+				echo '<td style="width:12%;"><input type="text" name="descripcion" value="'.$row["descripcion"].'" readonly /></td>';
+                echo '<td style="width:12%;"><input type="text" name="direccion" value="'.$row["direccion"].'" readonly /></td>';
+                echo '<td style="width:12%;"><input type="text" name="tel" value="'.$row["tel"].'" readonly /></td>';
+                echo '<td style="width:12%;"><input type="text" name="empresa" value="'.$row["empresa"].'" readonly /></td>';
+				echo '<td style="width:12%;"><input type="text" name="foto" value="'.$row["foto"].'" readonly /></td>';
+				echo '<td style="width:12%;"><a href="'.$row["foto"].'">Descargar</a></td>';
+                echo '</form>'; 
 			    echo '</tr>';
-                echo '</form>';
 			}
 	}
 	$resultado->close();
@@ -208,12 +212,35 @@ include('conexiongen.php');
 
 
 ?>
-      </div>
-    </section>
+     
     
-<form action="editar.php"  method="post">
-    <input type="submit" value="Editar">
-    </form>
+<script type="text/javascript">
+$(document).ready(function(){    
+    $(".remove").click(function(){
+        var id = $(this).parents("tr").attr("id");
+
+
+        if(confirm('Are you sure to remove this record ?'))
+        {
+            $.ajax({
+               url: 'eliminar-lugar.php',
+               type: 'POST',
+               data: {id: id},
+               error: function() {
+                  alert('Something is wrong');
+               },
+               success: function(data) {
+                    $("#"+id).remove();
+                    alert("Record removed successfully");
+                    location.reload();
+               }
+            });
+        }
+    });
+
+});
+</script>
+    
  <footer class="bg-black small text-center text-white-50">
     <div class="container">
       Copyright &copy; SISEdigital 2019
@@ -221,8 +248,7 @@ include('conexiongen.php');
   </footer>
 
 
-  <!-- Custom scripts for this template -->
-  <script src="js/creative.min.js"></script>
+
 
 </body>
 

@@ -44,7 +44,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
 		<script language="JavaScript">
 			
 			//mensaje
-			alert("Listo!");
 			window.location.href='lugar.php?lugar=<?php echo $_POST["lugar"]; ?>';
 		</script>
  
