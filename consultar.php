@@ -32,72 +32,157 @@ include('conexiongen.php');
 
   <!-- Custom styles for this template -->
   <link href="css/grayscale.css" rel="stylesheet">
- 
 
+  <style>
+  .searchbuton {
+    width: 5%;
+    border: 0px ;
+    cursor: pointer;
+    background-color:transparent;
+    background-image: url('img/searchicon.png');
+    background-position: 10px 8px;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    padding: 6px 18px 6px 18px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    border-radius: 70px 70px;
+    text-indent: 10px;
+  }
+
+  /* When the input field gets focus, change its width to 100% */
+  .searchbuton:focus {
+    width: 80%;
+    border: 2px solid #ccc;
+    background-color: white;
+    background-position: 10px 12px;
+  }
+  .nav-item{
+    display: flex;
+    align-items: center;
+  }
+
+  </style>
 
 </head>
 
 <body id="page-top">
 <script src="includes/js/jquery-3.3.1.js"></script>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="margin-bottom:10%;">
-    <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.php">TU PLAN A</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
+
+            <input class="searchbuton"type="text" name="search">
+
+          </form>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li class="nav-item" style="display: flex; align-items: center;">
             <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
-        <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="eventos_home.php">Eventos</a>
+        <li class="nav-item" style="display: flex; align-items: center;">
+            <a class="nav-link js-scroll-trigger" href="#eventos-sec">Eventos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="lugares_home.php">Lugares</a>
+          <li class="nav-item" style="display: flex; align-items: center;">
+            <a class="nav-link js-scroll-trigger" href="#lugares-sec">Lugares</a>
           </li>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="PerfilUsuarios.php" >
-                <?php  echo $usuario;?>
-            </a>
-          </li>
-                        
-             <?php 
-          if($usuario == "admin"){ ?>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="admin.php">Administrar lugares</a>
-          </li>
-            <?php
-            }
-           ?> 
-            <?php 
-          if($usuario != ""){ ?>
-            <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
-          </li>
-            <?php
-            }
-           ?>
+         <li class="nav-item dropdown" style="display: flex; align-items: center;">
+          <a class="nav-link js-scroll-trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Nosotros
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="nav-link js-scroll-trigger" href="#about">¿Quiénes somos?</a>
+            <a class="nav-link js-scroll-trigger" href="#signup">Suscribirse</a>
+            <a class="nav-link js-scroll-trigger" href="#social">Contactanos</a>
+          </div>
+        </li>
+
+       <?php if($usuario != "" && $usuario != "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
+          <li style="list-style-type: none;" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">
+                <!-- Laura inserta aquí la magia de la foto-->
+                <img class="imged" src=<?php
+                if (!$conn) {
+                echo 'img/default.png';
+                die("Connection failed: " . mysqli_connect_error());
+                } else {
+                        $sql = "SELECT * FROM usuarios WHERE user='$usuario'";
+                        $resultado=  $conn->query($sql);
+
+                     if($resultado->num_rows >0){
+                       while ($row = $resultado->fetch_assoc()){
+                           if($row["foto"]==''){
+                               echo 'img/default.png';
+                           } else {
+                             echo $row["foto"];
+                           }
+                        }
+                     }
+                     $resultado->close();
+                    }
+
+
+                      ?>  style="width:35px; height:35px; border-radius:25px;">
+                <?php echo $usuario;?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="PerfilUsuarios.php">Ver mi perfil</a>
+              <!--  <a class="dropdown-item" href="#">Another action</a> -->
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Cerrar sesión</a>
+              </div>
+            </li>
+          </ul>
+      <?php }?>
+      <?php if($usuario == "" && $usuario != "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
+          <li style="list-style-type: none;" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">Acceder a mi cuenta</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="login.php">Conectarme</a>
+                <a class="dropdown-item" href="signup.php">Registrarme</a>
+              </div>
+            </li>
+          </ul>
+      <?php }?>
+
+      <?php if($usuario == "admin"){ ?>
+        <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
+          <li style="list-style-type: none;" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">
+                <?php echo $usuario;?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="admin.php">Administrar lugares</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="admin_eventos.php">Administrar eventos</a>
+                  <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Cerrar sesión</a>
+              </div>
+            </li>
+          </ul>
+      <?php }?>
         </ul>
         <!-- Collapsible content -->
-        
-        <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data">
-      <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="buscador">
-      <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 nav-item" type="submit" style="background-color:#64a19d; padding: 2% 2% 2% 2%;">Buscar</button>
-    </form>
+
       </div>
-    </div>
-  </nav>
+  </div>
+</nav>
 
 <?php
-	
 	if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 	} else {
-        $busqueda=$_POST['buscador'];
+        $busqueda=$_POST['search'];
         if($busqueda==""){
-          echo '<h3>No hay lugares</h3>';
+          echo '<h3 style="font-size:80px">No hay eventos</h3>';
         }else{
           echo'<section class="resultadosbusqueda" style="background-color:black; padding-top:10%;">';
           $sql = "SELECT * FROM eventosbaq where nombre LIKE '%$busqueda%'";
@@ -105,13 +190,13 @@ include('conexiongen.php');
           if($resultado->num_rows >0){
             echo'<section class="resultadosbusqueda" >
             <h2 style="Text-align:Center;color:white;"><strong>Eventos</strong></h2>
-            
+
             <div class="container">
             <div class="row">';
           while($row = $resultado->fetch_assoc()){
-            
+
             echo '
-      
+
               <div class="col-md-4 mb-3 mb-md-0" style="margin-bottom: 5px !important;max-height: 500px;" >
                 <div class="card py-4 h-100" style="padding-top: 0px !important;max-height: 500px;">
                   <div class="card-body text-center" style="max-height: 300px;">';
@@ -120,7 +205,7 @@ include('conexiongen.php');
                   }else{
                     echo '<a href="evento.php?lugar='.urlencode($row["nombre"]).'"><img class="card-img-top" src="'.$row["foto"].'"  width="100%" style="max-height: 300px;" height="100%" alt="logo"></a>';
                   }
-                
+
                 echo '<div class="card-body" style="padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px; max-width: 100%; max-height: 100%;">
                   <h6 class="card-title">
                     <a href="evento.php?lugar='.urlencode($row["nombre"]).'">'.$row["nombre"].'</a>
@@ -129,7 +214,7 @@ include('conexiongen.php');
                 </div>
               </div>
             </div></div>';
-            
+
               }
              echo'</div></div></section>';
             }
@@ -138,13 +223,13 @@ include('conexiongen.php');
           if($resultado->num_rows >0){
             echo'<section class="resultadosbusqueda" >
             <h2 style="Text-align:Center;color:white;"><strong>Lugares</strong></h2>
-            
+
             <div class="container">
             <div class="row">';
           while($row = $resultado->fetch_assoc()){
-            
+
             echo '
-      
+
             <div class="col-md-4 mb-3 mb-md-0" style="margin-bottom: 5px !important;max-height: 500px;" >
             <div class="card py-4 h-100" style="padding-top: 0px !important;max-height: 500px;">
               <div class="card-body text-center" style="max-height: 300px;">
@@ -157,7 +242,7 @@ include('conexiongen.php');
                 </div>
               </div>
             </div></div>';
-            
+
               }
              echo'</div></div></section>';
             }
@@ -165,9 +250,8 @@ include('conexiongen.php');
         }
         mysqli_close($conn);
 }
-	
-
 ?>
+
   <!-- Contact Section -->
   <section class="contact-section bg-black">
     <div class="container">
