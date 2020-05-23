@@ -12,7 +12,7 @@ include('conexiongen.php');
 
 <!DOCTYPE html>
 <html>
-    
+
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
@@ -21,7 +21,6 @@ include('conexiongen.php');
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
     <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,16 +32,16 @@ include('conexiongen.php');
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">  
-        
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
    <!-- Bootstrap core CSS -->
 
-        
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        
+
 <style>
 .hovereffect {
   width: 100%;
@@ -131,14 +130,14 @@ include('conexiongen.php');
 .hovereffect:hover a.info {
   -webkit-transition-delay: .2s;
   transition-delay: .2s;
-}        
+}
 .searchbuton {
   width: 5%;
   border: 0px ;
   cursor: pointer;
   background-color:transparent;
   background-image: url('img/searchicon.png');
-  background-position: 10px 8px; 
+  background-position: 10px 8px;
   background-repeat: no-repeat;
   background-size: 16px 16px;
   padding: 6px 18px 6px 18px;
@@ -153,13 +152,13 @@ include('conexiongen.php');
   width: 80%;
   border: 2px solid #ccc;
   background-color: white;
-  background-position: 10px 12px; 
+  background-position: 10px 12px;
 }
 .nav-item{
-  display: flex; 
+  display: flex;
   align-items: center;
 }
-    
+
 .profile-tab label{
     font-weight: 600;
 }
@@ -178,35 +177,59 @@ include('conexiongen.php');
     align-self: center;
         }
     }
+    .camarabutton {
+      width: 0%;
+      border: 0px ;
+      cursor: pointer;
+      background-color:transparent;
+      background-image: url('img/camaraicon.png');
+      background-position: 10px 8px;
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      padding: 6px 18px 6px 18px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+      border-radius: 70px 70px;
+      text-indent: 20px;
+    }
+
+    /* When the input field gets focus, change its width to 100% */
+    .camara-button:focus {
+      display:absolute;
+      width: 80%;
+      border: 2px solid #ccc;
+      background-color: white;
+      background-position: 10px 12px;
+    }
 </style>
-        
-        
+
+
 
 <!------ Include the above in your HEAD tag ---------->
-        
-        
+
+
     <title>MI PERFIL</title>
-        
+
 </head>
-    
+
     <body id="page-top">
 
-        
+
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="index.php">TU PLAN A</a>
-      
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
+
         <div class="collapse navbar-collapse" id="navbarResponsive" >
         <form class="form-inline mr-auto" action="consultar.php" method="post" enctype="multipart/form-data" >
             <input class="searchbuton"type="text" name="search">
           </form>
         <ul class="navbar-nav ml-auto">
-           
+
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="index.php">Inicio</a>
           </li>
@@ -215,7 +238,7 @@ include('conexiongen.php');
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="lugares_home.php">Lugares</a>
-          </li>        
+          </li>
              <?php
           if($usuario == "admin"){ ?>
             <li class="nav-item">
@@ -223,31 +246,31 @@ include('conexiongen.php');
           </li>
             <?php
             }
-           ?> 
-            <?php 
+           ?>
+            <?php
           if($usuario != ""){ ?>
             <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="logout.php">Log Out</a>
+            <a class="nav-link js-scroll-trigger" href="logout.php">Cerrar sesión</a>
           </li>
             <?php
             }
            ?>
         </ul>
         <!-- Collapsible content -->
-        
+
       </div>
   </div>
 </nav>
-        
-        
+
+
 
 <div class="container" style="margin-top: 5%;">
     <div class="span3 well">
     <center>
-     <img name="aboutme" width="140" height="140" border="0" class="img-circle" onerror="this.src='img/default.png';" src=<?php  
+     <img name="aboutme" width="140" height="140" border="0" class="img-circle" onerror="this.src='img/default.png';" src=<?php
         if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
-        } else {  
+        } else {
                 $sql = "SELECT * FROM usuarios WHERE user='$usuario'";
                 $resultado=  $conn->query($sql);
                  if($resultado->num_rows >0){
@@ -258,14 +281,21 @@ include('conexiongen.php');
                  $resultado->close();
             }
           ?>  >
-        <form action="change-profile.php" method="post" enctype="multipart/form-data">
-        <i class="fas fa-camera"></i>
-        <input type="file" id="foto" name="foto" accept="image/*">
-        <input type="submit" value="OK">
-        </form>
-        <h3 class="media-heading"><?php echo $usuario ?></h3>
-        </center> 
-        
+
+          <script>
+          $(document).ready(function(){ document.getElementById('foto').onclick = function(){
+              document.getElementById("ok").style.display = "block";
+          } });</script>
+
+
+          <form action="change-profile.php" method="post" enctype="multipart/form-data" >
+              <input class="camarabutton" type="file" name="foto" id="foto" accept="image/*" >
+              <input style="display:none;" type="submit" value="OK" id="ok">
+          </form>
+
+
+          <h3 class="media-heading"><?php echo $usuario ?></h3>
+          </center>
         <?php
             if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
@@ -274,7 +304,7 @@ include('conexiongen.php');
                     $resultado=  $conn->query($sql);
                     $info_campo = $resultado->fetch_fields();
                     $row =$resultado->fetch_assoc();
-                
+
                     echo ' <center> <span><strong>Intereses: </strong></span>';
                         foreach ($info_campo as $valor) {
                             if($row[$valor->name]=='1'){
@@ -282,7 +312,7 @@ include('conexiongen.php');
                             }
                         }
                     echo ' <hr>';
-                
+
                      if($resultado->num_rows >0){
                           while($row = $resultado->fetch_assoc()){
                                 echo '<span class="label label-warning">'.$row['foto'].'';
@@ -297,13 +327,13 @@ include('conexiongen.php');
                     Aun no añades una descripcion, hazlo ahora</p>
                 <br>
             </center>
-              
-    
-            
-                        
+
+
+
+
     </div>
 </div>
-        
+
 <div class="container">
 
   <ul class="nav nav-tabs">
@@ -311,7 +341,7 @@ include('conexiongen.php');
     <li><a data-toggle="tab" href="#menu1">Tus eventos</a></li>
     <li><a data-toggle="tab" href="#menu2">Guardado</a></li>
   </ul>
-        
+
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
       <h3>HOME</h3>
@@ -319,7 +349,7 @@ include('conexiongen.php');
       <hr class="mt-2 mb-5">
       <div class="row text-center text-lg-left">
 
-        <?php 
+        <?php
 
         if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -330,7 +360,7 @@ include('conexiongen.php');
 
         if($resultado->num_rows >0){
         while($row = $resultado->fetch_assoc()){
-                 if($row["foto"]==""){ 
+                 if($row["foto"]==""){
                     echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
                         <div class="hovereffect">
                             <img class="img-responsive" src="img/Defaulpe.png" style="height:300px; width:400px;" alt="">
@@ -340,7 +370,7 @@ include('conexiongen.php');
                             </div>
                         </div>
                       </div>';
-                       }else{    
+                       }else{
                        echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
                         <div class="hovereffect">
                             <img class="img-responsive" src="'.$row["foto"].'" style="height:300px; width:400px;" alt="">
@@ -358,7 +388,7 @@ include('conexiongen.php');
         echo '</tr></table>';
         }
         ?>
-      
+
         </div>
     </div>
     </div>
@@ -368,7 +398,7 @@ include('conexiongen.php');
       <hr class="mt-2 mb-5">
       <div class="row text-center text-lg-left">
 
-        <?php 
+        <?php
 
         if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -379,7 +409,7 @@ include('conexiongen.php');
 
         if($resultado->num_rows >0){
         while($row = $resultado->fetch_assoc()){
-                 if($row["foto"]==""){ 
+                 if($row["foto"]==""){
                     echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
                         <div class="hovereffect">
                             <img class="img-responsive" src="img/Defaulpe.png" style="height:300px; width:400px;" alt="">
@@ -389,7 +419,7 @@ include('conexiongen.php');
                             </div>
                         </div>
                       </div>';
-                       }else{    
+                       }else{
                        echo '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
                         <div class="hovereffect">
                             <img class="img-responsive" src="'.$row["foto"].'" style="height:300px; width:400px;" alt="">
@@ -408,7 +438,7 @@ include('conexiongen.php');
         }
         mysqli_close($conn);
         ?>
-      
+
         </div>
     </div>
     </div>
@@ -416,29 +446,8 @@ include('conexiongen.php');
       <h3>Menu 2</h3>
       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
     </div>
-  </div>              
-</div>    
-    
+  </div>
+</div>
+
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
