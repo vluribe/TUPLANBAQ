@@ -430,7 +430,8 @@ include('conexiongen.php');
 </div>
     
         
-<section class="contact-section bg-black" ID="social">
+<!-- Contact Section -->
+<section class="contact-section bg-black" id="social">
     <div class="container">
 
       <div class="row">
@@ -441,7 +442,7 @@ include('conexiongen.php');
               <i class="fas fa-map-marked-alt text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Address</h4>
               <hr class="my-4">
-              <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+              <div class="small text-black-50">KM 5 vía puerto Colombia, Uninorte</div>
             </div>
           </div>
         </div>
@@ -453,7 +454,7 @@ include('conexiongen.php');
               <h4 class="text-uppercase m-0">Email</h4>
               <hr class="my-4">
               <div class="small text-black-50">
-                <a href="#">hello@yourdomain.com</a>
+                <a href="#">lauravud@gmail.com</a>
               </div>
             </div>
           </div>
@@ -465,7 +466,7 @@ include('conexiongen.php');
               <i class="fas fa-mobile-alt text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Phone</h4>
               <hr class="my-4">
-              <div class="small text-black-50">+1 (555) 902-8832</div>
+              <div class="small text-black-50">+57 3016844167</div>
             </div>
           </div>
         </div>
@@ -475,11 +476,11 @@ include('conexiongen.php');
         <a href="#" class="mx-2">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="#" class="mx-2">
-          <i class="fab fa-facebook-f"></i>
+        <a href="https://www.facebook.com/tuplanbaq/" class="mx-2">
+          <i class="fab fa-facebook-f" ></i>
         </a>
-        <a href="#" class="mx-2">
-          <i class="fab fa-github"></i>
+        <a href="https://www.instagram.com/tuplan.a/" class="mx-2">
+          <i class="fab fa-instagram" ></i>
         </a>
       </div>
 
@@ -489,7 +490,7 @@ include('conexiongen.php');
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Copyright &copy; Your Website 2019
+      Copyright &copy; TU PLAN A 2020
     </div>
   </footer>
   <!-- Bootstrap core JavaScript -->

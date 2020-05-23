@@ -437,11 +437,11 @@ include('conexiongen.php');
         <a href="#" class="mx-2">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="#" class="mx-2">
-          <i class="fab fa-facebook-f"></i>
+        <a href="https://www.facebook.com/tuplanbaq/" class="mx-2">
+          <i class="fab fa-facebook-f" ></i>
         </a>
-        <a href="#" class="mx-2">
-          <i class="fab fa-github"></i>
+        <a href="https://www.instagram.com/tuplan.a/" class="mx-2">
+          <i class="fab fa-instagram" ></i>
         </a>
       </div>
 

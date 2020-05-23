@@ -2,21 +2,12 @@
 session_start();
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario'] == ''){
     $usuario='';
-    if(isset($_POST['tipo'])){
-      $tipo=$_POST['tipo'];}else{
-        $tipo="todos";
-      }
 } else {
      $usuario=$_SESSION['usuario'];
-     if(isset($_POST['tipo'])){
-      $tipo=$_POST['tipo'];}else{
-        $tipo="todos";
-      }
 }
 include('conexiongen.php');
-
 ?>
-<?php
+   <?php
 
   function accion($usuario, $evento){
     
@@ -37,6 +28,7 @@ include('conexiongen.php');
     }
   }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,6 +40,7 @@ include('conexiongen.php');
   <meta name="author" content="">
 
   <title>TU PLAN BAQ</title>
+
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -56,11 +49,16 @@ include('conexiongen.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Custom styles for this template -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
     
       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -68,12 +66,15 @@ include('conexiongen.php');
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  
+    
+    
+    
     
     <link href="css/grayscale.min.css" rel="stylesheet">
     <link href="css/creative.css" rel="stylesheet">
     <link href="css/owncss.css" rel="stylesheet">
-  <style>
+
+    <style>
 .carousel-item {
   height: 100vh;
   min-height: 350px;
@@ -111,7 +112,6 @@ include('conexiongen.php');
   display: flex; 
   align-items: center;
 }
-
 
 </style>
 
@@ -157,14 +157,14 @@ include('conexiongen.php');
            </li>
        <?php } ?>
 
-       <!-- Pa' ti Sebascrack-->
+       
        
        
        <?php if($usuario != "" && $usuario != "admin"){ ?>
         <ul class="form-inline my-2 my-lg-0 mr-5" style="padding-left: 8px;">
           <li style="list-style-type: none;" class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 8px;">
-                <!-- Laura inserta aquí la magia de la foto-->
+                  
                 <img class="imged" src=<?php  
                 if (!$conn) {
                 echo 'img/default.png';
@@ -238,42 +238,22 @@ include('conexiongen.php');
     </ol>
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <?php 
-      if(strcmp($tipo, "virtuales") == 0 ){?>
-      <div class="carousel-item active" style="background-image: url('img/virtual-header.jpg')">
-      <?php }else{
-        ?>
-        <div class="carousel-item active" style="background-image: url('img/evento1.jpg')">
-      <?php }?>
+      <div class="carousel-item active" style="background-image: url('img/evento1.jpg')">
         <div class="carousel-caption  d-md-block">
           <h2 class="display-4">Estamos en tu ciudad</h2>
           <p class="lead">Y te ayudamos a descubrirla.</p>
         </div>
       </div>
       <!-- Slide Two - Set the background image for this slide in the line below -->
-      <?php 
-      if(strcmp($tipo, "virtuales") == 0 ){?>
-      <div class="carousel-item" style="background-image: url('img/virual-header5.jpg')">
-      <?php }else{
-        ?>
-        <div class="carousel-item" style="background-image: url('img/evento2.jpeg')">
-      <?php }?>
-      
-        <div class="carousel-caption  d-md-block">
+      <div class="carousel-item" style="background-image: url('img/evento2.jpeg')">
+        <div class="carousel-caption d-md-block">
           <h2 class="display-4">Los dias y las noches.</h2>
           <p class="lead">No volveras a ver tu ciudad como antes.</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
-      <?php 
-      if(strcmp($tipo, "virtuales") == 0 ){?>
-      <div class="carousel-item" style="background-image: url('img/virtual-head4.jpg')">
-      <?php }else{
-        ?>
-        <div class="carousel-item" style="background-image: url('img/evento3.jpg')">
-      <?php }?>
-      
-        <div class="carousel-caption  d-md-block">
+      <div class="carousel-item" style="background-image: url('img/evento3.jpg')">
+        <div class="carousel-caption d-md-block">
           <h2 class="display-4">Dejate enamorar.</h2>
           <p class="lead">Una tierra magica que te cautivara.</p>
         </div>
@@ -288,79 +268,15 @@ include('conexiongen.php');
           <span class="sr-only">Next</span>
         </a>
   </div>
-</header>
-  <!--Section lista eventos-->
-  <!-- Page Content -->
-<div class="container" id="listaeventos" style="padding-top:3%;">
-    
-            <!--Filter by-->
-          <?php if(strcmp($tipo, "virtuales") == 0 ){ ?>
-            <div class="dropdown" style="display:none;"><!--Quitar display none para cuando esten listos estos filtros-->
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            filtrar por
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              
-            <form action="eventos_home.php" method="post">
-                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="virtuales" > ver todo </button>
-            </form>  
-              
-            <form action="eventos_home.php" method="post">
-                  <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="redessociales" >Redes sociales</button>
-            </form>
-              
-            <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="paginasweb" >Paginas web</button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="stream" >Plataformas de stream</button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="tv" >Television</button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="facebook" >Facebook </button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="instagram" >Instagram </button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="youtube" >Youtube</button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="twitter" >Twitter</button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="twitch" >Twitch</button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="todopublico" > Para todo publico </button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="informativo">Informativos</button>
-              </form>
-              
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="entretenimiento" >Entretenimiento</button>
-              </form>
+</header>  
 
-              <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="sinDinero" >Visitar gratis</button>
-              </form>
-              
-          </div>
-        </div>
-        <?php }else{
-        ?>
+    
+
+    
+<!---page image---->
+<div class="container" id="listaeventos" style="padding-top:3%;">
+        
+        <!--Filter by-->
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             filtrar por
@@ -395,7 +311,7 @@ include('conexiongen.php');
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="ejercicio" >Salir a ejercitarte </button>
               </form>
               
-              <form action="eventos_home.php" method="post">
+              <form action="eventoss_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="cultura" >Enriquece tu cultura</button>
               </form>
               
@@ -418,17 +334,16 @@ include('conexiongen.php');
               <form action="eventos_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="relajarse" >Tiempo para relajarse</button>
               </form>
+
               <form action="eventos_home.php" method="post">
-                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="virtuales" >Eventos virtuales</button>
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="sinDinero" >Visitar gratis</button>
               </form>
               
           </div>
         </div>
-        <?php }?>
-    
-    
-    
-        <?php  
+
+      
+  <?php  
 //obtencion de datos de la tabla
 	                                                                                                                     
 	
@@ -456,31 +371,31 @@ include('conexiongen.php');
             }
        
 	$resultado= $conn->query($sql);
+        
   $currentDateTime = date('Y-m-d');
     $result = mysqli_query($conn, "SELECT * FROM eventosbaq");
 
 	if($resultado->num_rows >0){
-    while($row = $resultado->fetch_assoc()){
-      if($row["fin"]>$currentDateTime) {         
-      echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
-      
-     
-      echo '<a class="btn btn-primary" href="evento.php?evento='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="selevento" value="'.$row["ID_evento"].'" /> ';
-      
-       $sql2 = 'SELECT * FROM eventos_favoritos f where f.id_usuario="'.$usuario.'" AND f.id_evento="'.$row["ID_evento"].'"';
-    $resultado2= $conn->query($sql2);
-      
-      if($resultado2->num_rows>0){
-
-     echo  '<button style="border: none;  background-color: white;" class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
-      }else{
-          echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
-          
-      } 
-    }
-
-    
-}
+			while($row = $resultado->fetch_assoc()){
+        if($row["fin"]>$currentDateTime) {  
+                echo '<div class="row"> <div class="col-md-7"> <a href="#">  <img class="img-fluid rounded mb-3 mb-md-0 resize" style="height:300px; width:700px;" src="'.$row["foto"].'" height="300" width="700" alt="logo"></a> </div> <div class="col-md-5">  <h3>'.$row["nombre"].'</h3><p>'.$row["descripcion"].'</p>';
+                
+               
+                echo '<a class="btn btn-primary" href="evento.php?evento='.urlencode($row["nombre"]).'">ver más</a> <input type="hidden" id="selusuario" value="'.$usuario.'" /><input type="hidden" id="selevento" value="'.$row["ID_evento"].'" /> ';
+                
+                 $sql2 = 'SELECT * FROM eventos_favoritos f where f.id_usuario="'.$usuario.'" AND f.id_evento="'.$row["ID_evento"].'"';
+	            $resultado2= $conn->query($sql2);
+                
+                if($resultado2->num_rows>0){
+        
+               echo  '<button style="border: none;  background-color: white;" class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
+                }else{
+                    echo  '<button style="border: none;  background-color: white;"  class="place" value="'.$row["ID_evento"].'" > <i class="heart fa fa-heart-o" style="font-size: 25px; color:red;"></i></button></div> </div>  <hr>';
+                    
+                } 
+              }
+              
+			}
 	}
 	$resultado->close();
     
@@ -488,8 +403,6 @@ include('conexiongen.php');
 	mysqli_close($conn);
 
 ?>
-
-
 <!-- Pagination -->
 <ul class="pagination justify-content-center">
   <li class="page-item">
@@ -518,7 +431,7 @@ include('conexiongen.php');
 </div>
 <!-- /.container -->
   <!-- Contact Section -->
-  <section class="contact-section bg-black" ID="social">
+  <section class="contact-section bg-black" id="social">
     <div class="container">
 
       <div class="row">
@@ -529,7 +442,7 @@ include('conexiongen.php');
               <i class="fas fa-map-marked-alt text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Address</h4>
               <hr class="my-4">
-              <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+              <div class="small text-black-50">KM 5 vía puerto Colombia, Uninorte</div>
             </div>
           </div>
         </div>
@@ -541,7 +454,7 @@ include('conexiongen.php');
               <h4 class="text-uppercase m-0">Email</h4>
               <hr class="my-4">
               <div class="small text-black-50">
-                <a href="#">hello@yourdomain.com</a>
+                <a href="#">lauravud@gmail.com</a>
               </div>
             </div>
           </div>
@@ -553,7 +466,7 @@ include('conexiongen.php');
               <i class="fas fa-mobile-alt text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Phone</h4>
               <hr class="my-4">
-              <div class="small text-black-50">+1 (555) 902-8832</div>
+              <div class="small text-black-50">+57 3016844167</div>
             </div>
           </div>
         </div>
@@ -563,11 +476,11 @@ include('conexiongen.php');
         <a href="#" class="mx-2">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="#" class="mx-2">
-          <i class="fab fa-facebook-f"></i>
+        <a href="https://www.facebook.com/tuplanbaq/" class="mx-2">
+          <i class="fab fa-facebook-f" ></i>
         </a>
-        <a href="#" class="mx-2">
-          <i class="fab fa-github"></i>
+        <a href="https://www.instagram.com/tuplan.a/" class="mx-2">
+          <i class="fab fa-instagram" ></i>
         </a>
       </div>
 
@@ -577,7 +490,7 @@ include('conexiongen.php');
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Copyright &copy; Your Website 2019
+      Copyright &copy; TU PLAN A 2020
     </div>
   </footer>
 
