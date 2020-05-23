@@ -247,7 +247,7 @@ include('conexiongen.php');
      <img name="aboutme" width="140" height="140" border="0" class="img-circle" onerror="this.src='img/default.png';" src=<?php  
         if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
-        } else {
+        } else {  
                 $sql = "SELECT * FROM usuarios WHERE user='$usuario'";
                 $resultado=  $conn->query($sql);
                  if($resultado->num_rows >0){
@@ -258,7 +258,11 @@ include('conexiongen.php');
                  $resultado->close();
             }
           ?>  >
-            
+        <form action="change-profile.php" method="post" enctype="multipart/form-data">
+        <i class="fas fa-camera"></i>
+        <input type="file" id="foto" name="foto" accept="image/*">
+        <input type="submit" value="OK">
+        </form>
         <h3 class="media-heading"><?php echo $usuario ?></h3>
         </center> 
         
