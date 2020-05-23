@@ -352,6 +352,10 @@ include('conexiongen.php');
               <form action="eventos_home.php" method="post">
                     <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="entretenimiento" >Entretenimiento</button>
               </form>
+
+              <form action="eventos_home.php" method="post">
+                    <button class="cat dropdown-item" style="cursor:pointer;" name="tipo" type="submit" value="sinDinero" >Visitar gratis</button>
+              </form>
               
           </div>
         </div>
