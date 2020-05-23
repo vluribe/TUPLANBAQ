@@ -27,7 +27,11 @@ die("Connection failed: " . mysqli_connect_error());
         $resultado= $conn->query($sql2);
         if($resultado->num_rows >0){
             if ($row = $resultado->fetch_assoc()){
-                $path=$row['foto'];
+                if($row['foto']!=''){
+                    $path=$row['foto'];
+                } else {
+                    $path='';
+                }
                 if (!unlink($path)){
                     echo "error eliminando la anterior foto";
                 }  else {
