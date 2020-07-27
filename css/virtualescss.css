@@ -1,0 +1,89 @@
+nav > .nav.nav-tabs{
+
+    border: none;
+      color:#fff;
+      background:#272e38;
+      border-radius:0;
+  
+  }
+  nav > div a.nav-item.nav-link,
+  nav > div a.nav-item.nav-link.active
+  {
+    border: none;
+      padding: 18px 25px;
+      color:#fff;
+      background:#272e38;
+      border-radius:0;
+  }
+  
+  nav > div a.nav-item.nav-link.active:after
+   {
+    content: "";
+    position: relative;
+    bottom: -60px;
+    left: -10%;
+    border: 15px solid transparent;
+    border-top-color: orange ;
+  }
+  .tab-content{
+    background: #fdfdfd;
+      line-height: 25px;
+      border: 1px solid #ddd;
+      border-top:5px solid orange;
+      border-bottom:5px solid orange;
+      padding:30px 25px;
+  }
+  
+  nav > div a.nav-item.nav-link:hover,
+  nav > div a.nav-item.nav-link:focus
+  {
+    border: none;
+      background: white;
+      color:black;
+      border-radius:0;
+      transition:background 0.20s linear;
+  }
+
+  .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
